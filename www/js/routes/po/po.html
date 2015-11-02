@@ -1,0 +1,19 @@
+<ion-view >
+    <ion-nav-title>Po approve</ion-nav-title>
+    <ion-content>
+      <ion-refresher on-refresh="refresh()"></ion-refresher>
+      <ion-item ng-repeat="item in results" bindonce
+                class="item-text-wrap" ng-click="goDetail(item.PO_NUMBER)">
+        <div class=" bodyFont2">{{ item.PO_NUMBER}}</div>
+        <div class=" bodyFont1">{{ item.TARGET_VAL | currency:item.CURRENCY_ISO}}
+        </div>
+        <div >{{ item.VEND_NAME}}{{item.DOC_DATE}}
+        </div>
+        <div class="captionFont3"><span am-time-ago="item.LAST_CHANGE_TIME"></span>
+        </div>
+      </ion-item>
+
+      <ion-infinite-scroll ng-if="isMoreData()" on-infinite="loadMoreData()" distance="1%">
+      </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

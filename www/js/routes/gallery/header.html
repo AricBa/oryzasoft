@@ -1,0 +1,27 @@
+<ion-view >
+  <ion-header-bar class="bar-positive bar-header2">
+  </ion-header-bar>
+  <ion-content class="has-header2" has-header="true" padding="true">
+
+      <!--<div class="item item-text-wrap" >-->
+        <div class="flex-container wrap" ng-repeat="(key,value) in po" ng-hide = "value == ''">
+          <div class="column bodyFont1" >{{key}}</div>
+          <div class="column1  bodyFont2" >{{value}}</div>
+        </div>
+      <!--</div>-->
+  </ion-content>
+  <ion-footer-bar class="bar bar-footer bar-positive">
+
+      <div class="buttons buttons-right">
+        <create-task ng-disabled="approve == 'Lock'"
+                     class="button button-icon"
+                     button-text="approve"
+                     po-num="po.PO_NUMBER"
+                     status="po.DM_STATUS"
+                ></create-task>
+        <button ng-click="goToItems()" class="button button-icon">items</button>
+        <!--<button ng-show="buttonFab.name==='favorite'" class="button button-energized-900 "><i-->
+        <!--class="icon ion-star light"></i></button>-->
+      </div>
+  </ion-footer-bar>
+</ion-view>
