@@ -11,13 +11,23 @@
           templateUrl: 'js/routes/po/po.html',
           controller: 'poCtrl',
           resolve: {/* @ngInject */
-            poList: function(restApi){
+            poList: function(restApi,$q,$ionicLoading){
+              var d = $q.defer();
+
+              $ionicLoading.show({
+                template:'Loading...'
+              });
               var route =  'sap/po/purchase_orders';
               var path ='';
               var params = {
                 pageIndex : '1'
               };
-              return restApi.getData(route,path,params);
+              restApi.getData(route,path,params).then(function(response){
+                d.resolve(response);
+                $ionicLoading.hide();
+              });
+
+              return d.promise;
               //return Restangular.all('sap/po/purchase_orders').get('',{});
             }
           },
