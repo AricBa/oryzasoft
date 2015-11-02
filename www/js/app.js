@@ -27,6 +27,7 @@
         'app.core',
         'app.signup',
         'app.signin',
+         'app.sideMenu',
         'app.home',
         'app.po'
     ])

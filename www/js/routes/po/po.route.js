@@ -6,10 +6,14 @@
     .module('app.po')
     .config(function($stateProvider) {
       $stateProvider
-        .state('po', {
+        .state('sideMenu.poList', {
           url: '/po',
-          templateUrl: 'js/routes/po/po.html',
-          controller: 'poCtrl',
+          views:{
+            'po':{
+              templateUrl: 'js/routes/po/po.html',
+              controller: 'poCtrl'
+            }
+          },
           resolve: {/* @ngInject */
             poList: function(restApi,$q,$ionicLoading){
               var d = $q.defer();
