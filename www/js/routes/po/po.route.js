@@ -22,6 +22,7 @@
                 template:'Loading...'
               });
               var route =  'sap/po/purchase_orders';
+
               var path ='';
               var params = {
                 pageIndex : '1'
@@ -76,70 +77,61 @@
           }
 
         })
-        //.state('app.items',{
-        //  url:'poHeaders/:poNumber/items',
-        //  views:{
-        //    'menuContent':{
-        //      templateUrl: 'js/routes/gallery/items.html',
-        //      controller:'itemsCtrl'
-        //    }
-        //  },
-        //  resolve:{
-        //    items:function($stateParams,restApi,$q,$ionicLoading){
-        //      var d = $q.defer();
-        //      $ionicLoading.show({
-        //        template:'Loading...'
-        //      });
-        //
-        //      var route =  'sap/po/purchase_orders/'+$stateParams.poNumber+'/items';
-        //      var path ='';
-        //      var params = {
-        //        pageIndex : '1'
-        //      };
-        //      restApi.getData(route,path,params).then(function(response){
-        //        d.resolve(response);
-        //        $ionicLoading.hide();
-        //      });
-        //
-        //      return d.promise;
-        //    }
-        //  },
-        //  data: {
-        //    authenticate: true
-        //  }
-        //})
-        //.state('app.itemDetail',{
-        //  url:'poHeaders/:poNumber/items/:itemId',
-        //  views:{
-        //    'menuContent':{
-        //      templateUrl: 'js/routes/gallery/itemDetail.html',
-        //      controller:'itemDetailCtrl'
-        //    }
-        //  },
-        //  resolve:{
-        //    item:function($stateParams,restApi,$q,$ionicLoading){
-        //      var d = $q.defer();
-        //      $ionicLoading.show({
-        //        template:'Loading...'
-        //      });
-        //
-        //      var route =  'sap/po/purchase_orders/'+$stateParams.poNumber+'/items/'+$stateParams.itemId;
-        //      var path ='';
-        //      var params = {
-        //        pageIndex : '1'
-        //      };
-        //      restApi.getData(route,path,params).then(function(response){
-        //        d.resolve(response);
-        //        $ionicLoading.hide();
-        //      });
-        //
-        //      return d.promise;
-        //    }
-        //  },
-        //  data: {
-        //    authenticate: true
-        //  }
-        //})
-         ;
+        .state('poItems',{
+          url:'poDetail/:poNumber/items',
+          templateUrl: 'js/routes/po/items.html',
+          controller:'itemsCtrl',
+          resolve:{
+            items:function($stateParams,restApi,$q,$ionicLoading){
+              var d = $q.defer();
+              $ionicLoading.show({
+                template:'Loading...'
+              });
+
+              var route =  'sap/po/purchase_orders/'+$stateParams.poNumber+'/items';
+              var path ='';
+              var params = {
+                pageIndex : '1'
+              };
+              restApi.getData(route,path,params).then(function(response){
+                d.resolve(response);
+                $ionicLoading.hide();
+              });
+
+              return d.promise;
+            }
+          },
+          data: {
+            authenticate: true
+          }
+        })
+        .state('itemDetail',{
+          url:'poDetail/:poNumber/items/:itemId',
+          templateUrl: 'js/routes/po/itemDetail.html',
+          controller:'itemDetailCtrl',
+          resolve:{
+            item:function($stateParams,restApi,$q,$ionicLoading){
+              var d = $q.defer();
+              $ionicLoading.show({
+                template:'Loading...'
+              });
+
+              var route =  'sap/po/purchase_orders/'+$stateParams.poNumber+'/items/'+$stateParams.itemId;
+              var path ='';
+              var params = {
+                pageIndex : '1'
+              };
+              restApi.getData(route,path,params).then(function(response){
+                d.resolve(response);
+                $ionicLoading.hide();
+              });
+
+              return d.promise;
+            }
+          },
+          data: {
+            authenticate: true
+          }
+        });
     });
 })();

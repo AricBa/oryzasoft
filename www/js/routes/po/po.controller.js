@@ -11,61 +11,6 @@
       $scope.page = poList.pageIndex;
       $scope.pageSize = poList.pageSize;
 
-
-      $scope.goDetail = function(index){
-        $state.go('app.poHeader',{poNumber:index});
-      };
-
-      $scope.isMoreData = function () {
-        //console.log($scope.page < ($scope.count / $scope.pageSize));
-        return $scope.page < ($scope.count / $scope.pageSize);
-      };
-
-      $scope.loadMoreData = function(){
-        $scope.page++;
-        $scope.route =  'sap/po/purchase_orders';
-        $scope.path ='';
-        $scope.params = {
-          pageIndex : $scope.page
-        };
-        restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
-          Array.prototype.push.apply($scope.results, response.results);
-          $scope.$broadcast('scroll.infiniteScrollComplete');
-          console.log($scope.results);
-        })
-      };
-      //$scope.$on('$stateChangeSuccess', function() {
-      //    $scope.loadMoreData();
-      //});
-
-      $scope.refresh = function(status){
-        $ionicLoading.show({
-          template: 'Loading...'
-        });
-        $scope.route =  'sap/po/purchase_orders';
-        $scope.path ='';
-        $scope.status = '';
-        if(status !== '' && typeof status !== 'undefined'){
-          $scope.status = status;
-        }
-        $scope.params = {
-          pageIndex : '1',
-          filter: $scope.status
-        };
-
-        restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
-          $scope.results= response.results;
-          $scope.count = response.totalCount;
-          $scope.page = response.pageIndex;
-          $scope.pageSize = response.pageSize;
-        }).finally(function(){
-          console.log('$scope.refresh');
-          $scope.$broadcast('scroll.refreshComplete');
-          $ionicLoading.hide();
-          $scope.status = '';
-        });
-      };
-
       $scope.$on('refresh',function(){
         $scope.refresh($scope.$parent.status);
       })
@@ -73,9 +18,10 @@
     .controller('poListCtrl',function($state,$scope,restApi,$ionicLoading){
 
       $scope.results = $scope.$parent.results;
-      $scope.count = $scope.$parent.totalCount;
-      $scope.page = $scope.$parent.pageIndex;
+      $scope.count = $scope.$parent.count;
+      $scope.page = $scope.$parent.page;
       $scope.pageSize = $scope.$parent.pageSize;
+
 
 
       $scope.goDetail = function(index){
@@ -83,13 +29,14 @@
       };
 
       $scope.isMoreData = function () {
-        //console.log($scope.page < ($scope.count / $scope.pageSize));
+        console.log($scope.page < ($scope.count / $scope.pageSize));
         return $scope.page < ($scope.count / $scope.pageSize);
       };
 
       $scope.loadMoreData = function(){
         $scope.page++;
         $scope.route =  'sap/po/purchase_orders';
+
         $scope.path ='';
         $scope.params = {
           pageIndex : $scope.page
@@ -141,7 +88,7 @@
       $scope.approve = PO[1];
 
       $scope.goToItems = function(){
-        $state.go('app.items',{poNumber:$scope.po.PO_NUMBER});
+        $state.go('poItems',{poNumber:$scope.po.PO_NUMBER});
       };
 
     })
@@ -157,7 +104,7 @@
       console.log($scope.results);
 
       $scope.goDetail = function(index){
-        $state.go('app.itemDetail',{poNumber:$stateParams.poNumber,itemId:index});
+        $state.go('itemDetail',{poNumber:$stateParams.poNumber,itemId:index});
       };
 
       $scope.isMoreData = function () {

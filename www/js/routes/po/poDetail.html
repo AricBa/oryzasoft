@@ -5,25 +5,33 @@
       <div class="column bodyFont1" >PO_NUMBER :</div>
       <div class="column1  bodyFont2" >{{po.PO_NUMBER}}</div>
     </ion-item>
+    <hr />
     <ion-item class="flex-container wrap">
       <div class="column bodyFont1" >TARGET_VAL :</div>
       <div class="column1  bodyFont2" >{{ po.TARGET_VAL | currency:po.CURRENCY_ISO}}</div>
     </ion-item>
+    <hr />
     <ion-item class="flex-container wrap">
       <div class="column bodyFont1" >VEND_NAME :</div>
       <div class="column1  bodyFont2" >{{ po.VEND_NAME}}</div>
       <i class="icon ion-ios-arrow-right muted"></i>
     </ion-item>
+    <hr />
     <ion-item class="flex-container wrap">
       <div class="column bodyFont1" >CREATED_BY :</div>
       <div class="column1  bodyFont2" >{{ po.CREATED_BY}}</div>
       <i class="icon ion-ios-arrow-right muted"></i>
     </ion-item>
+    <hr />
     <ion-item class="flex-container wrap">
       <div class="column bodyFont1" ng-click="goToItems()">itemDetail</div>
       <div class="column1  bodyFont2" ></div>
       <i class="icon ion-ios-arrow-right muted"></i>
     </ion-item>
+    <hr />
+    <!--<ion-item>-->
+
+    <!--</ion-item>-->
   </ion-content>
   <ion-footer-bar class="bar bar-footer bar-positive">
 
