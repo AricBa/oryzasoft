@@ -142,7 +142,8 @@
 
       $scope.goToItems = function(){
         $state.go('app.items',{poNumber:$scope.po.PO_NUMBER});
-      }
+      };
+
     })
     .controller('itemsCtrl',function(items,$scope,$state,$stateParams,restApi,$ionicLoading,$ionicSideMenuDelegate){
       $scope.openFilter = function(){
