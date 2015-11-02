@@ -24,10 +24,12 @@
               var route =  'sap/po/purchase_orders';
               var path ='';
               var params = {
-                pageIndex : '1'
+                pageIndex : '1',
+                filter: '0'
               };
               restApi.getData(route,path,params).then(function(response){
                 d.resolve(response);
+                console.log(response);
                 $ionicLoading.hide();
               });
 
