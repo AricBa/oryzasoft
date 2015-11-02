@@ -143,5 +143,149 @@
       $scope.goToItems = function(){
         $state.go('app.items',{poNumber:$scope.po.PO_NUMBER});
       }
+    })
+    .controller('itemsCtrl',function(items,$scope,$state,$stateParams,restApi,$ionicLoading,$ionicSideMenuDelegate){
+      $scope.openFilter = function(){
+        $ionicSideMenuDelegate.toggleRight();
+      };
+
+      $scope.count = items.totalCount;
+      $scope.page = items.pageIndex;
+      $scope.pageSize = items.pageSize;
+      $scope.results = items.results;
+      console.log($scope.results);
+
+      $scope.goDetail = function(index){
+        $state.go('app.itemDetail',{poNumber:$stateParams.poNumber,itemId:index});
+      };
+
+      $scope.isMoreData = function () {
+        //console.log($scope.page < ($scope.count / $scope.pageSize));
+        return $scope.page < ($scope.count / $scope.pageSize);
+      };
+
+      $scope.loadMoreData = function(){
+        $scope.page++;
+        $scope.route =  'sap/po/purchase_orders/'+$stateParams.poNumber+'/items';
+        $scope.path ='';
+        $scope.params = {
+          pageIndex : $scope.page
+        };
+        restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
+          Array.prototype.push.apply($scope.results, response.results);
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+          console.log($scope.results);
+        })
+      };
+      //$scope.$on('$stateChangeSuccess', function() {
+      //    $scope.loadMoreData();
+      //});
+
+      $scope.refresh = function(){
+        $ionicLoading.show({
+          template: 'Loading...'
+        });
+        $scope.route =  'sap/po/purchase_orders/'+$stateParams.poNumber+'/items';
+        $scope.path ='';
+        $scope.params = {
+          pageIndex : '1'
+        };
+        restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
+          $scope.results= response.results;
+          $scope.count = response.totalCount;
+          $scope.page = response.pageIndex;
+          $scope.pageSize = response.pageSize;
+        }).finally(function(){
+          console.log('$scope.refresh');
+          $scope.$broadcast('scroll.refreshComplete');
+          $ionicLoading.hide();
+        });
+      };
+    })
+    .controller('itemDetailCtrl', function(item,$scope){
+      $scope.item = item.results[0];
+    })
+    .directive('createTask', function ( ) {
+      return {
+        restrict: "EA",
+        scope: {
+          buttonText: '=',
+          status:'=',
+          poNum: '='// Use @ for One Way Text Binding;Use = for Two Way Binding;Use & to Execute Functions in the Parent Scope
+        },
+        controller: function ($ionicPopup,$scope,Restangular,$ionicLoading,$timeout) {
+          $scope.ionicPopup = {
+            title: 'Approve po',
+            cssClass: 'ionicPopup',
+            //template: 'OK',
+            cancelText: 'CANCEL',
+            cancelType: 'button button-clear button-positive',
+            okText: 'APPROVE',
+            okType: 'button button-clear button-positive'
+          };
+
+          $scope.showConfirm = function () {
+            var confirmPopup = $ionicPopup.confirm($scope.ionicPopup);
+            confirmPopup.then(function (res) {
+              if (res) {
+                $ionicLoading.show({
+                  template:'Loading...'
+                });
+                console.log($scope.poNum);
+                Restangular.all('sap/po/purchase_orders/'+$scope.poNum+'/status').customGET().then(function(response){
+                  console.log(response.results[0].DM_STATUS);
+                  console.log($scope.status);
+                  if(response.results[0].DM_STATUS == $scope.status) {
+                    if($scope.buttonText == 'Approve'){
+                      Restangular.all('sap/po/purchase_orders/'+$scope.poNum+'/approve').post().then(function(response){
+                        $ionicLoading.hide();
+                        $ionicLoading.show({
+                          template:'the task is approving'
+                        });
+                        $timeout(function() {
+                          $ionicLoading.hide();
+                        }, 1000);
+                        $scope.buttonText = 'Lock';
+                        console.log(response);
+                        console.log('approve');
+                      });
+                    }else if( $scope.buttonText =='Reset'){
+                      Restangular.all('sap/po/purchase_orders/'+$scope.poNum+'/reset').post().then(function(response){
+                        $ionicLoading.hide();
+                        $ionicLoading.show({
+                          template:'the task is reseted'
+                        });
+                        $timeout(function() {
+                          $ionicLoading.hide();
+                        }, 1000);
+                        $scope.buttonText = 'Approve';
+                        console.log(response);
+                        console.log('reset');
+                      })
+                    }else{
+                      console.log("Locked");
+                      $ionicLoading.hide();
+                    }
+                  }else{
+                    $ionicLoading.hide();
+                    $ionicLoading.show({
+                      template:'status has changed'
+                    });
+                    $timeout(function() {
+                      $ionicLoading.hide();
+                    }, 1000);
+                  }
+                });
+
+              } else {
+                console.log('cancel');
+              }
+            });
+          };
+        },
+
+        template: '<button  ng-click="showConfirm()">{{buttonText}}</button>',
+        replace: true
+      };
     });
 })();
