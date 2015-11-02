@@ -79,7 +79,7 @@
 
 
       $scope.goDetail = function(index){
-        $state.go('app.poHeader',{poNumber:index});
+        $state.go('poDetail',{poNumber:index});
       };
 
       $scope.isMoreData = function () {
@@ -135,5 +135,13 @@
       $scope.$on('refresh',function(){
         $scope.refresh($scope.$parent.status);
       })
+    })
+    .controller('poDetailCtrl',function(PO,$scope,$state){
+      $scope.po = PO[0].results[0];
+      $scope.approve = PO[1];
+
+      $scope.goToItems = function(){
+        $state.go('app.items',{poNumber:$scope.po.PO_NUMBER});
+      }
     });
 })();

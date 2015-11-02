@@ -24,8 +24,7 @@
               var route =  'sap/po/purchase_orders';
               var path ='';
               var params = {
-                pageIndex : '1',
-                filter: '0'
+                pageIndex : '1'
               };
               restApi.getData(route,path,params).then(function(response){
                 d.resolve(response);
@@ -41,46 +40,42 @@
             authenticate: true
           }
         })
-        //.state('app.poHeader', {
-        //  url:'poHeaders/:poNumber',
-        //  views:{
-        //    'menuContent':{
-        //      templateUrl: 'js/routes/gallery/header.html',
-        //      controller:'headerCtrl'
-        //    }
-        //  },
-        //  resolve:{
-        //    PO :function ($stateParams,restApi,$q,$ionicLoading){
-        //      var d = $q.defer();
-        //
-        //      $ionicLoading.show({
-        //        template:'Loading...'
-        //      });
-        //
-        //      var route = 'sap/po/purchase_orders/'+$stateParams.poNumber;
-        //
-        //      restApi.getData(route).then(function(response){
-        //        if(response.results[0].DM_STATUS == 0 || response.results[0].DM_STATUS == 6) {
-        //          d.resolve([response,'Approve']);
-        //        }else if (response.results[0].DM_STATUS == 1){
-        //          d.resolve([response,'Lock']);
-        //        }else{
-        //          d.resolve([response,'Reset']);
-        //        }
-        //        $ionicLoading.hide();
-        //      },function(err){
-        //        d.reject(err);
-        //        $ionicLoading.hide();
-        //      });
-        //
-        //      return d.promise;
-        //    }
-        //  },
-        //  data: {
-        //    authenticate: true
-        //  }
-        //
-        //})
+        .state('poDetail', {
+          url:'poDetail/:poNumber',
+          templateUrl: 'js/routes/po/poDetail.html',
+          controller:'poDetailCtrl',
+          resolve:{
+            PO :function ($stateParams,restApi,$q,$ionicLoading){
+              var d = $q.defer();
+
+              $ionicLoading.show({
+                template:'Loading...'
+              });
+
+              var route = 'sap/po/purchase_orders/'+$stateParams.poNumber;
+
+              restApi.getData(route).then(function(response){
+                if(response.results[0].DM_STATUS == 0 || response.results[0].DM_STATUS == 6) {
+                  d.resolve([response,'Approve']);
+                }else if (response.results[0].DM_STATUS == 1){
+                  d.resolve([response,'Lock']);
+                }else{
+                  d.resolve([response,'Reset']);
+                }
+                $ionicLoading.hide();
+              },function(err){
+                d.reject(err);
+                $ionicLoading.hide();
+              });
+
+              return d.promise;
+            }
+          },
+          data: {
+            authenticate: true
+          }
+
+        })
         //.state('app.items',{
         //  url:'poHeaders/:poNumber/items',
         //  views:{
