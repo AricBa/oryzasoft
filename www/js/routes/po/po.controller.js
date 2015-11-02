@@ -11,9 +11,6 @@
       $scope.page = poList.pageIndex;
       $scope.pageSize = poList.pageSize;
 
-      $scope.$on('refresh',function(){
-        $scope.refresh($scope.$parent.status);
-      })
     })
     .controller('poListCtrl',function($state,$scope,restApi,$ionicLoading){
 

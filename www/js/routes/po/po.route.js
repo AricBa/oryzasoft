@@ -58,7 +58,7 @@
               restApi.getData(route).then(function(response){
                 if(response.results[0].DM_STATUS == 0 || response.results[0].DM_STATUS == 6) {
                   d.resolve([response,'Approve']);
-                }else if (response.results[0].DM_STATUS == 1){
+                }else if (response.results[0].DM_STATUS == 1 || response.results[0].DM_STATUS == 5 ){
                   d.resolve([response,'Lock']);
                 }else{
                   d.resolve([response,'Reset']);
