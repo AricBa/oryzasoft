@@ -158,7 +158,7 @@
           status:'=',
           poNum: '='// Use @ for One Way Text Binding;Use = for Two Way Binding;Use & to Execute Functions in the Parent Scope
         },
-        controller: function ($ionicPopup,$scope,Restangular,$ionicLoading,$timeout) {
+        controller: function ($ionicPopup,$scope,Restangular,$ionicLoading,$timeout,$state) {
           $scope.ionicPopup = {
             title: 'Approve po',
             cssClass: 'ionicPopup',
@@ -184,12 +184,13 @@
                     if($scope.buttonText == 'Approve'){
                       Restangular.all('sap/po/purchase_orders/'+$scope.poNum+'/approve').post().then(function(response){
                         $ionicLoading.hide();
-                        $ionicLoading.show({
-                          template:'the task is approving'
-                        });
-                        $timeout(function() {
-                          $ionicLoading.hide();
-                        }, 1000);
+
+                        //$ionicLoading.show({
+                        //  template:'the task is approving'
+                        //});
+                        //$timeout(function() {
+                        //  $ionicLoading.hide();
+                        //}, 1000);
                         $scope.buttonText = 'Lock';
                         console.log(response);
                         console.log('approve');
@@ -197,12 +198,13 @@
                     }else if( $scope.buttonText =='Reset'){
                       Restangular.all('sap/po/purchase_orders/'+$scope.poNum+'/reset').post().then(function(response){
                         $ionicLoading.hide();
-                        $ionicLoading.show({
-                          template:'the task is reseted'
-                        });
-                        $timeout(function() {
-                          $ionicLoading.hide();
-                        }, 1000);
+                        $state.go()
+                        //$ionicLoading.show({
+                        //  template:'the task is reseted'
+                        //});
+                        //$timeout(function() {
+                        //  $ionicLoading.hide();
+                        //}, 1000);
                         $scope.buttonText = 'Approve';
                         console.log(response);
                         console.log('reset');

@@ -132,6 +132,16 @@
           data: {
             authenticate: true
           }
+        })
+        .state('approveDetail',{
+          url:'approveDetail/:poNumber',
+          templateUrl:'js/routes/po/approveDetail.html',
+          controller:'approveDetailCtrl',
+          resolve:{
+            poApprove:function(){
+              return ;
+            }
+          }
         });
     });
 })();
