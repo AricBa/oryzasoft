@@ -88,6 +88,10 @@
         $state.go('poItems',{poNumber:$scope.po.PO_NUMBER});
       };
 
+      $scope.goToApproveDetail = function(){
+        $state.go('approveDetail',{poNumber:$scope.po.PO_NUMBER});
+      }
+
     })
     .controller('itemsCtrl',function(items,$scope,$state,$stateParams,restApi,$ionicLoading,$ionicSideMenuDelegate){
       $scope.openFilter = function(){
