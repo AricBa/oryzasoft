@@ -5,7 +5,7 @@
   'use strict';
   angular
     .module('app.po')
-    .controller('poCtrl', function($state,$scope,poList,restApi,$ionicLoading) {
+    .controller('poCtrl', function($scope,poList) {
       $scope.results = poList.results;
       $scope.count = poList.totalCount;
       $scope.page = poList.pageIndex;
@@ -150,6 +150,13 @@
     .controller('itemDetailCtrl', function(item,$scope){
       $scope.item = item.results[0];
     })
+    .controller('approveDetailCtrl',function(poApprove,$scope,$state){
+        $scope.results = poApprove.results[0];
+        console.log($scope.results);
+        $scope.goBack = function(){
+           $state.go('sideMenu.poList');
+        }
+    })
     .directive('createTask', function ( ) {
       return {
         restrict: "EA",
@@ -165,7 +172,7 @@
             //template: 'OK',
             cancelText: 'CANCEL',
             cancelType: 'button button-clear button-positive',
-            okText: 'APPROVE',
+            okText: $scope.buttonText,
             okType: 'button button-clear button-positive'
           };
 
@@ -184,7 +191,7 @@
                     if($scope.buttonText == 'Approve'){
                       Restangular.all('sap/po/purchase_orders/'+$scope.poNum+'/approve').post().then(function(response){
                         $ionicLoading.hide();
-
+                        $state.go('approveDetail',{poNumber:$scope.poNum});
                         //$ionicLoading.show({
                         //  template:'the task is approving'
                         //});
@@ -198,7 +205,7 @@
                     }else if( $scope.buttonText =='Reset'){
                       Restangular.all('sap/po/purchase_orders/'+$scope.poNum+'/reset').post().then(function(response){
                         $ionicLoading.hide();
-                        $state.go()
+                        $state.go('approveDetail',{poNumber:$scope.poNum});
                         //$ionicLoading.show({
                         //  template:'the task is reseted'
                         //});

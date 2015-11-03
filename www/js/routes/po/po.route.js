@@ -138,9 +138,27 @@
           templateUrl:'js/routes/po/approveDetail.html',
           controller:'approveDetailCtrl',
           resolve:{
-            poApprove:function(){
-              return ;
+            poApprove:function($q,$ionicLoading,restApi,$stateParams){
+              var d = $q.defer();
+              $ionicLoading.show({
+                template:'Loading...'
+              });
+
+              var route =  'sap/po/purchase_orders/'+$stateParams.poNumber;
+              var path ='';
+              var params = {
+                pageIndex : '1'
+              };
+              restApi.getData(route,path,params).then(function(response){
+                d.resolve(response);
+                $ionicLoading.hide();
+              });
+
+              return d.promise;
             }
+          },
+          data: {
+            authenticate: true
           }
         });
     });
