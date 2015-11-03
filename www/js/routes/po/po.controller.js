@@ -92,6 +92,14 @@
         $state.go('approveDetail',{poNumber:$scope.po.PO_NUMBER});
       }
 
+      if ($scope.po.DM_STATUS == 1 || $scope.po.DM_STATUS == 5){
+        $scope.detail = 'approving';
+      }else if ($scope.po.DM_STATUS == 3 ){
+        $scope.detail=  'approved';
+      }else{
+        $scope.detail=  'resetted';
+      };
+
     })
     .controller('itemsCtrl',function(items,$scope,$state,$stateParams,restApi,$ionicLoading,$ionicSideMenuDelegate){
       $scope.openFilter = function(){
