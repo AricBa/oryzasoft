@@ -1,4 +1,20 @@
 <ion-view>
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <button ng-if="$root.showCustomBack" ng-click="$root.goBack()"
+              class=" button-icon button-clear  button-small nav-left-button ion-ios-arrow-left">
+      </button>
+    </ion-nav-buttons>
+
+    <ion-nav-title>Po  Approve</ion-nav-title>
+
+    <ion-nav-buttons side="right">
+      <button class="button button-icon " menu-toggle="right">
+        Filter
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
   <ion-content scroll="false">
     <ion-slide-box slide-tabs-scrollable="false"  show-pager="false" ion-slide-tabs>
       <ion-slide ion-slide-tab-label="Unapproved( )">
