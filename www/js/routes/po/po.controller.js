@@ -159,7 +159,16 @@
         console.log($scope.results);
         $scope.goBack = function(){
            $state.go('sideMenu.poList');
-        }
+        };
+
+        if ($scope.results.DM_STATUS == 1 || $scope.results.DM_STATUS == 5){
+          $scope.approveStatus = 'approving';
+        }else if ($scope.results.DM_STATUS == 3 ){
+          $scope.approveStatus=  'approved';
+        }else{
+          $scope.approveStatus=  'resetted';
+        };
+
     })
     .directive('createTask', function ( ) {
       return {
