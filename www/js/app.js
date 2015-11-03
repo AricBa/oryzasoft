@@ -46,6 +46,9 @@
             $rootScope.showCustomBack = true;
           }
         });
+      })
+      .config(function($ionicConfigProvider) {
+        $ionicConfigProvider.backButton.previousTitleText(false).text('');
       });
 
 })();

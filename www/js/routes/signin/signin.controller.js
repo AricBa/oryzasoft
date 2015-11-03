@@ -25,10 +25,6 @@
         var vm = this;
         vm.signIn = function(credentials, isValid) {
             if(!isValid) {return;}
-            //var credential ={
-            //    "email" : "tony.shang@oryzasoft.com",
-            //    "password" : "admin"
-            //};
             Authentication.signin(credentials).then(function () {
                 // save user profile details to $rootScope
                 $rootScope.me = Authentication.getCurrentUser();
