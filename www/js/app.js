@@ -27,9 +27,10 @@
         'app.core',
         'app.signup',
         'app.signin',
-         'app.sideMenu',
+        'app.sideMenu',
         'app.home',
-        'app.po'
+        'app.po',
+        'app.pr'
     ])
       .run(function ($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;
