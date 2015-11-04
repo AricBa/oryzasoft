@@ -113,14 +113,14 @@
             $scope.page = '';
             $scope.pageSize = '';
           }
-        }else{
+        }else if ($scope.$parent.index == 0){
           $scope.refresh();
         }
       })
     })
     .controller('poApproListCtrl',function($state,$scope,restApi,$ionicLoading){
       $scope.$watch('index',function(val){
-          if( val === '1'){
+          if( val === 1){
             var route =  'sap/po/purchase_orders';
             var path ='';
             var params = {
@@ -160,9 +160,9 @@
           filter: ['1','3','5']
         };
         restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
-          Array.prototype.push.apply($scope.results, response.results);
+          Array.prototype.push.apply($scope.result, response.results);
           $scope.$broadcast('scroll.infiniteScrollComplete');
-          console.log($scope.results);
+          console.log($scope.result);
         })
       };
       //$scope.$on('$stateChangeSuccess', function() {
@@ -185,7 +185,7 @@
         };
 
         restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
-          $scope.results= response.results;
+          $scope.result= response.results;
           $scope.count = response.totalCount;
           $scope.page = response.pageIndex;
           $scope.pageSize = response.pageSize;
@@ -215,7 +215,7 @@
             };
 
             restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
-              $scope.results= response.results;
+              $scope.result= response.results;
               $scope.count = response.totalCount;
               $scope.page = response.pageIndex;
               $scope.pageSize = response.pageSize;
@@ -225,12 +225,12 @@
               $ionicLoading.hide();
             });
           }else {
-            $scope.results= '';
+            $scope.result= '';
             $scope.count = '';
             $scope.page = '';
             $scope.pageSize = '';
           }
-        }else{
+        }else if($scope.$parent.index == 1){
           $scope.refresh();
         }
       })
@@ -321,7 +321,7 @@
         $scope.results = poApprove.results[0];
         console.log($scope.results);
         $scope.goBack = function(){
-           $state.go('sideMenu.poList',{reload: true});
+           $state.go('sideMenu.poList');
         };
 
         if ($scope.results.DM_STATUS == 1 || $scope.results.DM_STATUS == 5){
