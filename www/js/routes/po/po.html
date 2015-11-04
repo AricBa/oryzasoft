@@ -1,6 +1,6 @@
 <ion-view>
   <ion-content scroll="false">
-    <ion-slide-box slide-tabs-scrollable="false"  show-pager="false" ion-slide-tabs>
+    <ion-slide-box slide-tabs-scrollable="false"  show-pager="true" ion-slide-tabs on-slide-changed="slideHasChanged($index)">
       <ion-slide ion-slide-tab-label="Unapproved( )">
         <ng-include src="'js/routes/po/poUnapprovedList.html'"></ng-include>
       </ion-slide>

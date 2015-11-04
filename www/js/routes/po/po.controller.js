@@ -11,6 +11,13 @@
       $scope.page = poList.pageIndex;
       $scope.pageSize = poList.pageSize;
 
+      $scope.index = 0 ;
+
+      $scope.slideHasChanged = function($index){
+        $scope.index = $index;
+        console.log($scope.index);
+      };
+      console.log($scope.index);
     })
     .controller('poUnApproListCtrl',function($state,$scope,restApi,$ionicLoading){
       $scope.results = $scope.$parent.results;
@@ -46,7 +53,7 @@
       //    $scope.loadMoreData();
       //});
 
-      $scope.refresh = function(status){
+      $scope.refresh = function(){
         $ionicLoading.show({
           template: 'Loading...'
         });
@@ -74,7 +81,41 @@
       };
 
       $scope.$on('refresh',function(){
-        $scope.refresh($scope.$parent.status);
+        if($scope.$parent.status && $scope.$parent.index == 0){
+          if($scope.$parent.status == '0' || $scope.$parent.status == '6'){
+            $ionicLoading.show({
+              template: 'Loading...'
+            });
+            $scope.route =  'sap/po/purchase_orders';
+            $scope.path ='';
+            $scope.status = '';
+            if(status !== '' && typeof status !== 'undefined'){
+              $scope.status = status;
+            }
+            $scope.params = {
+              pageIndex : '1',
+              filter: $scope.$parent.status
+            };
+
+            restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
+              $scope.results= response.results;
+              $scope.count = response.totalCount;
+              $scope.page = response.pageIndex;
+              $scope.pageSize = response.pageSize;
+            }).finally(function(){
+              console.log('$scope.refresh');
+              $scope.$broadcast('scroll.refreshComplete');
+              $ionicLoading.hide();
+            });
+          }else{
+            $scope.results= '';
+            $scope.count = '';
+            $scope.page = '';
+            $scope.pageSize = '';
+          }
+        }else{
+          $scope.refresh();
+        }
       })
     })
     .controller('poApproListCtrl',function($state,$scope,restApi,$ionicLoading){
@@ -125,7 +166,7 @@
       //    $scope.loadMoreData();
       //});
 
-      $scope.refresh = function(status){
+      $scope.refresh = function(){
         $ionicLoading.show({
           template: 'Loading...'
         });
@@ -154,7 +195,41 @@
       };
 
       $scope.$on('refresh',function(){
-        $scope.refresh($scope.$parent.status);
+        if($scope.$parent.status && $scope.$parent.index == 1){
+          if($scope.$parent.status == '1' || $scope.$parent.status == '3' || $scope.$parent.status == '5'){
+            $ionicLoading.show({
+              template: 'Loading...'
+            });
+            $scope.route =  'sap/po/purchase_orders';
+            $scope.path ='';
+            $scope.status = '';
+            if(status !== '' && typeof status !== 'undefined'){
+              $scope.status = status;
+            }
+            $scope.params = {
+              pageIndex : '1',
+              filter: $scope.$parent.status
+            };
+
+            restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
+              $scope.results= response.results;
+              $scope.count = response.totalCount;
+              $scope.page = response.pageIndex;
+              $scope.pageSize = response.pageSize;
+            }).finally(function(){
+              console.log('$scope.refresh');
+              $scope.$broadcast('scroll.refreshComplete');
+              $ionicLoading.hide();
+            });
+          }else {
+            $scope.results= '';
+            $scope.count = '';
+            $scope.page = '';
+            $scope.pageSize = '';
+          }
+        }else{
+          $scope.refresh();
+        }
       })
     })
     .controller('poDetailCtrl',function(PO,$scope,$state){
