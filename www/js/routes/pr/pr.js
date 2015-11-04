@@ -4,6 +4,6 @@
 (function () {
   'use strict';
 
-  angular.module('app.pr', [])
+  angular.module('app.pr', ['app.po'])
 
 })();
