@@ -8,7 +8,7 @@
     .module('app.pr')
     .config(function($stateProvider) {
       $stateProvider
-        .state('sideMenu.poList', {
+        .state('sideMenu.prList', {
           url: '/po',
           views:{
             'po':{

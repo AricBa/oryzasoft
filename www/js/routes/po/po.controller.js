@@ -88,13 +88,11 @@
             });
             $scope.route =  'sap/po/purchase_orders';
             $scope.path ='';
-            $scope.status = '';
-            if(status !== '' && typeof status !== 'undefined'){
-              $scope.status = status;
-            }
+            $scope.stat = '';
+            $scope.stat = $scope.$parent.status;
             $scope.params = {
               pageIndex : '1',
-              filter: $scope.$parent.status
+              filter: $scope.stat
             };
 
             restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
@@ -103,6 +101,7 @@
               $scope.page = response.pageIndex;
               $scope.pageSize = response.pageSize;
             }).finally(function(){
+              $scope.stat = '';
               console.log('$scope.refresh');
               $scope.$broadcast('scroll.refreshComplete');
               $ionicLoading.hide();
@@ -205,13 +204,12 @@
             });
             $scope.route =  'sap/po/purchase_orders';
             $scope.path ='';
-            $scope.status = '';
-            if(status !== '' && typeof status !== 'undefined'){
-              $scope.status = status;
-            }
+            $scope.stat = '';
+            $scope.stat = $scope.$parent.status;
+
             $scope.params = {
               pageIndex : '1',
-              filter: $scope.$parent.status
+              filter: $scope.stat
             };
 
             restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
@@ -220,6 +218,7 @@
               $scope.page = response.pageIndex;
               $scope.pageSize = response.pageSize;
             }).finally(function(){
+              $scope.stat = '';
               console.log('$scope.refresh');
               $scope.$broadcast('scroll.refreshComplete');
               $ionicLoading.hide();
