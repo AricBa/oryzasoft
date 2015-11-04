@@ -25,7 +25,8 @@
 
               var path ='';
               var params = {
-                pageIndex : '1'
+                pageIndex : '1',
+                filter: ['0','6']
               };
               restApi.getData(route,path,params).then(function(response){
                 d.resolve(response);

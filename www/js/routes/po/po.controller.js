@@ -12,14 +12,11 @@
       $scope.pageSize = poList.pageSize;
 
     })
-    .controller('poListCtrl',function($state,$scope,restApi,$ionicLoading){
-
+    .controller('poUnApproListCtrl',function($state,$scope,restApi,$ionicLoading){
       $scope.results = $scope.$parent.results;
-      $scope.count = $scope.$parent.count;
-      $scope.page = $scope.$parent.page;
+      $scope.count = $scope.$parent.totalCount;
+      $scope.page = $scope.$parent.pageIndex;
       $scope.pageSize = $scope.$parent.pageSize;
-
-
 
       $scope.goDetail = function(index){
         $state.go('poDetail',{poNumber:index});
@@ -36,7 +33,8 @@
 
         $scope.path ='';
         $scope.params = {
-          pageIndex : $scope.page
+          pageIndex : $scope.page,
+          filter:['0','6']
         };
         restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
           Array.prototype.push.apply($scope.results, response.results);
@@ -60,7 +58,7 @@
         }
         $scope.params = {
           pageIndex : '1',
-          filter: $scope.status
+          filter: ['0','6']
         };
 
         restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
@@ -72,7 +70,86 @@
           console.log('$scope.refresh');
           $scope.$broadcast('scroll.refreshComplete');
           $ionicLoading.hide();
-          $scope.status = '';
+        });
+      };
+
+      $scope.$on('refresh',function(){
+        $scope.refresh($scope.$parent.status);
+      })
+    })
+    .controller('poApproListCtrl',function($state,$scope,restApi,$ionicLoading){
+      var route =  'sap/po/purchase_orders';
+      var path ='';
+      var params = {
+        pageIndex : '1',
+        filter: ['3','1','5']
+      };
+      $ionicLoading.show({
+        template: 'Loading...'
+      });
+      restApi.getData(route,path,params).then(function(response){
+        console.log(response);
+        $ionicLoading.hide();
+        $scope.results = response.results;
+        $scope.count = response.count;
+        $scope.page = response.page;
+        $scope.pageSize = response.pageSize;
+      });
+
+
+      $scope.goDetail = function(index){
+        $state.go('poDetail',{poNumber:index});
+      };
+
+      $scope.isMoreData = function () {
+        console.log($scope.page < ($scope.count / $scope.pageSize));
+        return $scope.page < ($scope.count / $scope.pageSize);
+      };
+
+      $scope.loadMoreData = function(){
+        $scope.page++;
+        $scope.route =  'sap/po/purchase_orders';
+
+        $scope.path ='';
+        $scope.params = {
+          pageIndex : $scope.page,
+          filter: ['3','1','5']
+        };
+        restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
+          Array.prototype.push.apply($scope.results, response.results);
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+          console.log($scope.results);
+        })
+      };
+      //$scope.$on('$stateChangeSuccess', function() {
+      //    $scope.loadMoreData();
+      //});
+
+      $scope.refresh = function(status){
+        $ionicLoading.show({
+          template: 'Loading...'
+        });
+        $scope.route =  'sap/po/purchase_orders';
+        $scope.path ='';
+        $scope.status = '';
+        if(status !== '' && typeof status !== 'undefined'){
+          $scope.status = status;
+        }
+        $scope.params = {
+          pageIndex : '1',
+          filter: ['3','1','5']
+        };
+
+        restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
+          $scope.results= response.results;
+          $scope.count = response.totalCount;
+          $scope.page = response.pageIndex;
+          $scope.pageSize = response.pageSize;
+        }).finally(function(){
+          console.log('$scope.refresh');
+          $scope.$broadcast('scroll.refreshComplete');
+          $ionicLoading.hide();
+          //$scope.status = '';
         });
       };
 
