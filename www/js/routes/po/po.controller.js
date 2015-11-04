@@ -119,24 +119,27 @@
       })
     })
     .controller('poApproListCtrl',function($state,$scope,restApi,$ionicLoading){
-      var route =  'sap/po/purchase_orders';
-      var path ='';
-      var params = {
-        pageIndex : '1',
-        filter: ['3','1','5']
-      };
-      $ionicLoading.show({
-        template: 'Loading...'
-      });
-      restApi.getData(route,path,params).then(function(response){
-        console.log(response);
-        $ionicLoading.hide();
-        $scope.results = response.results;
-        $scope.count = response.count;
-        $scope.page = response.page;
-        $scope.pageSize = response.pageSize;
-      });
-
+      $scope.$watch('index',function(val){
+          if( val === '1'){
+            var route =  'sap/po/purchase_orders';
+            var path ='';
+            var params = {
+              pageIndex : '1',
+              filter: ['1','3','5']
+            };
+            $ionicLoading.show({
+              template: 'Loading...'
+            });
+            restApi.getData(route,path,params).then(function(response){
+              console.log(response);
+              $ionicLoading.hide();
+              $scope.result = response.results;
+              $scope.count = response.count;
+              $scope.page = response.page;
+              $scope.pageSize = response.pageSize;
+            });
+          }
+      })
 
       $scope.goDetail = function(index){
         $state.go('poDetail',{poNumber:index});
@@ -154,7 +157,7 @@
         $scope.path ='';
         $scope.params = {
           pageIndex : $scope.page,
-          filter: ['3','1','5']
+          filter: ['1','3','5']
         };
         restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
           Array.prototype.push.apply($scope.results, response.results);
@@ -178,7 +181,7 @@
         }
         $scope.params = {
           pageIndex : '1',
-          filter: ['3','1','5']
+          filter: ['1','3','5']
         };
 
         restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
@@ -318,7 +321,7 @@
         $scope.results = poApprove.results[0];
         console.log($scope.results);
         $scope.goBack = function(){
-           $state.go('sideMenu.poList');
+           $state.go('sideMenu.poList',{reload: true});
         };
 
         if ($scope.results.DM_STATUS == 1 || $scope.results.DM_STATUS == 5){

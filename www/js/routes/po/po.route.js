@@ -14,6 +14,7 @@
               controller: 'poCtrl'
             }
           },
+          cache:false,
           resolve: {/* @ngInject */
             poList: function(restApi,$q,$ionicLoading){
               var d = $q.defer();
@@ -46,6 +47,7 @@
           url:'poDetail/:poNumber',
           templateUrl: 'js/routes/po/poDetail.html',
           controller:'poDetailCtrl',
+          cache:false,
           resolve:{
             PO :function ($stateParams,restApi,$q,$ionicLoading){
               var d = $q.defer();
@@ -82,6 +84,7 @@
           url:'poDetail/:poNumber/items',
           templateUrl: 'js/routes/po/items.html',
           controller:'itemsCtrl',
+          cache:false,
           resolve:{
             items:function($stateParams,restApi,$q,$ionicLoading){
               var d = $q.defer();
@@ -110,6 +113,7 @@
           url:'poDetail/:poNumber/items/:itemId',
           templateUrl: 'js/routes/po/itemDetail.html',
           controller:'itemDetailCtrl',
+          cache:false,
           resolve:{
             item:function($stateParams,restApi,$q,$ionicLoading){
               var d = $q.defer();
@@ -138,6 +142,7 @@
           url:'approveDetail/:poNumber',
           templateUrl:'js/routes/po/approveDetail.html',
           controller:'approveDetailCtrl',
+          cache:false,
           resolve:{
             poApprove:function($q,$ionicLoading,restApi,$stateParams){
               var d = $q.defer();
