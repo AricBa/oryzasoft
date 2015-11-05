@@ -41,7 +41,7 @@
         $scope.path ='';
         $scope.params = {
           pageIndex : $scope.page,
-          filter:['0','6']
+          filter:"0,6"
         };
         restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
           Array.prototype.push.apply($scope.results, response.results);
@@ -65,7 +65,7 @@
         }
         $scope.params = {
           pageIndex : '1',
-          filter: ['0','6']
+          filter: "0,6"
         };
 
         restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
@@ -124,7 +124,7 @@
             var path ='';
             var params = {
               pageIndex : '1',
-              filter: ['1','3','5']
+              filter: "1,3,5"
             };
             $ionicLoading.show({
               template: 'Loading...'
@@ -156,7 +156,7 @@
         $scope.path ='';
         $scope.params = {
           pageIndex : $scope.page,
-          filter: ['1','3','5']
+          filter: "1,3,5"
         };
         restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){
           Array.prototype.push.apply($scope.result, response.results);
@@ -180,7 +180,7 @@
         }
         $scope.params = {
           pageIndex : '1',
-          filter: ['1','3','5']
+          filter: "1,3,5"
         };
 
         restApi.getData($scope.route,$scope.path,$scope.params).then(function(response){

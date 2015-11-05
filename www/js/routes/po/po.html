@@ -1,4 +1,16 @@
-<ion-view>
+<ion-view hide-back-button="true">
+  <ion-nav-bar class="bar-positive nav-title-slide-ios7" align-title=" left">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+
+    <ion-nav-title>Po  Approve</ion-nav-title>
+
+    <ion-nav-buttons side="right">
+      <button class="button button-icon " menu-toggle="right">
+        Filter
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
   <ion-content scroll="false">
     <ion-slide-box slide-tabs-scrollable="false"  show-pager="true" ion-slide-tabs on-slide-changed="slideHasChanged($index)">
       <ion-slide ion-slide-tab-label="Unapproved( )">
