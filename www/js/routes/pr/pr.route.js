@@ -9,27 +9,26 @@
     .config(function($stateProvider) {
       $stateProvider
         .state('sideMenu.prList', {
-          url: '/po',
+          url: '/pr',
           views:{
             'po':{
-              templateUrl: 'js/routes/po/po.html',
-              controller: 'poCtrl'
+              templateUrl: 'js/routes/pr/pr.html',
+              controller: 'prCtrl'
             }
           },
           cache:false,
           resolve: {/* @ngInject */
-            poList: function(restApi,$q,$ionicLoading){
+            prList: function(restApi,$q,$ionicLoading){
               var d = $q.defer();
 
               $ionicLoading.show({
                 template:'Loading...'
               });
-              var route =  'sap/po/purchase_orders';
+              var route =  'sap/pr/purchase_requisitions';
 
               var path ='';
               var params = {
-                pageIndex : '1',
-                filter: ['0','6']
+                pageIndex : '1'
               };
               restApi.getData(route,path,params).then(function(response){
                 d.resolve(response);
@@ -44,6 +43,44 @@
           data: {
             authenticate: true
           }
+        })
+        .state('prDetail', {
+          url:'prDetail/:purchaseRequisitionID',
+          templateUrl: 'js/routes/pr/prDetail.html',
+          controller:'prDetailCtrl',
+          cache:false,
+          resolve:{
+            PR :function ($stateParams,restApi,$q,$ionicLoading){
+              var d = $q.defer();
+
+              $ionicLoading.show({
+                template:'Loading...'
+              });
+
+              var route = 'sap/pr/purchase_requisitions/' + $stateParams.purchaseRequisitionID + '/items';
+
+              restApi.getData(route).then(function(response){
+                d.resolve(response);
+                //if(response.results[0].DM_STATUS == 0 || response.results[0].DM_STATUS == 6) {
+                //  d.resolve([response,'Approve']);
+                //}else if (response.results[0].DM_STATUS == 1 || response.results[0].DM_STATUS == 5 ){
+                //  d.resolve([response,'Lock']);
+                //}else{
+                //  d.resolve([response,'Reset']);
+                //}
+                $ionicLoading.hide();
+              },function(err){
+                d.reject(err);
+                $ionicLoading.hide();
+              });
+
+              return d.promise;
+            }
+          },
+          data: {
+            authenticate: true
+          }
+
         });
     });
 })();
