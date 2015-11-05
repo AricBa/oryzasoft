@@ -30,7 +30,8 @@
         'app.sideMenu',
         'app.home',
         'app.po',
-        'app.pr'
+        'app.pr',
+        'app.user'
     ])
       .run(function ($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;

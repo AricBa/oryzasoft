@@ -1,10 +1,21 @@
 <ion-view >
   <ion-nav-bar class="bar-positive">
     <ion-nav-title>Home</ion-nav-title>
+
+    <ion-nav-buttons side="left">
+
+      <button ui-sref="user" >
+          <i class="sidebar-icon icon ion-person"></i>
+          {{me.cmyName}}
+      </button>
+    </ion-nav-buttons>
   </ion-nav-bar>
   <ion-content>
     <ion-item class="item-text-wrap" >
       <div ui-sref="sideMenu.poList">po</div>
+    </ion-item>
+    <ion-item class="item-text-wrap" >
+      <div ui-sref="sideMenu.prList">pr</div>
     </ion-item>
   </ion-content>
 </ion-view>
