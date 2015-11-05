@@ -342,7 +342,7 @@
         },
         controller: function ($ionicPopup,$scope,Restangular,$ionicLoading,$timeout,$state) {
           $scope.ionicPopup = {
-            title: 'Approve po',
+            title: $scope.buttonText + '  po',
             cssClass: 'ionicPopup',
             //template: 'OK',
             cancelText: 'CANCEL',
