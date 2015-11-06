@@ -25,12 +25,11 @@
               $ionicLoading.show({
                 template:'Loading...'
               });
-              var route =  'sap/po/purchase_orders';
+              var route =  'sap/pr/purchase_requisitions';
 
               var path ='';
               var params = {
-                pageIndex : '1',
-                filter: "0,6"
+                pageIndex : '1'
               };
               restApi.getData(route,path,params).then(function(response){
                 d.resolve(response);
@@ -47,7 +46,7 @@
           }
         })
         .state('prDetail', {
-          url:'prDetail/:poNumber',
+          url:'prDetail/:purchaseRequisitionID',
           templateUrl: 'js/routes/pr/prDetail.html',
           controller:'prDetailCtrl',
           cache:false,
@@ -59,16 +58,17 @@
                 template:'Loading...'
               });
 
-              var route = 'sap/po/purchase_orders/'+$stateParams.poNumber;
+              var route = 'sap/pr/purchase_requisitions/'+$stateParams.purchaseRequisitionID + '/items';
 
               restApi.getData(route).then(function(response){
-                if(response.results[0].DM_STATUS == 0 || response.results[0].DM_STATUS == 6) {
-                  d.resolve([response,'Approve']);
-                }else if (response.results[0].DM_STATUS == 1 || response.results[0].DM_STATUS == 5 ){
-                  d.resolve([response,'Lock']);
-                }else{
-                  d.resolve([response,'Reset']);
-                }
+                d.resolve(response);
+                //if(response.results[0].DM_STATUS == 0 || response.results[0].DM_STATUS == 6) {
+                //  d.resolve([response,'Approve']);
+                //}else if (response.results[0].DM_STATUS == 1 || response.results[0].DM_STATUS == 5 ){
+                //  d.resolve([response,'Lock']);
+                //}else{
+                //  d.resolve([response,'Reset']);
+                //}
                 $ionicLoading.hide();
               },function(err){
                 d.reject(err);

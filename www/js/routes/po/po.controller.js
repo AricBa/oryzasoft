@@ -60,9 +60,7 @@
         $scope.route =  'sap/po/purchase_orders';
         $scope.path ='';
         $scope.status = '';
-        if(status !== '' && typeof status !== 'undefined'){
-          $scope.status = status;
-        }
+
         $scope.params = {
           pageIndex : '1',
           filter: "0,6"
@@ -119,7 +117,7 @@
     })
     .controller('poApproListCtrl',function($state,$scope,restApi,$ionicLoading){
       $scope.$watch('index',function(val){
-          if( val === 1){
+          if( $scope.$parent.index === 1){
             var route =  'sap/po/purchase_orders';
             var path ='';
             var params = {
@@ -174,10 +172,8 @@
         });
         $scope.route =  'sap/po/purchase_orders';
         $scope.path ='';
-        $scope.status = '';
-        if(status !== '' && typeof status !== 'undefined'){
-          $scope.status = status;
-        }
+
+
         $scope.params = {
           pageIndex : '1',
           filter: "1,3,5"
