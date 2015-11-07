@@ -12,6 +12,7 @@
 
                   $state.go('home', { userId: $rootScope.me.userId});
               }, function(error) {
+                alert(error.status);
                   $cordovaVibration.vibrate(100);
                   console.log('error ' + error);
               });

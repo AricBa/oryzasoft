@@ -29,7 +29,7 @@
                           //.customGET('',params)
                         .get('',params)
                         .then(function(response) {
-                            console.log(response.token);
+                           console.log(response.token);
                             saveUserAndToken(response.token);
                         });
                   },
