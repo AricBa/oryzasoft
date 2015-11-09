@@ -38,7 +38,8 @@
     {
       "id": "cn.jpush.phonegap.JPushPlugin",
       "locator": "/Users/c5155394/apps/oryzasoft/plugins/jpush-phonegap-plugin-master/"
-    }
+    },
+    "C:\\document\\WebAPP\\oryzasoft\\plugins\\jpush-phonegap-plugin"
   ],
   "cordovaPlatforms": [
     "android",
