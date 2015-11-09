@@ -73,7 +73,71 @@
                     $location.path('/#/signin');
                 }
             });
+
         });
+
+        function onDeviceReady() {
+            //alert(device.uuid);
+            //alert(device.version);
+            window.plugins.jPushPlugin.init();
+            window.plugins.jPushPlugin.setDebugMode(true);
+        };
+        window.document.addEventListener("deviceready", onDeviceReady, false);
+
+        var onOpenNotification = function(event){
+            try{
+                var alertContent
+                if(device.platform == "Android"){
+                    alertContent = window.plugins.jPushPlugin.openNotification.alert;
+                }else{
+                    alertContent   = event.aps.alert;
+                }
+                alert("open Notification:"+alertContent);
+
+            }
+            catch(exception){
+                console.log("JPushPlugin:openNotification-->"+exception);
+            }
+        };
+
+        window.document.addEventListener("jpush.openNotification", onOpenNotification, false);
+
+        var onReceiveNotification = function(event){
+            try{
+                var alertContent
+                if(device.platform == "Android"){
+                    alertContent = window.plugins.jPushPlugin.receiveNotification.alert;
+                }else{
+                    alertContent   = event.aps.alert;
+                }
+                alert("open Notification:"+alertContent);
+
+            }
+            catch(exception){
+                console.log("JPushPlugin:receiveNotification-->"+exception);
+            }
+        };
+
+        window.document.addEventListener("jpush.receiveNotification", onReceiveNotification, false);
+
+        var onReceiveMessage = function(event){
+            try{
+                var message
+                if(device.platform == "Android"){
+                    message = window.plugins.jPushPlugin.receiveMessage.message;
+                }else{
+                    message   = event.content;
+                }
+                alert(message);
+
+            }
+            catch(exception){
+                console.log("JPushPlugin:onReceiveMessage-->"+exception);
+            }
+        };
+
+        window.document.addEventListener("jpush.receiveMessage", onReceiveMessage, false);
+
     }
 
     angular

@@ -33,10 +33,16 @@
     "org.apache.cordova.vibration",
     "org.apache.cordova.file-transfer",
     "org.apache.cordova.dialogs",
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "cordova-plugin-device",
+    {
+      "id": "cn.jpush.phonegap.JPushPlugin",
+      "locator": "/Users/c5155394/apps/oryzasoft/plugins/jpush-phonegap-plugin-master/"
+    }
   ],
   "cordovaPlatforms": [
-    "android"
+    "android",
+    "ios"
   ],
   "dependencies": {
     "angular-moment": "^0.10.3"
