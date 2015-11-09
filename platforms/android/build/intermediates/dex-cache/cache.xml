@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="fbe85b18b62df3997313a6f2770b7252a4061c62">
+        <dex dex="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\pre-dexed\debug\classes-9b991a9ab2e16c9637652d459eee569978f8ab08.jar" />
+    </item>
+    <item
+        jar="C:\document\WebAPP\oryzasoft\platforms\android\libs\jpush-sdk-release1.7.5.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="c10bf1a834e7a2caa3832c29b530e1ae7cfad0a2">
+        <dex dex="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\pre-dexed\debug\jpush-sdk-release1.7.5-bb1d40748a4b3e0b6c5323c348c45e17751d9d15.jar" />
+    </item>
+
+</items>
