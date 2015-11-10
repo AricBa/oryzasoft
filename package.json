@@ -39,7 +39,10 @@
       "id": "cn.jpush.phonegap.JPushPlugin",
       "locator": "/Users/c5155394/apps/oryzasoft/plugins/jpush-phonegap-plugin-master/"
     },
-    "cordova-plugin-network-information"
+    "cordova-plugin-network-information",
+    "cordova-plugin-camera",
+    "de.appplant.cordova.plugin.badge",
+    "cordova-plugin-inappbrowser"
   ],
   "cordovaPlatforms": [
     "android",
