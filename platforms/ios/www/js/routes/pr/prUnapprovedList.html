@@ -1,0 +1,16 @@
+<ion-content ng-controller="prUnApproListCtrl">
+  <!--<ion-refresher on-refresh="refresh()"></ion-refresher>-->
+  <ion-item ng-repeat="item in results" bindonce
+            class="item-text-wrap" ng-click="goDetail(item.PREQ_NO)">
+    <div class=" bodyFont2">{{ item.PREQ_NO}}</div>
+    <!--<div class=" bodyFont1">{{ item.TARGET_VAL | currency:item.CURRENCY_ISO}}-->
+    <!--</div>-->
+    <!--<div >{{ item.VEND_NAME}}{{item.DOC_DATE}}-->
+    <!--</div>-->
+    <!--<div class="captionFont3"><span am-time-ago="item.LAST_CHANGE_TIME"></span>-->
+    <!--</div>-->
+    <!--<div>{{item.DM_STATUS}}</div>-->
+  </ion-item>
+  <!--<ion-infinite-scroll ng-if="isMoreData()" on-infinite="loadMoreData()" distance="1%">-->
+  <!--</ion-infinite-scroll>-->
+</ion-content>

@@ -42,7 +42,10 @@
     "cordova-plugin-network-information",
     "cordova-plugin-camera",
     "de.appplant.cordova.plugin.badge",
-    "cordova-plugin-inappbrowser"
+    "cordova-plugin-inappbrowser",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-x-socialsharing",
+    "cordova-sms-plugin"
   ],
   "cordovaPlatforms": [
     "android",

@@ -1,0 +1,14 @@
+<ion-view>
+  <ion-nav-title>Po List</ion-nav-title>
+  <ion-content scroll="false">
+    <ion-slide-box slide-tabs-scrollable="false"  show-pager="true" ion-slide-tabs on-slide-changed="slideHasChanged($index)">
+      <ion-slide ion-slide-tab-label="Unapproved( )">
+        <ng-include src="'js/routes/po/poUnapprovedList.html'"></ng-include>
+      </ion-slide>
+      <ion-slide ion-slide-tab-label="Approved( )">
+        <ng-include src="'js/routes/po/poApprovedList.html'"></ng-include>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-view>
+

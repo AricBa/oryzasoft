@@ -1,0 +1,27 @@
+<ion-view >
+  <ion-nav-bar class="bar-positive nav-title-slide-ios7" align-title=" left">
+    <ion-nav-title>
+      <div class="view-title ">Pr Detail {{po.PO_NUMBER}}</div>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="left">
+      <button ng-if="$root.showCustomBack" ng-click="$root.goBack()"
+              class=" button-icon button-clear  button-small nav-left-button ion-ios-arrow-left">
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content padding="true">
+    <ion-item>
+    <hr />
+    <ion-item class="flex-container wrap" ng-repeat="pr in results">
+      <div  >PREQ_ITEM :</div>
+      <div >{{pr.PREQ_ITEM}}</div>
+      <div  >C_AMT_BAPI :</div>
+      <div  >{{ pr.C_AMT_BAPI | currency}}</div>
+      <div  >CREATED_BY :</div>
+      <div  >{{ pr.CREATED_BY}}</div>
+    </ion-item>
+
+  </ion-content>
+</ion-view>
