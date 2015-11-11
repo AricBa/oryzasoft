@@ -1,0 +1,32 @@
+<ion-view>
+  <ion-nav-bar class="bar-positive nav-title-slide-ios7" align-title=" left">
+    <ion-nav-title>
+      <div class="view-title ">My Profile</div>
+    </ion-nav-title>
+
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content padding="true">
+    <ion-item>
+      <div> {{me.cmyName}}</div>
+      <div>{{me.email}}</div>
+    </ion-item>
+    <ion-item>
+      message
+    </ion-item>
+    <ion-item>
+      favorite
+    </ion-item>
+    <ion-item>
+      My service
+    </ion-item>
+    <ion-item>
+      about
+    </ion-item>
+    <ion-item ng-click="signOut()">
+        <i class="sidebar-icon icon ion-log-out"></i>
+           Sign Out
+    </ion-item>
+  </ion-content>
+</ion-view>
