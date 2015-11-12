@@ -13,11 +13,12 @@
                 }
             })
             .state('company', {
-              url: '/signup/company',
+              //url: '/signup?email',
               templateUrl: 'js/routes/signup/companyInfo.html',
+              params:{'email':null , 'password':null},
               controller: 'companyCtrl as vm',
               data: {
-                authenticate: true
+                authenticate: false
               }
             });
       });

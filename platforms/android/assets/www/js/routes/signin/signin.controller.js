@@ -33,12 +33,57 @@
           $state.go('experience');
         }
       })
-      .controller('forgetPasswordCtrl',function(){
-
+      .controller('forgetPasswordCtrl',function($scope,Authentication,$ionicLoading){
+        $scope.email = '';
+        $scope.getPassword = function(email,isValid){
+          var params = {
+            email :email
+          };
+          console.log(params);
+          $ionicLoading.show({
+            template:'send message...'
+          });
+          if(!isValid) {return;}
+          Authentication.forgetPassword(params).then(function(response){
+            $ionicLoading.hide();
+            $ionicLoading.show({
+              template:'send message successful, check your mailbox'
+            });
+            $timeout(function() {
+              $ionicLoading.hide();
+            }, 1000);
+          },function(err){
+            console.log(err);
+            $ionicLoading.hide();
+          })
+        };
       })
-      .controller('experienceCtrl',function($scope,$state){
-        $scope.getPassword = function(){
-          $state.go('signin');
+      .controller('experienceCtrl',function($scope,Authentication,$state){
+        $scope.user = {};
+         $scope.getVerificationCode = function(phoneNumber){
+           console.log(phoneNumber);
+           var params = {
+             telphone: phoneNumber
+           };
+           Authentication.getCode(params).then(function(response){
+             console.log(response);
+           },function(err){
+             console.log(err);
+           });
+         };
+
+        $scope.startExperience = function(user){
+          console.log(user);
+          var params = {
+            telphone : user.phoneNumber,
+            code : user.code
+          };
+          Authentication.experenceLogin(params).then(function(response){
+            console.log(response);
+            $state.go('home');
+          },function(err){
+            console.log(err);
+          });
         };
 
       });

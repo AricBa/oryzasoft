@@ -18,10 +18,12 @@
                   signup: function(params) {
                       return Restangular
                         .all('users/register')
-                        .post('','',params)
-                        .then(function(response) {
-                            //saveUserAndToken(response.token);
-                        });
+                        .post({},params);
+                  },
+                  signupwithcom :function(params){
+                    return Restangular
+                      .all('users/company')
+                      .get('',params);
                   },
                   signin: function(params) {
                       return Restangular
@@ -45,8 +47,23 @@
                   isAuthenticated: function() {
                       return !!Token.get();
                   },
+                  forgetPassword:function(params){
+                      return Restangular
+                        .all('users/password/forget')
+                        .get('',params);
+                  },
+                  getCode:function(params){
+                    return Restangular
+                      .all('sms/code')
+                      .get('',params);
+                  },
+                  experenceLogin:function(params){
+                    return Restangular
+                      .all('users/logindemo')
+                      .get('',params);
+                  },
                   getCurrentUser: function() {
-                      return currentUser || localStorageService.get('user')
+                      return currentUser || localStorageService.get('user');
                   }
               };
           };

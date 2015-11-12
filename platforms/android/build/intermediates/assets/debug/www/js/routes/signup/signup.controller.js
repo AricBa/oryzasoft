@@ -3,29 +3,49 @@
     'use strict';
     angular
         .module('app.signup')
-        .controller('SignupCtrl',function($location, $rootScope, $state, Authentication, $scope) {
-          //vm.user = {};
+        .controller('SignupCtrl',function($location, $rootScope, $state, Authentication, $scope,$ionicLoading) {
+        $scope.message = 'Sign up';
+        $scope.user = {};
           $scope.signUp = function(user, isValid) {
+            console.log(user);
+            if($scope.message == 'Sign up'){
+              $ionicLoading.show({
+                template:'sign up...'
+              });
               if(!isValid) {return;}
               Authentication.signup(user).then(function () {
-                  // save user profile details to $rootScope
-                  //$rootScope.me = Authentication.getCurrentUser();
-
-                  $state.go('company');
+                $scope.message = 'Next step';
+                $ionicLoading.hide();
               }, function(err) {
-                  console.error('error' + err);
+                console.error('error' + err);
+                $ionicLoading.hide();
               });
+            } else{
+                $state.go('company',{email : user.email,password : user.password});
+            }
           };
         })
-      .controller('companyCtrl',function($state,$scope){
-        $scope.addCompanyInfo = function(){
+      .controller('companyCtrl',function($state,$scope,$stateParams,Authentication){
+        $scope.companyEmail = '';
+        $scope.password =$stateParams.password;
+        $scope.email = $stateParams.email;
+        $scope.addCompanyInfo = function(companyEmail){
+          $scope.companyEmail = companyEmail;
+          var params = {
+            email: $scope.email,
+            password : $scope.password,
+            adminemail: $scope.companyEmail
+          };
 
+          Authentication.signupwithcom(params).then(function(response){
+            $state.go('signin');
+            console.log(response);
+          },function(err){
+            console.log(err);
+          })
         };
-
-        $scope.skipToExperience = function(){
-
+        $scope.goToExperience = function(){
+          $state.go('experience');
         };
-
-        $state.go('home', { userId: $rootScope.me.userId});
       });
 })();
