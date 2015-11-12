@@ -4,13 +4,7 @@
         .module('app.signin')
         .controller('SigninCtrl',function($scope,$rootScope, $state, Authentication, $cordovaVibration,$ionicLoading) {
 
-            $scope.$on('myCustomEvent', function () {
-                $scope.indexww = $rootScope.indexww;
-                $scope.$apply();
-            });
-
-          var vm = this;
-          vm.signIn = function(credentials, isValid) {
+        $scope.signIn = function(credentials, isValid) {
               $ionicLoading.show({
                   template:'log in...'
               });
@@ -22,13 +16,30 @@
 
                   $state.go('home', { userId: $rootScope.me.userId});
               }, function(error) {
-                alert(error.status);
+                  alert(error.status);
                   $cordovaVibration.vibrate(100);
                   console.log('error ' + error);
               });
-          };
-          vm.goToSignup = function(){
+        };
+        $scope.goToSignup = function(){
               $state.go('signup');
           };
+
+        $scope.goToForPas = function(){
+          $state.go('forgetPassword');
+        };
+
+        $scope.goToExperience = function(){
+          $state.go('experience');
+        }
+      })
+      .controller('forgetPasswordCtrl',function(){
+
+      })
+      .controller('experienceCtrl',function($scope,$state){
+        $scope.getPassword = function(){
+          $state.go('signin');
+        };
+
       });
 })();

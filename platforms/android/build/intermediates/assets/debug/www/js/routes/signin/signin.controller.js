@@ -2,7 +2,13 @@
     'use strict';
     angular
         .module('app.signin')
-        .controller('SigninCtrl',function($rootScope, $state, Authentication, $cordovaVibration,$ionicLoading) {
+        .controller('SigninCtrl',function($scope,$rootScope, $state, Authentication, $cordovaVibration,$ionicLoading) {
+
+            $scope.$on('myCustomEvent', function () {
+                $scope.indexww = $rootScope.indexww;
+                $scope.$apply();
+            });
+
           var vm = this;
           vm.signIn = function(credentials, isValid) {
               $ionicLoading.show({

@@ -32,6 +32,7 @@
     <inspection_tool class="ReservedWordUsedAsNameJS" enabled="true" level="INFO" enabled_by_default="true" />
     <inspection_tool class="ReturnFromFinallyBlockJS" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="TailRecursionJS" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="TaskInspection" enabled="false" level="INFO" enabled_by_default="false" />
     <inspection_tool class="TextLabelInSwitchStatementJS" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="UnnecessaryLabelOnBreakStatementJS" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="UnnecessaryLabelOnContinueStatementJS" enabled="true" level="WEAK WARNING" enabled_by_default="true" />

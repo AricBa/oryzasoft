@@ -256,3 +256,9 @@ md-icon i {
 md-input-container > md-icon {
     top: 10px;
 }
+.scroll {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}

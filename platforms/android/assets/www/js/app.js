@@ -33,7 +33,7 @@
         'app.pr',
         'app.user'
     ])
-      .run(function ($rootScope, $state, $stateParams) {
+      .run(function ($rootScope, $state, $stateParams,$ionicLoading,$timeout) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
         $rootScope.goBack = function () {
@@ -49,6 +49,19 @@
           }
         });
 
+        $rootScope.$on('$cordovaNetwork:offline',function(){
+            $ionicLoading.show({template:'network not connect'});
+            $timeout(function(){
+                $ionicLoading.hide();
+            },1000);
+        });
+        $rootScope.$on('$cordovaNetwork:online',function(event,networkState){
+            $ionicLoading.show({template:'network  connectted'});
+            $timeout(function(){
+                $ionicLoading.hide();
+            },1000);
+            //alert(networkState);
+        });
 
 
 

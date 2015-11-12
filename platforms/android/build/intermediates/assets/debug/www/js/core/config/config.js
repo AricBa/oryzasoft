@@ -81,8 +81,17 @@
             //alert(device.version);
             window.plugins.jPushPlugin.init();
             window.plugins.jPushPlugin.setDebugMode(true);
+
+
+            //if(window.plugins.jPushPlugin.isPlatformIOS()){
+                //window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
+                //window.plugins.jPushPlugin.setBadge(10);
+
+            //}
+            //window.plugins.jPushPlugin.reSetBadge();
         };
         window.document.addEventListener("deviceready", onDeviceReady, false);
+
 
         var onOpenNotification = function(event){
             try{
@@ -99,8 +108,8 @@
                 console.log("JPushPlugin:openNotification-->"+exception);
             }
         };
-
         window.document.addEventListener("jpush.openNotification", onOpenNotification, false);
+
 
         var onReceiveNotification = function(event){
             try{
@@ -109,16 +118,23 @@
                     alertContent = window.plugins.jPushPlugin.receiveNotification.alert;
                 }else{
                     alertContent   = event.aps.alert;
+
+                    $rootScope.indexww = event.aps.alert;
+                    $rootScope.$broadcast('myCustomEvent');
+
                 }
                 alert("open Notification:"+alertContent);
+                if(window.plugins.jPushPlugin.isPlatformIOS()){
+                    window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
+                }
 
             }
             catch(exception){
                 console.log("JPushPlugin:receiveNotification-->"+exception);
             }
         };
-
         window.document.addEventListener("jpush.receiveNotification", onReceiveNotification, false);
+
 
         var onReceiveMessage = function(event){
             try{
@@ -129,13 +145,11 @@
                     message   = event.content;
                 }
                 alert(message);
-
             }
             catch(exception){
                 console.log("JPushPlugin:onReceiveMessage-->"+exception);
             }
         };
-
         window.document.addEventListener("jpush.receiveMessage", onReceiveMessage, false);
 
     }

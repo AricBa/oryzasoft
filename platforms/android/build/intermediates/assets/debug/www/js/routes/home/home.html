@@ -3,19 +3,47 @@
     <ion-nav-title>Home</ion-nav-title>
 
     <ion-nav-buttons side="left">
-
-      <button ui-sref="user" >
-          <i class="sidebar-icon icon ion-person"></i>
+      <button ui-sref="user"  class="button button-icon " >
+          <!--<i class="sidebar-icon icon ion-person"></i>-->
           {{me.cmyName}}
       </button>
     </ion-nav-buttons>
+
   </ion-nav-bar>
-  <ion-content>
+  <ion-content overflow-scroll="true">
     <ion-item class="item-text-wrap" >
       <div ui-sref="sideMenu.poList">po</div>
     </ion-item>
     <ion-item class="item-text-wrap" >
       <div ui-sref="sideMenu.prList">pr</div>
     </ion-item>
+      <!--<ion-item>-->
+          <!--<a  target="_blank" ng-click ="click()" style="color:blue;text-decoration:underline">oryzasoft</a>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+          <!--<div class="item item-input"> <input id= "id" type="number" pattern="[0-9]*" inputmode="numeric" placeholder="number"/></div>-->
+          <!--<div class="item item-input"> <input id= "id" type="text" placeholder="text"/></div>-->
+          <!--<div class="item item-input"> <input id= "id" type="tel" placeholder="tel"/></div>-->
+          <!--<div class="item item-input"> <input id= "id" type="email" placeholder="email"/></div>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+          <!--<a href="tel:18516278041" >18516278041</a><br/>-->
+          <!--<a href="mailto:bajingyun@163.com">Email Me</a>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+          <!--<a class="button icon-left ion-ios7-telephone" ng-click="call('18516278041')">18516278041</a>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+          <!--<button ng-click="parse()">parse</button>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+          <!--<button onclick="window.plugins.socialsharing.share('Message only')">message only</button>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+          <!--<img id="myImage" src=""/><input type="submit" value="Submit" ng-click="showActionsheet()"/>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+          <!--{{local}}-->
+      <!--</ion-item>-->
   </ion-content>
 </ion-view>

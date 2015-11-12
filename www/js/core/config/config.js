@@ -118,10 +118,6 @@
                     alertContent = window.plugins.jPushPlugin.receiveNotification.alert;
                 }else{
                     alertContent   = event.aps.alert;
-
-                    $rootScope.indexww = event.aps.alert;
-                    $rootScope.$broadcast('myCustomEvent');
-
                 }
                 alert("open Notification:"+alertContent);
                 if(window.plugins.jPushPlugin.isPlatformIOS()){

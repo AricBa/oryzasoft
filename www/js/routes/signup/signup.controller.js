@@ -3,27 +3,29 @@
     'use strict';
     angular
         .module('app.signup')
-        .controller('SignupCtrl',function($location, $rootScope, $state, Authentication) {
-          var vm = this;
-          vm.user = {};
-          vm.signUp = function(user, isValid) {
+        .controller('SignupCtrl',function($location, $rootScope, $state, Authentication, $scope) {
+          //vm.user = {};
+          $scope.signUp = function(user, isValid) {
               if(!isValid) {return;}
               Authentication.signup(user).then(function () {
                   // save user profile details to $rootScope
-                  $rootScope.me = Authentication.getCurrentUser();
+                  //$rootScope.me = Authentication.getCurrentUser();
 
-                  $state.go('app.gallery', { userId: $rootScope.me._id});
+                  $state.go('company');
               }, function(err) {
                   console.error('error' + err);
               });
           };
+        })
+      .controller('companyCtrl',function($state,$scope){
+        $scope.addCompanyInfo = function(){
 
-          vm.goHome = function() {
-              $location.path('/');
-          };
+        };
 
-          vm.goToSignin = function(){
-              $state.go('signin');
-          };
+        $scope.skipToExperience = function(){
+
+        };
+
+        $state.go('home', { userId: $rootScope.me.userId});
       });
 })();

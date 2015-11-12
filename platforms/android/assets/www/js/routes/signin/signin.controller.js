@@ -2,9 +2,9 @@
     'use strict';
     angular
         .module('app.signin')
-        .controller('SigninCtrl',function($rootScope, $state, Authentication, $cordovaVibration,$ionicLoading) {
-          var vm = this;
-          vm.signIn = function(credentials, isValid) {
+        .controller('SigninCtrl',function($scope,$rootScope, $state, Authentication, $cordovaVibration,$ionicLoading) {
+
+        $scope.signIn = function(credentials, isValid) {
               $ionicLoading.show({
                   template:'log in...'
               });
@@ -16,13 +16,30 @@
 
                   $state.go('home', { userId: $rootScope.me.userId});
               }, function(error) {
-                alert(error.status);
+                  alert(error.status);
                   $cordovaVibration.vibrate(100);
                   console.log('error ' + error);
               });
-          };
-          vm.goToSignup = function(){
+        };
+        $scope.goToSignup = function(){
               $state.go('signup');
           };
+
+        $scope.goToForPas = function(){
+          $state.go('forgetPassword');
+        };
+
+        $scope.goToExperience = function(){
+          $state.go('experience');
+        }
+      })
+      .controller('forgetPasswordCtrl',function(){
+
+      })
+      .controller('experienceCtrl',function($scope,$state){
+        $scope.getPassword = function(){
+          $state.go('signin');
+        };
+
       });
 })();
