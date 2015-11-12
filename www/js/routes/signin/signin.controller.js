@@ -58,7 +58,7 @@
           })
         };
       })
-      .controller('experienceCtrl',function($scope,Authentication){
+      .controller('experienceCtrl',function($scope,Authentication,$state){
         $scope.user = {};
          $scope.getVerificationCode = function(phoneNumber){
            console.log(phoneNumber);
@@ -73,12 +73,14 @@
          };
 
         $scope.startExperience = function(user){
+          console.log(user);
           var params = {
             telphone : user.phoneNumber,
             code : user.code
           };
           Authentication.experenceLogin(params).then(function(response){
             console.log(response);
+            $state.go('home');
           },function(err){
             console.log(err);
           });

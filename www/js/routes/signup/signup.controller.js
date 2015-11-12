@@ -15,7 +15,6 @@
               if(!isValid) {return;}
               Authentication.signup(user).then(function () {
                 $scope.message = 'Next step';
-                $scope.$apply;
                 $ionicLoading.hide();
               }, function(err) {
                 console.error('error' + err);

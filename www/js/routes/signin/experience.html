@@ -23,7 +23,7 @@
     <form name="experienceForm" ng-submit="startExperience(user)">
       <div class="list">
         <label class="item item-input">
-          <span class="input-label"><i class="icon ion-ios-telephone-outline"></i></i></span>
+          <span class="input-label"><i class="icon ion-ios-telephone-outline"></i></span>
           <input ng-model="user.phoneNumber" type="tel" name="phoneNumber" placeholder="Telephone Number" ng-required="true">
           <button class="button button-outline button-positive" ng-click = "getVerificationCode(user.phoneNumber)">
             Get code

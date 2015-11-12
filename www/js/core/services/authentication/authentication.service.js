@@ -18,7 +18,7 @@
                   signup: function(params) {
                       return Restangular
                         .all('users/register')
-                        .post('','',params);
+                        .post({},params);
                   },
                   signupwithcom :function(params){
                     return Restangular
@@ -50,7 +50,7 @@
                   forgetPassword:function(params){
                       return Restangular
                         .all('users/password/forget')
-                        .customGET('',params);
+                        .get('',params);
                   },
                   getCode:function(params){
                     return Restangular
