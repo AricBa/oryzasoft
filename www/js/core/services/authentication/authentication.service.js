@@ -37,7 +37,7 @@
                   },
                   signout: function() {
                       return Restangular
-                        .one('auth/signout')
+                        .one('users/logout')
                         .get()
                         .then(function(){
                             currentUser = null;
