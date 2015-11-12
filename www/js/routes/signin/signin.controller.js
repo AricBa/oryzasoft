@@ -58,17 +58,22 @@
           })
         };
       })
-      .controller('experienceCtrl',function($scope,Authentication,$state){
+      .controller('experienceCtrl',function($scope,Authentication,$state,$ionicLoading){
         $scope.user = {};
          $scope.getVerificationCode = function(phoneNumber){
            console.log(phoneNumber);
            var params = {
              telphone: phoneNumber
            };
+           $ionicLoading.show({
+             template:'sending code...'
+           });
            Authentication.getCode(params).then(function(response){
              console.log(response);
+             $ionicLoading.hide();
            },function(err){
              console.log(err);
+             $ionicLoading.hide();
            });
          };
 
@@ -78,11 +83,16 @@
             telphone : user.phoneNumber,
             code : user.code
           };
+          $ionicLoading.show({
+            template:'login in...'
+          });
           Authentication.experenceLogin(params).then(function(response){
             console.log(response);
             $state.go('home');
+            $ionicLoading.hide();
           },function(err){
             console.log(err);
+            $ionicLoading.hide();
           });
         };
 

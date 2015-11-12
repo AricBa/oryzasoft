@@ -18,7 +18,7 @@
                   signup: function(params) {
                       return Restangular
                         .all('users/register')
-                        .post({},params);
+                        .post(params);
                   },
                   signupwithcom :function(params){
                     return Restangular
