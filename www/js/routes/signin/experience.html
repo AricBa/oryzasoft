@@ -4,12 +4,28 @@
     <ion-nav-back-button></ion-nav-back-button>
 </ion-nav-bar>
   <ion-content scroll="false" layout="column" class="has-header md-padding">
-    <form name="experienceForm" ng-submit="getVerificationCode()">
+    <!--<ion-item>-->
+      <!--<label class="item item-input">-->
+      <!--<span class="input-label"><i class="icon ion-ios-telephone-outline"></i></i></span>-->
+      <!--<input ng-model="user.phoneNumber" type="tel" name="phoneNumber" placeholder="Telephone Number" ng-required="true">-->
+      <!--<button class="button button-outline button-positive" ng-click = "getVerificationCode(user.phoneNumber)">-->
+      <!--Get code-->
+      <!--</button>-->
+        <!--</label>-->
+    <!--</ion-item>-->
+    <!--<ion-item>-->
+      <!--<span class="input-label"><i class="icon ion-locked"></i></span>-->
+      <!--<input ng-model="user.code" type="text" name="code" placeholder="Auth code" ng-required="true">-->
+    <!--</ion-item>-->
+    <!--<button ng-click="startExperience(user)" class="button button-block md-raised md-primary md-button md-default-theme">-->
+    <!--Experience-->
+    <!--</button>-->
+    <form name="experienceForm" ng-submit="startExperience(user)">
       <div class="list">
         <label class="item item-input">
           <span class="input-label"><i class="icon ion-ios-telephone-outline"></i></i></span>
           <input ng-model="user.phoneNumber" type="tel" name="phoneNumber" placeholder="Telephone Number" ng-required="true">
-          <button class="button button-outline button-positive">
+          <button class="button button-outline button-positive" ng-click = "getVerificationCode(user.phoneNumber)">
             Get code
           </button>
         </label>
@@ -18,7 +34,7 @@
         </div>
         <label class="item item-input">
           <span class="input-label"><i class="icon ion-locked"></i></span>
-          <input ng-model="code" type="number" name="code" placeholder="Auth code" ng-required="true">
+          <input ng-model="user.code" type="text" name="code" placeholder="Auth code" ng-required="true">
         </label>
         <div ng-if="experienceForm.code.$invalid && experienceForm.code.$dirty" ng-messages="experienceForm.code.$error" class="messages">
           <div ng-message="required">This field is required.</div>
