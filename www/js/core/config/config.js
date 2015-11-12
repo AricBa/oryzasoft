@@ -33,7 +33,7 @@
 
         $urlRouterProvider.otherwise('/signin');
 
-        //RestangularProvider.setDefaultHttpFields({cache: true});
+        RestangularProvider.setDefaultHttpFields({cache: true});
 
         //RestangularProvider.addRequestInterceptor(function(element, operation, route, url) {
         //    if(operation == 'customGET'){
