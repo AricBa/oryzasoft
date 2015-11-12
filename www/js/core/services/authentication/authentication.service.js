@@ -23,6 +23,11 @@
                             //saveUserAndToken(response.token);
                         });
                   },
+                  signupwithcom :function(params){
+                    return Restangular
+                      .all('users/company')
+                      .get('',params)
+                  },
                   signin: function(params) {
                       return Restangular
                         .all('users/login')
@@ -44,6 +49,23 @@
                   },
                   isAuthenticated: function() {
                       return !!Token.get();
+                  },
+                  forgetPassword:function(params){
+                      return Restangular
+                        .all('users/password/forget')
+                        .get('',params)
+                        .then(function(response){})
+                  },
+                  getCode:function(params){
+                    return Restangular
+                      .all('sms/code')
+                      .get('',params)
+                      .then(function(response){})
+                  },
+                  experenceLogin:function(params){
+                    return Restangular
+                      .all('users/logindemo')
+                      .post('','',params)
                   },
                   getCurrentUser: function() {
                       return currentUser || localStorageService.get('user')

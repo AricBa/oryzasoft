@@ -11,6 +11,22 @@
                 data: {
                     authenticate: false
                 }
+            })
+            .state('forgetPassword', {
+              url: '/forgetPassword',
+              templateUrl: 'js/routes/signin/forgetPassword.html',
+              controller: 'forgetPasswordCtrl as vm',
+              data: {
+                authenticate: false
+              }
+            })
+            .state('experience', {
+              url: '/experience',
+              templateUrl: 'js/routes/signin/experience.html',
+              controller: 'experienceCtrl as vm',
+              data: {
+                authenticate: false
+              }
             });
       });
 

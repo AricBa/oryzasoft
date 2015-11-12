@@ -17,10 +17,10 @@
               return {
                   signup: function(params) {
                       return Restangular
-                        .all('auth/signup')
-                        .post(params)
+                        .all('users/register')
+                        .post('','',params)
                         .then(function(response) {
-                            saveUserAndToken(response.token);
+                            //saveUserAndToken(response.token);
                         });
                   },
                   signin: function(params) {

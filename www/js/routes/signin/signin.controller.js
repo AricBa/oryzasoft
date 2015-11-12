@@ -37,8 +37,9 @@
 
       })
       .controller('experienceCtrl',function($scope,$state){
+        $scope.email = '';
         $scope.getPassword = function(){
-          $state.go('signin');
+
         };
 
       });

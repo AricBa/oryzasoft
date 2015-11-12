@@ -1,37 +1,39 @@
 <ion-view >
+  <ion-nav-bar class="bar-positive">
   <ion-nav-title>Experience</ion-nav-title>
-
+    <ion-nav-back-button></ion-nav-back-button>
+</ion-nav-bar>
   <ion-content scroll="false" layout="column" class="has-header md-padding">
     <form name="experienceForm" ng-submit="getVerificationCode()">
-      <md-content class="md-padding">
-        <md-input-container md-no-float>
-          <md-icon md-svg-src="img/icons/ic_mail_24px.svg" class="md-default-theme" aria-hidden="true">
-            <i class="icon ion-email"></i>
-          </md-icon>
-          <input ng-model="credentials.email" type="email" data-ng-init="credentials.email='tony.shang@oryzasoft.com'"name="email" placeholder="Email/Phone" ng-required="true">
-          <div ng-if="signinForm.email.$invalid && signinForm.email.$dirty" ng-messages="signinForm.email.$error" class="messages">
-            <div ng-message="email">Your email address is invalid.</div>
-          </div>
-        </md-input-container>
-        <md-input-container md-no-float>
-          <md-icon md-svg-src="img/icons/ic_lock_24px.svg" class="md-default-theme" aria-hidden="true">
-            <i class="icon ion-locked"></i>
-          </md-icon>
-          <input ng-model="credentials.password" type="password" name="password" data-ng-init="credentials.password='admin'"placeholder="Password" ng-required="true">
-          <div ng-if="signinForm.password.$invalid && signinForm.password.$dirty" ng-messages="signinForm.password.$error" class="messages">
-            <div ng-message="required">This field is required.</div>
-          </div>
-        </md-input-container>
-      </md-content>
-
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label"><i class="icon ion-ios-telephone-outline"></i></i></span>
+          <input ng-model="user.phoneNumber" type="tel" name="phoneNumber" placeholder="Telephone Number" ng-required="true">
+          <button class="button button-outline button-positive">
+            Get code
+          </button>
+        </label>
+        <div ng-if="experienceForm.phoneNumber.$invalid && experienceForm.phoneNumber.$dirty" ng-messages="experienceForm.phoneNumber.$error" class="messages">
+          <div ng-message="phoneNumber">Your phone number is invalid.</div>
+        </div>
+        <label class="item item-input">
+          <span class="input-label"><i class="icon ion-locked"></i></span>
+          <input ng-model="code" type="number" name="code" placeholder="Auth code" ng-required="true">
+        </label>
+        <div ng-if="experienceForm.code.$invalid && experienceForm.code.$dirty" ng-messages="experienceForm.code.$error" class="messages">
+          <div ng-message="required">This field is required.</div>
+        </div>
+      </div>
       <div class="padding">
         <button type="submit" class="button button-block md-raised md-primary md-button md-default-theme">
-
-          Sign In
+          Experience
         </button>
-        <!--<md-button type="submit" class="button button-block md-raised md-primary md-button md-default-theme">Sign In</md-button>-->
       </div>
     </form>
+      <p>
+           Oryza provides efficient and safe way to make any SAP ® function can be used in
+        seamless cross-platform interface friendly. For more information please visit
+        <a href="www.oryzasoft.com">www.oryzasoft.com</a> </p>
 
   </ion-content>
 </ion-view>

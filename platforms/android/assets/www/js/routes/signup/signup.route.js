@@ -11,6 +11,14 @@
                 data: {
                     authenticate: false
                 }
+            })
+            .state('company', {
+              url: '/signup/company',
+              templateUrl: 'js/routes/signup/companyInfo.html',
+              controller: 'companyCtrl as vm',
+              data: {
+                authenticate: true
+              }
             });
       });
 
