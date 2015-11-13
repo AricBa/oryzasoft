@@ -1,11 +1,5 @@
 <ion-view class="signin-header" hide-nav-bar="true" hide-back-button="true">
     <ion-content scroll="false" layout="column" class="has-header">
-        <div class="text-center">
-            <span class="circle">ORYZA</span>
-            <p>
-                By <a class="pseudo-link" href="http://www.oryzasoft.com" target="_blank">@oryzasoft</a>
-            </p>
-        </div>
         <form name="signinForm" ng-submit="signIn(credentials, signinForm.$valid)">
             <div class="list">
                 <label class="item item-input">
@@ -24,21 +18,15 @@
                 </div>
             </div>
             <div class="padding">
-                <button type="submit" class="button button-block md-raised md-primary md-button md-default-theme">
+                <button type="submit" class="button button-block">
 
                     Sign In
                 </button>
             </div>
         </form>
-        <ion-item>
-            <p class="text-right text-muted text-small"><button class="link-button" ng-click="goToForPas()">Forget password ?</button></p>
-        </ion-item>
+        <p class="text-right text-muted text-small"><a ng-click="goToForPas()">Forget password ?</a></p>
         <br/><br/>
-        <ion-item>
-            <p class="text-center text-muted text-small">Don't have an account yet? <button class="link-button" ng-click="goToSignup()">Sign Up</button></p>
-        </ion-item>
-        <ion-item>
-            <p class="text-center text-muted text-small">Or  <button class="link-button" ng-click="goToExperience()">experience?</button></p>
-        </ion-item>
+        <p class="text-center text-muted text-small">Don't have an account yet? <a  ng-click="goToSignup()">Sign Up</a></p>
+        <p class="text-center text-muted text-small">Or  <a  ng-click="goToExperience()">experience?</a></p>
     </ion-content>
 </ion-view>
