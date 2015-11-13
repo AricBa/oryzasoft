@@ -13,6 +13,7 @@
                   $ionicLoading.hide();
                   // save user profile details to $rootScope
                   $rootScope.me = Authentication.getCurrentUser();
+                  console.log($rootScope.me);
 
                   $state.go('home', { userId: $rootScope.me.userId});
               }, function(error) {

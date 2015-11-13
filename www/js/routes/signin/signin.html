@@ -10,14 +10,14 @@
             <div class="list">
                 <label class="item item-input">
                     <span class="input-label"><i class="icon ion-email"></i></span>
-                    <input ng-model="credentials.email" type="email" data-ng-init="credentials.email='admin@test.com'"name="email" placeholder="Email" ng-required="true">
+                    <input ng-model="credentials.email" type="email" name="email" placeholder="Email" ng-required="true">
                 </label>
                 <div ng-if="signinForm.email.$invalid && signinForm.email.$dirty" ng-messages="signinForm.email.$error" class="messages">
                     <div ng-message="email">Your email address is invalid.</div>
                 </div>
                 <label class="item item-input">
                     <span class="input-label"><i class="icon ion-locked"></i></span>
-                    <input ng-model="credentials.password" type="password" name="password" data-ng-init="credentials.password='admin'"placeholder="Password" ng-required="true">
+                    <input ng-model="credentials.password" type="password" name="password" placeholder="Password" ng-required="true">
                 </label>
                 <div ng-if="signinForm.password.$invalid && signinForm.password.$dirty" ng-messages="signinForm.password.$error" class="messages">
                     <div ng-message="required">This field is required.</div>

@@ -13,7 +13,34 @@
            console.log('error ' + err);
            $state.go('signin');
          });
-       }
-    })
+       };
 
+      $scope.addAccount = function(){
+        Authentication.postSAPAccount()
+
+      };
+    })
+    .controller('addsapCtrl',function(Authentication,$scope,$ionicLoading){
+      $scope.sapaccount = {};
+
+      $scope.addSAPAccount = function(account,isValid){
+        $ionicLoading.show({
+          template:'Verifing...'
+        });
+        if(!isValid) {return;}
+        Authentication.postSAPAccount(account).then(function(response){
+          $ionicLoading.hide();
+          console.log(response);
+        },function(err){
+          $ionicLoading.hide();
+          console.log(err);
+        })
+      };
+    })
+    .controller('userDetailCtrl',function(){
+
+    })
+    .controller('aboutCtrl',function(){
+
+    })
 })();

@@ -62,6 +62,16 @@
                       .all('users/logindemo')
                       .get('',params);
                   },
+                  getSAPAccount:function(){
+                    return Restangular
+                      .all('users/sap_account')
+                      .get();
+                  },
+                  postSAPAccount:function(params){
+                    return Restangular
+                      .all('users/sap_account')
+                      .post(params);
+                  },
                   getCurrentUser: function() {
                       return currentUser || localStorageService.get('user');
                   }
