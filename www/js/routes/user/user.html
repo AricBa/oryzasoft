@@ -8,9 +8,11 @@
     </ion-nav-back-button>
   </ion-nav-bar>
   <ion-content padding="true">
-    <ion-item ui-sref="userDetail">
+    <ion-item >
+      <div ui-sref="userDetail">
       <div>userName:      {{me.cmyName}}</div>
       <div>userEmail:     {{me.email}}</div>
+        </div>
       <button ui-sref="addsapaccount" ng-hide="me.sapaccount" class="button button-outline button-assertive">sap account unbounded, click to add</button>
     </ion-item>
     <ion-item class="item item-divider">

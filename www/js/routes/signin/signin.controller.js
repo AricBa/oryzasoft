@@ -9,17 +9,19 @@
                   template:'log in...'
               });
               if(!isValid) {return;}
-              Authentication.signin(credentials).then(function () {
+              Authentication.signin(credentials).then(function (response) {
                   $ionicLoading.hide();
+                console.log(response);
                   // save user profile details to $rootScope
-                  $rootScope.me = Authentication.getCurrentUser();
-                  console.log($rootScope.me);
 
-                  $state.go('home', { userId: $rootScope.me.userId});
+                  //$rootScope.me = Authentication.getCurrentUser();
+                  //console.log($rootScope.me);
+                  //
+                  //$state.go('home', { userId: $rootScope.me.userId});
               }, function(error) {
-                  alert(error.status);
-                  $cordovaVibration.vibrate(100);
-                  console.log('error ' + error);
+                  $ionicLoading.hide();
+                  //$cordovaVibration.vibrate(100);
+                  console.log( error);
               });
         };
         $scope.goToSignup = function(){
