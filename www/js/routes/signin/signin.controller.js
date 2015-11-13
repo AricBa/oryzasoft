@@ -1,8 +1,8 @@
 (function () {
     'use strict';
     angular
-        .module('app.signin')
-        .controller('SigninCtrl',function($scope,$rootScope, $state, Authentication, $cordovaVibration,$ionicLoading) {
+      .module('app.signin')
+      .controller('SigninCtrl',function($scope,$rootScope, $state, Authentication, $cordovaVibration,$ionicLoading) {
 
         $scope.signIn = function(credentials, isValid) {
               $ionicLoading.show({
