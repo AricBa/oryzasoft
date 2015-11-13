@@ -16,6 +16,13 @@
             <div ng-message="required">This field is required.</div>
           </div>
           <label class="item item-input">
+            <span class="input-label"><i class="icon ion-star"></i></span>
+            <input ng-model="sapaccount.sap_language" type="text" name="language"  data-ng-init="sapaccount.sap_language = 'E'"  placeholder="Language" ng-required="true">
+          </label>
+          <div ng-if="addSAPForm.language.$invalid && addSAPForm.language.$dirty" ng-messages="addSAPForm.language.$error" class="messages">
+            <div ng-message="required">This field is required.</div>
+          </div>
+          <label class="item item-input">
             <span class="input-label"><i class="icon ion-locked"></i></span>
             <input ng-model="sapaccount.sap_password" type="password" name="password" placeholder="Password" ng-required="true">
           </label>
