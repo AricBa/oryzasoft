@@ -8,25 +8,37 @@
     </ion-nav-back-button>
   </ion-nav-bar>
   <ion-content padding="true">
-    <ion-item>
-      <div> {{me.cmyName}}</div>
-      <div>{{me.email}}</div>
+    <ion-item >
+      <div ui-sref="userDetail">
+      <div>userName:      {{me.cmyName}}</div>
+      <div>userEmail:     {{me.email}}</div>
+        </div>
+      <button ui-sref="addsapaccount" ng-hide="me.sapaccount" class="button button-outline button-assertive">sap account unbounded, click to add</button>
     </ion-item>
-    <ion-item>
-      message
+    <ion-item class="item item-divider">
+
+    </ion-item>
+    <ion-item ui-sref="message">
+      message alert
     </ion-item>
     <ion-item>
       favorite
     </ion-item>
+    <ion-item class="item item-divider">
+
+    </ion-item>
     <ion-item>
       My service
     </ion-item>
-    <ion-item>
+    <ion-item ui-sref="about">
       about
     </ion-item>
-    <ion-item ng-click="signOut()">
-        <i class="sidebar-icon icon ion-log-out"></i>
-           Sign Out
+    <ion-item class="item item-divider">
+
     </ion-item>
+    <button ng-click="signOut()" class="button button-block md-raised md-primary md-button md-default-theme">
+        <!--<i class="sidebar-icon icon ion-log-out"></i>-->
+           Sign Out
+    </button>
   </ion-content>
 </ion-view>

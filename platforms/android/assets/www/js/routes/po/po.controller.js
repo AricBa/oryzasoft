@@ -194,7 +194,7 @@
 
       $scope.$on('refresh',function(){
         if($scope.$parent.status && $scope.$parent.index == 1){
-          if($scope.$parent.status == '1' || $scope.$parent.status == '3' || $scope.$parent.status == '5'){
+          if($scope.$parent.status == '1,5' || $scope.$parent.status == '3'){
             $ionicLoading.show({
               template: 'Loading...'
             });

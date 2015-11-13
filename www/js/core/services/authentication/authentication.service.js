@@ -3,7 +3,7 @@
     angular
         .module('app.core')
         .provider('Authentication',function() {
-          this.$get = function($http, Restangular, Token, localStorageService) {
+          this.$get = function($http, Restangular, Token, localStorageService,$q) {
               var currentUser = null;
               function saveUserAndToken(token) {
                   // store token to local storage
@@ -26,14 +26,19 @@
                       .get('',params);
                   },
                   signin: function(params) {
-                      return Restangular
+                    var d = $q.defer();
+                    Restangular
                         .all('users/login')
                           //.customGET('',params)
                         .get('',params)
                         .then(function(response) {
-                           console.log(response.token);
+                            d.resolve(response);
+                            console.log(response.token);
                             saveUserAndToken(response.token);
+                        },function(err){
+                          d.reject(err);
                         });
+                    return d.promise;
                   },
                   signout: function() {
                       return Restangular

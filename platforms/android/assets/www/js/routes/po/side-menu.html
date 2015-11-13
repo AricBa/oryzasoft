@@ -1,5 +1,5 @@
-<ion-side-menus >
-  <ion-side-menu-content drag-content="false">
+<ion-side-menus>
+  <ion-side-menu-content drag-content="false" >
 
     <ion-nav-bar class="bar-positive">
 
@@ -33,36 +33,41 @@
         </div>
         <ul class="nav sidebar-nav">
           <li class="divider"></li>
-          <li md-ink-ripple="#333">
-            <a ng-click="goDetail()" nav-clear menu-close>
+          <label class="item item-radio" ng-click="goDetail()" menu-close >
+            <input type="radio" name="group" checked="checked">
+            <div class="item-content">
               All
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li md-ink-ripple="#333">
-            <a ng-click="goDetail('0')" nav-clear menu-close>
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+          <label class="item item-radio" ng-click="goDetail('0')" menu-close>
+            <input type="radio" name="group">
+            <div class="item-content">
               Unapproved
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li md-ink-ripple="#333">
-            <a ng-click="goDetail('1')" nav-clear menu-close>
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+          <label class="item item-radio" ng-click="goDetail('1,5')" menu-close>
+            <input type="radio" name="group">
+            <div class="item-content">
               Locked
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li md-ink-ripple="#333">
-            <a ng-click="goDetail('3')" nav-clear menu-close>
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+          <label class="item item-radio" ng-click="goDetail('3')" menu-close>
+            <input type="radio" name="group">
+            <div class="item-content">
               Approved
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li md-ink-ripple="#333">
-            <a ng-click="goDetail('6')" nav-clear menu-close>
-              Cancelled
-            </a>
-          </li>
-          <li class="divider"></li>
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+          <label class="item item-radio" ng-click="goDetail('6')" menu-close>
+            <input type="radio" name="group">
+            <div class="item-content">
+              Resetted
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
         </ul>
       </ion-item>
     </ion-content>

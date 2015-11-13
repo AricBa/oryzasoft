@@ -1,29 +1,11 @@
-/**
- * Core configuration.
- *
- * @author    Martin Micunda {@link http://martinmicunda.com}
- * @copyright Copyright (c) 2015, Martin Micunda
- * @license   The MIT License {@link http://opensource.org/licenses/MIT}
- */
 (function () {
     'use strict';
 
     /* @ngInject */
     function onConfig($urlRouterProvider, RestangularProvider, localStorageServiceProvider, SERVER_API_URL) {
-        // use "ionic-photo-gallery" as a localStorage name prefix so app doesn’t accidently read data from another app using the same variable names
         localStorageServiceProvider.setPrefix('ionic-photo-gallery')
           .setNotify(true, true);
 
-        // set material design template
-        //$mdThemingProvider.theme('default')
-        //    .primaryPalette('teal')
-        //    .accentPalette('brown')
-        //    .warnPalette('deep-orange');
-
-        /*********************************************************************
-         * Route provider configuration based on these config constant values
-         *********************************************************************/
-        // set restful base API Route
         RestangularProvider.setBaseUrl(SERVER_API_URL);
 
         // set the `id` field to `_id`
@@ -33,7 +15,7 @@
 
         $urlRouterProvider.otherwise('/signin');
 
-        //RestangularProvider.setDefaultHttpFields({cache: true});
+        RestangularProvider.setDefaultHttpFields({cache: true});
 
         //RestangularProvider.addRequestInterceptor(function(element, operation, route, url) {
         //    if(operation == 'customGET'){

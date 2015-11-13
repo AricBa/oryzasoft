@@ -11,13 +11,13 @@
               if(!isValid) {return;}
               Authentication.signin(credentials).then(function (response) {
                   $ionicLoading.hide();
-                console.log(response);
+                  console.log(response);
                   // save user profile details to $rootScope
 
-                  //$rootScope.me = Authentication.getCurrentUser();
-                  //console.log($rootScope.me);
-                  //
-                  //$state.go('home', { userId: $rootScope.me.userId});
+                  $rootScope.me = Authentication.getCurrentUser();
+                  console.log($rootScope.me);
+
+                  $state.go('home', { userId: $rootScope.me.userId});
               }, function(error) {
                   $ionicLoading.hide();
                   //$cordovaVibration.vibrate(100);

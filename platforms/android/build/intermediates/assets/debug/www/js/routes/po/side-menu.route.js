@@ -8,11 +8,14 @@
     .config(function($stateProvider) {
       $stateProvider
         .state('sideMenu', {
-          url: '',
+          //url: '',
           abstract: true,
           cache:false,
           templateUrl: 'js/routes/po/side-menu.html',
-          controller: 'sideMenuCtrl'
+          controller: 'sideMenuCtrl',
+          data: {
+            authenticate: true
+          }
         })
     });
 

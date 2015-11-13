@@ -1,24 +1,27 @@
 (function () {
     'use strict';
     angular
-        .module('app.signin')
-        .controller('SigninCtrl',function($scope,$rootScope, $state, Authentication, $cordovaVibration,$ionicLoading) {
+      .module('app.signin')
+      .controller('SigninCtrl',function($scope,$rootScope, $state, Authentication, $cordovaVibration,$ionicLoading) {
 
         $scope.signIn = function(credentials, isValid) {
               $ionicLoading.show({
                   template:'log in...'
               });
               if(!isValid) {return;}
-              Authentication.signin(credentials).then(function () {
+              Authentication.signin(credentials).then(function (response) {
                   $ionicLoading.hide();
+                  console.log(response);
                   // save user profile details to $rootScope
+
                   $rootScope.me = Authentication.getCurrentUser();
+                  console.log($rootScope.me);
 
                   $state.go('home', { userId: $rootScope.me.userId});
               }, function(error) {
-                  alert(error.status);
-                  $cordovaVibration.vibrate(100);
-                  console.log('error ' + error);
+                  $ionicLoading.hide();
+                  //$cordovaVibration.vibrate(100);
+                  console.log( error);
               });
         };
         $scope.goToSignup = function(){
@@ -58,17 +61,22 @@
           })
         };
       })
-      .controller('experienceCtrl',function($scope,Authentication,$state){
+      .controller('experienceCtrl',function($scope,Authentication,$state,$ionicLoading){
         $scope.user = {};
          $scope.getVerificationCode = function(phoneNumber){
            console.log(phoneNumber);
            var params = {
              telphone: phoneNumber
            };
+           $ionicLoading.show({
+             template:'sending code...'
+           });
            Authentication.getCode(params).then(function(response){
              console.log(response);
+             $ionicLoading.hide();
            },function(err){
              console.log(err);
+             $ionicLoading.hide();
            });
          };
 
@@ -78,11 +86,16 @@
             telphone : user.phoneNumber,
             code : user.code
           };
+          $ionicLoading.show({
+            template:'login in...'
+          });
           Authentication.experenceLogin(params).then(function(response){
             console.log(response);
             $state.go('home');
+            $ionicLoading.hide();
           },function(err){
             console.log(err);
+            $ionicLoading.hide();
           });
         };
 
