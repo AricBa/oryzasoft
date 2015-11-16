@@ -7,8 +7,8 @@
               request: function (config) {
                   var token = Token.get();
                   if (token) {
-                      config.headers = config.headers || {};
-                      config.headers.Authorization = 'Bearer ' + token;
+                      //config.headers = config.headers || {};
+                      //config.headers.Authorization = 'Bearer ' + token;
                       config.headers.token = token;
                   }
                   return config;

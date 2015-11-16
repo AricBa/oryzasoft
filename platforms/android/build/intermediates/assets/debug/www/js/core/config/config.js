@@ -59,7 +59,7 @@
         });
 
         function onDeviceReady() {
-            //alert(device.uuid);
+            alert("deviceID:" + device.uuid);
             //alert(device.version);
             window.plugins.jPushPlugin.init();
             window.plugins.jPushPlugin.setDebugMode(true);
@@ -71,13 +71,12 @@
 
             //}
             //window.plugins.jPushPlugin.reSetBadge();
-        };
+        }
         window.document.addEventListener("deviceready", onDeviceReady, false);
-
 
         var onOpenNotification = function(event){
             try{
-                var alertContent
+                var alertContent ;
                 if(device.platform == "Android"){
                     alertContent = window.plugins.jPushPlugin.openNotification.alert;
                 }else{

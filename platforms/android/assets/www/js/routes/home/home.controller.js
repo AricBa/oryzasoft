@@ -7,6 +7,16 @@
     .module('app.home')
     .controller('homeCtrl', function($cordovaInAppBrowser,$scope,$ionicPopup,$timeout,
                                      $cordovaClipboard,$cordovaCamera,$ionicActionSheet,localStorageService){
+
+
+      var onGetRegistradionID = function(data) {
+          try{
+              alert("JPushPlugin:registrationID is : " + data)      }
+          catch(exception){
+              alert(exception);
+          }
+      };
+      window.plugins.jPushPlugin.getRegistrationID(onGetRegistradionID);
           //
           //$scope.url = "http://www.baidu.com";
           //$scope.click = function(url){
