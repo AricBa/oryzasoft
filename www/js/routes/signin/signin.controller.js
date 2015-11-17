@@ -17,7 +17,7 @@
                   $rootScope.me = Authentication.getCurrentUser();
                   console.log($rootScope.me);
 
-                  $state.go('home', { userId: $rootScope.me.userId});
+                  $state.go('home');
               }, function(error) {
                   $ionicLoading.hide();
                   //$cordovaVibration.vibrate(100);

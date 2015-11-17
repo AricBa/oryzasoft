@@ -18,7 +18,11 @@
 
   angular
     .module('app.sideMenu')
-    .controller('sideMenuCtrl',  function($scope) {
+    .controller('sideMenuCtrl',  function($scope,$state) {
+
+      $scope.goBack =function(){
+        $state.go('home');
+      };
 
       $scope.goDetail = function(status){
         $scope.status = status;

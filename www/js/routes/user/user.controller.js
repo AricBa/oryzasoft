@@ -9,6 +9,7 @@
        $scope.signOut = function(){
          Authentication.signout().then(function () {
            $state.go('signin');
+           console.log("success");
          }, function (err) {
            console.log('error ' + err);
            $state.go('signin');

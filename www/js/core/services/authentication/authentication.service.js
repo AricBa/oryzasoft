@@ -45,6 +45,7 @@
                         .one('users/logout')
                         .get()
                         .then(function(){
+                          console.log("logout");
                             currentUser = null;
                             Token.remove();
                         });
