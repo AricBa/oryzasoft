@@ -1,0 +1,29 @@
+<ion-view>
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-back-button></ion-nav-back-button>
+    <ion-nav-title>Add company info</ion-nav-title>
+  </ion-nav-bar>
+
+  <ion-content>
+    <form name="companyForm" ng-submit="addCompanyInfo(companyEmail, signupForm.$valid)">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label"><i class="icon ion-email"></i></span>
+          <input ng-model="companyEmail" type="email" name="email" placeholder="Email" ng-required="true">
+        </label>
+        <div ng-if="companyForm.email.$invalid && companyForm.email.$dirty" ng-messages="companyForm.email.$error" class="messages">
+          <div ng-message="email">Your email address is invalid.</div>
+          <div ng-message="required">Your email address is required.</div>
+        </div>
+      </div>
+      <div class="padding">
+        <button type="submit" class="button button-block">
+          Sign up
+        </button>
+      </div>
+    </form>
+  </ion-content>
+  <ion-footer-bar>
+    <div ng-click="goToExperience()">Go to experience without accout</div>
+  </ion-footer-bar>
+</ion-view>
