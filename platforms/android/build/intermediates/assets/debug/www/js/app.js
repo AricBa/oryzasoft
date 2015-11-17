@@ -42,7 +42,7 @@
         };
 
         $rootScope.$on('$stateChangeSuccess', function () {
-          if ($state.$current == 'home' || $state.$current == 'setting') {
+          if ($state.$current == 'home' || $state.$current == 'setting' || $state.$current=='poDetail') {
             $rootScope.showCustomBack = false;
           } else {
             $rootScope.showCustomBack = true;

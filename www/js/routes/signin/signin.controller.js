@@ -3,9 +3,16 @@
     angular
       .module('app.signin')
       .controller('SigninCtrl',function($scope,$rootScope, $state, Authentication, $cordovaVibration,$ionicLoading) {
+        $scope.credentials = {};
 
         $scope.signIn = function(credentials, isValid) {
-              $ionicLoading.show({
+
+          if($scope.credentials.email == 'test01@oryzasoft.com'){
+            $scope.credentials.jid = 'jidabc01'
+          }else{
+            $scope.credentials.jid = 'jidabc02'
+          }
+          $ionicLoading.show({
                   template:'log in...'
               });
               if(!isValid) {return;}

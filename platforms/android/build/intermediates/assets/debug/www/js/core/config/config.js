@@ -15,7 +15,7 @@
 
         $urlRouterProvider.otherwise('/signin');
 
-        RestangularProvider.setDefaultHttpFields({cache: true});
+        //RestangularProvider.setDefaultHttpFields({cache: true});
 
         //RestangularProvider.addRequestInterceptor(function(element, operation, route, url) {
         //    if(operation == 'customGET'){
@@ -64,7 +64,17 @@
             window.plugins.jPushPlugin.init();
             window.plugins.jPushPlugin.setDebugMode(true);
 
-
+            //var onGetRegistradionID = function(data) {
+            //    try{
+            //        alert("JPushPlugin:registrationID is"+data);
+            //        $scope.message = data ;
+            //        model.console.push("JPushPlugin:registrationID is " + data);
+            //    }
+            //    catch(exception){
+            //        model.console.push(exception);
+            //    }
+            //};
+            //window.plugins.jPushPlugin.getRegistrationID(onGetRegistradionID);
             //if(window.plugins.jPushPlugin.isPlatformIOS()){
                 //window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
                 //window.plugins.jPushPlugin.setBadge(10);

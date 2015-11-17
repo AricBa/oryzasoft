@@ -1,4 +1,23 @@
 ## ChangeLog
+#### Version 0.7.1 (30.07.2015)
+- Support for app icon badges on selective Android platforms thanks to [ShortcutBadger](https://github.com/leolin310148/ShortcutBadger)
+  - Sony
+  - Samsung
+  - LG
+  - HTC
+  - Xiaomi
+  - ASUS
+  - ADW, APEX, NOVA
+
+#### Version 0.7.0 (18.07.2015)
+- New platform support:
+  - Amazon FireOS
+  - Browser
+  - Windows
+- `get`, `set` and `clear` support callbacks.
+- Support for [Glyphs](https://msdn.microsoft.com/de-de/library/windows/apps/hh779719#phone_badge) on _Windows_ platform.
+- Added tests
+
 #### Version 0.6.4 (02.05.2015)
 - Upgrade cordova dependency from 3.0 to 3.6
 - Fix incompatibility with local-notification plugin and PGB caused by the usage of hooks.

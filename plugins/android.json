@@ -9,7 +9,15 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"JPushPlugin\"><param name=\"android-package\" value=\"cn.jpush.phonegap.JPushPlugin\" /></feature>",
+                            "xml": "<feature name=\"Sms\"><param name=\"android-package\" value=\"com.cordova.plugins.sms.Sms\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Clipboard\"><param name=\"android-package\" value=\"com.verso.cordova.clipboard.Clipboard\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
                             "count": 1
                         },
                         {
@@ -17,7 +25,15 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
                         {
@@ -25,7 +41,15 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+                            "xml": "<feature name=\"SocialSharing\"><param name=\"android-package\" value=\"nl.xservices.plugins.SocialSharing\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Badge\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.badge.Badge\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"JPushPlugin\"><param name=\"android-package\" value=\"cn.jpush.phonegap.JPushPlugin\" /></feature>",
                             "count": 1
                         },
                         {
@@ -51,6 +75,18 @@
                 "parents": {
                     "/manifest": [
                         {
+                            "xml": "<uses-permission android:name=\"android.permission.SEND_SMS\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
+                            "count": 2
+                        },
+                        {
+                            "xml": "<uses-feature android:name=\"android.hardware.telephony\" android:required=\"false\" />",
+                            "count": 1
+                        },
+                        {
                             "xml": "<uses-permission android:name=\"com.martinmicunda.photo_gallery.permission.JPUSH_MESSAGE\" />",
                             "count": 1
                         },
@@ -64,10 +100,6 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
                             "count": 1
                         },
                         {
@@ -103,7 +135,21 @@
                             "count": 1
                         }
                     ],
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 4
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        }
+                    ],
                     "/manifest/application": [
+                        {
+                            "xml": "<activity android:exported=\"false\" android:launchMode=\"singleInstance\" android:name=\"de.appplant.cordova.plugin.badge.LaunchActivity\" android:theme=\"@android:style/Theme.Black.NoTitleBar\" />",
+                            "count": 1
+                        },
                         {
                             "xml": "<activity android:configChanges=\"orientation|keyboardHidden\" android:name=\"cn.jpush.android.ui.PushActivity\" android:theme=\"@android:style/Theme.Translucent.NoTitleBar\"><intent-filter><action android:name=\"cn.jpush.android.ui.PushActivity\" /><category android:name=\"android.intent.category.DEFAULT\" /><category android:name=\"com.martinmicunda.photo_gallery\" /></intent-filter></activity>",
                             "count": 1
@@ -136,35 +182,46 @@
                             "xml": "<meta-data android:name=\"JPUSH_APPKEY\" android:value=\"2b0f48bb4b6f31d404ebc411\" />",
                             "count": 1
                         }
-                    ],
-                    "/*": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 3
-                        }
                     ]
                 }
             }
         }
     },
     "installed_plugins": {
-        "cn.jpush.phonegap.JPushPlugin": {
+        "com.cordova.plugins.sms": {
+            "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
+        },
+        "com.verso.cordova.clipboard": {
+            "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
+        },
+        "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
         },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
         },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
+        },
         "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
+        },
+        "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
         },
-        "org.apache.cordova.camera": {
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
+        },
+        "de.appplant.cordova.common.registerusernotificationsettings": {
+            "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
+        },
+        "de.appplant.cordova.plugin.badge": {
+            "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
+        },
+        "cn.jpush.phonegap.JPushPlugin": {
             "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
         },
         "org.apache.cordova.dialogs": {
