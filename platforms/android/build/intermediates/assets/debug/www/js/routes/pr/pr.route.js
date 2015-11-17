@@ -29,12 +29,15 @@
 
               var path ='';
               var params = {
-                pageIndex : '1'
+                //pageIndex : '1'
               };
               restApi.getData(route,path,params).then(function(response){
                 d.resolve(response);
                 console.log(response);
                 $ionicLoading.hide();
+              },function(err){
+                $ionicLoading.hide();
+                console.log(err);
               });
 
               return d.promise;

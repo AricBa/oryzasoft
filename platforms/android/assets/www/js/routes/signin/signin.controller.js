@@ -2,7 +2,7 @@
     'use strict';
     angular
       .module('app.signin')
-      .controller('SigninCtrl',function($scope,$rootScope, $state, Authentication, $cordovaVibration,$ionicLoading) {
+      .controller('SigninCtrl',function($scope,customFunct,$rootScope,$timeout, $state, Authentication, $cordovaVibration,$ionicLoading) {
         $scope.credentials = {};
 
         $scope.signIn = function(credentials, isValid) {
@@ -29,6 +29,8 @@
                   $ionicLoading.hide();
                   //$cordovaVibration.vibrate(100);
                   console.log( error);
+                //alert(error.data.message);
+                customFunct.myNotice(error.data.message,2000);
               });
         };
         $scope.goToSignup = function(){
@@ -43,7 +45,7 @@
           $state.go('experience');
         }
       })
-      .controller('forgetPasswordCtrl',function($scope,Authentication,$ionicLoading){
+      .controller('forgetPasswordCtrl',function($scope,customFunct,Authentication,$ionicLoading){
         $scope.email = '';
         $scope.getPassword = function(email,isValid){
           var params = {
@@ -56,19 +58,16 @@
           if(!isValid) {return;}
           Authentication.forgetPassword(params).then(function(response){
             $ionicLoading.hide();
-            $ionicLoading.show({
-              template:'send message successful, check your mailbox'
-            });
-            $timeout(function() {
-              $ionicLoading.hide();
-            }, 1000);
+            customFunct.myNotice(response.data.message,2000);
           },function(err){
             console.log(err);
             $ionicLoading.hide();
+            customFunct.myNotice(err.data.message,2000);
+
           })
         };
       })
-      .controller('experienceCtrl',function($scope,Authentication,$state,$ionicLoading){
+      .controller('experienceCtrl',function($scope,customFunct,Authentication,$state,$ionicLoading){
         $scope.user = {};
          $scope.getVerificationCode = function(phoneNumber){
            console.log(phoneNumber);
@@ -103,6 +102,7 @@
           },function(err){
             console.log(err);
             $ionicLoading.hide();
+            customFunct.myNotice(err.data.message);
           });
         };
 

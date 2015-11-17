@@ -367,12 +367,6 @@
                       Restangular.all('sap/po/purchase_orders/'+$scope.poNum+'/approve').post().then(function(response){
                         $ionicLoading.hide();
                         $state.go('approveDetail',{poNumber:$scope.poNum});
-                        //$ionicLoading.show({
-                        //  template:'the task is approving'
-                        //});
-                        //$timeout(function() {
-                        //  $ionicLoading.hide();
-                        //}, 1000);
                         $scope.buttonText = 'Lock';
                         console.log(response);
                         console.log('approve');
