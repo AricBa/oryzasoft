@@ -3,7 +3,7 @@
     'use strict';
     angular
         .module('app.signup')
-        .controller('SignupCtrl',function($location, $rootScope, $state, Authentication, $scope,$ionicLoading) {
+        .controller('SignupCtrl',function($location, $rootScope, customFunct,$state, Authentication, $scope,$ionicLoading) {
         $scope.user = {};
           $scope.signUp = function(user, isValid) {
             console.log(user);
@@ -19,10 +19,11 @@
               }, function(err) {
                 console.error('error' + err);
                 $ionicLoading.hide();
+                customFunct.myNotice(err.data.message);
               });
           };
         })
-      .controller('companyCtrl',function($state,$scope,$stateParams,Authentication,$ionicLoading){
+      .controller('companyCtrl',function($state,$scope,customFunct,$stateParams,Authentication,$ionicLoading){
         $scope.companyEmail = '';
         $scope.password =$stateParams.password;
         $scope.email = $stateParams.email;
@@ -44,6 +45,7 @@
           },function(err){
             $ionicLoading.hide();
             console.log(err);
+            customFunct.myNotice(err.data.message);
           })
         };
         $scope.goToExperience = function(){
