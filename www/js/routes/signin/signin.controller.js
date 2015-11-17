@@ -2,7 +2,7 @@
     'use strict';
     angular
       .module('app.signin')
-      .controller('SigninCtrl',function($scope,$rootScope, $state, Authentication, $cordovaVibration,$ionicLoading) {
+      .controller('SigninCtrl',function($scope,customFunct,$rootScope,$timeout, $state, Authentication, $cordovaVibration,$ionicLoading) {
         $scope.credentials = {};
 
         $scope.signIn = function(credentials, isValid) {
@@ -29,6 +29,8 @@
                   $ionicLoading.hide();
                   //$cordovaVibration.vibrate(100);
                   console.log( error);
+                //alert(error.data.message);
+                customFunct.myNotice(error.data.message,2000);
               });
         };
         $scope.goToSignup = function(){
