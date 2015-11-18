@@ -329,7 +329,7 @@
           $scope.approveStatus=  'approved';
         }else{
           $scope.approveStatus=  'resetted';
-        };
+        }
 
     })
     .directive('createTask', function ( ) {

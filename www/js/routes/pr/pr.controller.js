@@ -85,5 +85,26 @@
     .controller('prDetailCtrl',function($scope,PR){
         $scope.results = PR.results;
          console.log($scope.results);
+    })
+    .controller('prItemDetailCtrl',function($scope,prItem,$state){
+      $scope.goBack = function(){
+        $state.go('prDetail',{purchaseRequisitionID: $scope.prItem.PREQ_NO});
+      };
+
+      $scope.prItem = prItem[0].results[0] ;
+      console.log($scope.prItem);
+      $scope.approve = prItem[1];
+
+      if ($scope.prItem.DM_STATUS == 1 || $scope.prItem.DM_STATUS == 5){
+        $scope.detail = 'approving';
+      }else if ($scope.prItem.DM_STATUS == 3 ){
+        $scope.detail=  'approved';
+      }else{
+        $scope.detail=  'resetted';
+      }
+
+      $scope.goToApproveDetail = function(){
+        $state.go('prapproveDetail',{purchaseRequisitionID : $scope.prItem.PREQ_NO, itemID : $scope.prItem.PREQ_ITEM});
+      };
     });
 })();

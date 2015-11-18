@@ -1,31 +1,31 @@
 <ion-view>
   <ion-content scroll="false">
-    <!--<ion-slide-box slide-tabs-scrollable="false"  show-pager="true" ion-slide-tabs on-slide-changed="slideHasChanged($index)">-->
-      <!--<ion-slide ion-slide-tab-label="Unapproved" >-->
-        <!--<ng-include src="'js/routes/po/poUnapprovedList.html'"></ng-include>-->
-      <!--</ion-slide>-->
-      <!--<ion-slide ion-slide-tab-label="Approved" >-->
-        <!--<ng-include src="'js/routes/po/poApprovedList.html'"></ng-include>-->
-      <!--</ion-slide>-->
-    <!--</ion-slide-box>-->
-      <tab-slide-box>
-        <div class="tsb-icons">
-          <div class="tsb-ic-wrp">
-            <ion-scroll direction="x" class="tsb-hscroll">
-              <a href="javascript:;" class="ion-home1">Unapproved</a>
-              <a href="javascript:;" class="ion-ios-game-controller-b1">Approved</a>
-            </ion-scroll>
-          </div>
-        </div>
-        <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
-          <ion-slide>
-            <ng-include src="'js/routes/po/poUnapprovedList.html'"></ng-include>
-          </ion-slide>
-          <ion-slide>
-            <ng-include src="'js/routes/po/poApprovedList.html'"></ng-include>
-          </ion-slide>
-        </ion-slide-box>
-      </tab-slide-box>
+    <ion-slide-box slide-tabs-scrollable="false"  show-pager="true" ion-slide-tabs on-slide-changed="slideHasChanged($index)">
+      <ion-slide ion-slide-tab-label="Unapproved" >
+        <ng-include src="'js/routes/po/poUnapprovedList.html'"></ng-include>
+      </ion-slide>
+      <ion-slide ion-slide-tab-label="Approved" >
+        <ng-include src="'js/routes/po/poApprovedList.html'"></ng-include>
+      </ion-slide>
+    </ion-slide-box>
+      <!--<tab-slide-box>-->
+        <!--<div class="tsb-icons">-->
+          <!--<div class="tsb-ic-wrp">-->
+            <!--<ion-scroll direction="x" class="tsb-hscroll">-->
+              <!--<a href="javascript:;" class="ion-home1">Unapproved</a>-->
+              <!--<a href="javascript:;" class="ion-ios-game-controller-b1">Approved</a>-->
+            <!--</ion-scroll>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">-->
+          <!--<ion-slide>-->
+            <!--<ng-include src="'js/routes/po/poUnapprovedList.html'"></ng-include>-->
+          <!--</ion-slide>-->
+          <!--<ion-slide>-->
+            <!--<ng-include src="'js/routes/po/poApprovedList.html'"></ng-include>-->
+          <!--</ion-slide>-->
+        <!--</ion-slide-box>-->
+      <!--</tab-slide-box>-->
   </ion-content>
 </ion-view>
 

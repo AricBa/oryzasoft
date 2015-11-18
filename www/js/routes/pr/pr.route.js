@@ -85,6 +85,75 @@
             authenticate: true
           }
 
+        })
+        .state('prItemDetail',{
+          url:'prDetail/:purchaseRequisitionID/items/:itemID',
+          templateUrl: 'js/routes/pr/itemDetail.html',
+          controller:'prItemDetailCtrl',
+          cache:false,
+          resolve:{
+            prItem: function(restApi,$q,$ionicLoading,$stateParams){
+              var d = $q.defer();
+
+              $ionicLoading.show({
+                template:'Loading...'
+              });
+              var route =  'sap/pr/purchase_requisitions/' + $stateParams.purchaseRequisitionID + '/items/' + $stateParams.itemID;
+
+              var path ='';
+              var params = {
+                pageIndex : '1'
+              };
+              restApi.getData(route,path,params).then(function(response){
+                if(response.results[0].DM_STATUS == 0 || response.results[0].DM_STATUS == 6) {
+                  d.resolve([response,'Approve']);
+                }else if (response.results[0].DM_STATUS == 1 || response.results[0].DM_STATUS == 5 ){
+                  d.resolve([response,'Lock']);
+                }else{
+                  d.resolve([response,'Reset']);
+                }
+                console.log(response);
+                $ionicLoading.hide();
+              },function(err){
+                $ionicLoading.hide();
+                console.log(err);
+              });
+
+              return d.promise;
+            }
+          },
+          data: {
+            authenticate: true
+          }
+        })
+        .state('prapproveDetail',{
+          url:'prapproveDetail/:purchaseRequisitionID/items/:itemID',
+          templateUrl:'js/routes/pr/prapproveDetail.html',
+          controller:'prapproveDetailCtrl',
+          cache:false,
+          resolve:{
+            poApprove:function($q,$ionicLoading,restApi,$stateParams){
+              var d = $q.defer();
+              $ionicLoading.show({
+                template:'Loading...'
+              });
+
+              var route =  'sap/po/purchase_orders/'+$stateParams.poNumber;
+              var path ='';
+              var params = {
+                pageIndex : '1'
+              };
+              restApi.getData(route,path,params).then(function(response){
+                d.resolve(response);
+                $ionicLoading.hide();
+              });
+
+              return d.promise;
+            }
+          },
+          data: {
+            authenticate: true
+          }
         });
     });
 })();
