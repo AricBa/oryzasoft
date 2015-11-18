@@ -46,15 +46,16 @@
     <!--<ion-item>-->
 
     <!--</ion-item>-->
-  </ion-content>
-  <ion-footer-bar class="bar bar-footer bar-positive">
-
+    <button class="button button-block button-positive">
       <create-task ng-disabled="approve == 'Lock'"
                    class="button button-icon"
                    button-text="approve"
                    po-num="po.PO_NUMBER"
                    status="po.DM_STATUS"
               ></create-task>
+    </button>
+  </ion-content>
+  <!--<ion-footer-bar class="bar bar-footer bar-positive">-->
 
-  </ion-footer-bar>
+  <!--</ion-footer-bar>-->
 </ion-view>
