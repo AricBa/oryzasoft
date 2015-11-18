@@ -132,13 +132,13 @@
           controller:'prapproveDetailCtrl',
           cache:false,
           resolve:{
-            poApprove:function($q,$ionicLoading,restApi,$stateParams){
+            prApprove:function($q,$ionicLoading,restApi,$stateParams){
               var d = $q.defer();
               $ionicLoading.show({
                 template:'Loading...'
               });
 
-              var route =  'sap/po/purchase_orders/'+$stateParams.poNumber;
+              var route =  'sap/pr/purchase_requisitions/' + $stateParams.purchaseRequisitionID + '/items/' + $stateParams.itemID;
               var path ='';
               var params = {
                 pageIndex : '1'

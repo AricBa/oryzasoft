@@ -338,11 +338,12 @@
         scope: {
           buttonText: '=',
           status:'=',
-          poNum: '='// Use @ for One Way Text Binding;Use = for Two Way Binding;Use & to Execute Functions in the Parent Scope
+          num: '=',
+          itemId: '='
         },
         controller: function ($ionicPopup,$scope,Restangular,$ionicLoading,$timeout,$state) {
           $scope.ionicPopup = {
-            title: $scope.buttonText + '  po',
+            title: $scope.buttonText,
             cssClass: 'ionicPopup',
             //template: 'OK',
             cancelText: 'CANCEL',
@@ -352,29 +353,53 @@
           };
 
           $scope.showConfirm = function () {
+            console.log($scope.itemId);
             var confirmPopup = $ionicPopup.confirm($scope.ionicPopup);
             confirmPopup.then(function (res) {
               if (res) {
                 $ionicLoading.show({
                   template:'Loading...'
                 });
-                console.log($scope.poNum);
-                Restangular.all('sap/po/purchase_orders/'+$scope.poNum+'/status').customGET().then(function(response){
+                console.log($scope.num);
+                var statusRoute;
+                var approveRoute;
+                var resetRoute;
+                if(typeof $scope.itemId  == 'undefined') {
+                    statusRoute = 'sap/po/purchase_orders/' + $scope.num + '/status';
+                    approveRoute = 'sap/po/purchase_orders/' + $scope.num + '/approve';
+                    resetRoute = 'sap/po/purchase_orders/' + $scope.num + '/reset';
+                }else{
+                    statusRoute =  'sap/pr/purchase_requisitions/' + $scope.num + '/items/' + $scope.itemId +'/status';
+                    approveRoute = 'sap/pr/purchase_requisitions/' + $scope.num + '/items/' + $scope.itemId + '/approve';
+                    resetRoute = 'sap/pr/purchase_requisitions/' + $scope.num + '/items/' + $scope.itemId + '/reset';
+                }
+                Restangular.all(statusRoute).customGET().then(function(response){
                   console.log(response.results[0].DM_STATUS);
                   console.log($scope.status);
                   if(response.results[0].DM_STATUS == $scope.status) {
                     if($scope.buttonText == 'Approve'){
-                      Restangular.all('sap/po/purchase_orders/'+$scope.poNum+'/approve').post().then(function(response){
+                      Restangular.all(approveRoute).post().then(function(response){
                         $ionicLoading.hide();
-                        $state.go('approveDetail',{poNumber:$scope.poNum});
+                        if(typeof $scope.itemId  == 'undefined') {
+                          $state.go('approveDetail',{poNumber:$scope.num});
+                        }else{
+                          $state.go('prapproveDetail',{purchaseRequisitionID : $scope.num, itemID : $scope.itemId});
+                        }
                         $scope.buttonText = 'Lock';
                         console.log(response);
                         console.log('approve');
+                      },function(err){
+                        $ionicLoading.hide();
+                        console.log(err);
                       });
                     }else if( $scope.buttonText =='Reset'){
-                      Restangular.all('sap/po/purchase_orders/'+$scope.poNum+'/reset').post().then(function(response){
+                      Restangular.all(resetRoute).post().then(function(response){
                         $ionicLoading.hide();
-                        $state.go('approveDetail',{poNumber:$scope.poNum});
+                        if(typeof $scope.itemId  == 'undefined') {
+                          $state.go('approveDetail',{poNumber:$scope.num});
+                        }else{
+                          $state.go('prapproveDetail',{purchaseRequisitionID : $scope.num, itemID : $scope.itemId});
+                        }
                         //$ionicLoading.show({
                         //  template:'the task is reseted'
                         //});
@@ -384,6 +409,8 @@
                         $scope.buttonText = 'Approve';
                         console.log(response);
                         console.log('reset');
+                      },function(err){
+                        console.log(err);
                       })
                     }else{
                       console.log("Locked");
@@ -398,6 +425,9 @@
                       $ionicLoading.hide();
                     }, 1000);
                   }
+                },function(err){
+                  $ionicLoading.hide();
+                  console.log(err);
                 });
 
               } else {
@@ -406,8 +436,7 @@
             });
           };
         },
-
-        template: '<button  ng-click="showConfirm()">{{buttonText}}</button>',
+        template: '<button ng-click="showConfirm()">{{buttonText}}</button>',
         replace: true
       };
     });

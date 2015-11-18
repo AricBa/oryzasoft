@@ -34,13 +34,14 @@
     <!--<ion-item>-->
 
     <!--</ion-item>-->
-    <button class="button button-block button-positive">
-      <create-task ng-disabled="approve == 'Lock'"
-                   class="button button-icon"
-                   button-text="approve"
-                   po-num="prItem.PREQ_ITEM"
-                   status="prItem.DM_STATUS"
-              ></create-task>
-    </button>
   </ion-content>
+  <ion-footer-bar class="bar bar-footer bar-positive">
+    <create-task ng-disabled="approve == 'Lock'"
+                 class="button button-icon"
+                 button-text="approve"
+                 num="prItem.PREQ_NO"
+                 status="prItem.DM_STATUS"
+                 item-id = "prItem.PREQ_ITEM"
+            ></create-task>
+</ion-footer-bar>
 </ion-view>

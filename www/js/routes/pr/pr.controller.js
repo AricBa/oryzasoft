@@ -106,5 +106,20 @@
       $scope.goToApproveDetail = function(){
         $state.go('prapproveDetail',{purchaseRequisitionID : $scope.prItem.PREQ_NO, itemID : $scope.prItem.PREQ_ITEM});
       };
+    })
+    .controller('prapproveDetailCtrl',function(prApprove,$scope,$state){
+      $scope.results = prApprove.results[0];
+      console.log($scope.results);
+      $scope.goBack = function(){
+        $state.go('prDetail',{purchaseRequisitionID: $scope.results.PREQ_NO});
+      };
+
+      if ($scope.results.DM_STATUS == 1 || $scope.results.DM_STATUS == 5){
+        $scope.approveStatus = 'approving';
+      }else if ($scope.results.DM_STATUS == 3 ){
+        $scope.approveStatus=  'approved';
+      }else{
+        $scope.approveStatus=  'resetted';
+      }
     });
 })();
