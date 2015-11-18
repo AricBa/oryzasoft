@@ -83,7 +83,7 @@
 
     })
     .controller('prDetailCtrl',function($scope,PR){
-        $scope.results = PR.results[0];
-      console.log($scope.results);
+        $scope.results = PR.results;
+         console.log($scope.results);
     });
 })();

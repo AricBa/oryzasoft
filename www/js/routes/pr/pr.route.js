@@ -29,7 +29,7 @@
 
               var path ='';
               var params = {
-                //pageIndex : '1'
+                pageIndex : '1'
               };
               restApi.getData(route,path,params).then(function(response){
                 d.resolve(response);
