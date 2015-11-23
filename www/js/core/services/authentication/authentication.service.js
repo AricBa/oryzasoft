@@ -3,7 +3,7 @@
     angular
         .module('app.core')
         .provider('Authentication',function() {
-          this.$get = function($http, Restangular, Token, localStorageService,$q) {
+          this.$get = function($http, restApi, Token, localStorageService,$q) {
               var currentUser = null;
               function saveUserAndToken(token) {
                   // store token to local storage
@@ -16,21 +16,15 @@
 
               return {
                   signup: function(params) {
-                      return Restangular
-                        .all('users/register')
-                        .post(params);
+                      return restApi.post('users/register',params);
                   },
                   signupwithcom :function(params){
-                    return Restangular
-                      .all('users/company')
-                      .get('',params);
+                    return  restApi.getData('users/company','',params);
                   },
                   signin: function(params) {
                     var d = $q.defer();
-                    Restangular
-                        .all('users/login')
-                          //.customGET('',params)
-                        .get('',params)
+                    restApi
+                        .getData('users/login','',params)
                         .then(function(response) {
                             d.resolve(response);
                             console.log(response.token);
@@ -44,9 +38,8 @@
                     return d.promise;
                   },
                   signout: function() {
-                      return Restangular
-                        .one('users/logout')
-                        .get()
+                      return restApi
+                        .getData('users/logout')
                         .then(function(){
                           console.log("logout");
                             currentUser = null;
@@ -58,29 +51,24 @@
                       return !!Token.get();
                   },
                   forgetPassword:function(params){
-                      return Restangular
-                        .all('users/password/forget')
-                        .get('',params);
+                      return restApi
+                        .getData('users/password/forget','',params);
                   },
                   getCode:function(params){
-                    return Restangular
-                      .all('sms/code')
-                      .get('',params);
+                    return restApi
+                      .getData('sms/code','',params);
                   },
                   experenceLogin:function(params){
-                    return Restangular
-                      .all('users/logindemo')
-                      .get('',params);
+                    return restApi
+                      .getData('users/logindemo','',params);
                   },
                   getSAPAccount:function(){
-                    return Restangular
-                      .all('users/sap_account')
-                      .get();
+                    return restApi
+                      .getData('users/sap_account');
                   },
                   postSAPAccount:function(params){
-                    return Restangular
-                      .all('users/sap_account')
-                      .post(params);
+                    return restApi
+                      .post('users/sap_account',params);
                   },
                   getCurrentUser: function() {
                       return currentUser || localStorageService.get('user');

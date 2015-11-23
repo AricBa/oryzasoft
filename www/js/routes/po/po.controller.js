@@ -341,7 +341,7 @@
           num: '=',
           itemId: '='
         },
-        link: function ($ionicPopup,$scope,Restangular,$ionicLoading,$timeout,$state) {
+        controller: function ($ionicPopup,$scope,restApi,$ionicLoading,$timeout,$state) {
           $scope.ionicPopup = {
             title: $scope.buttonText,
             cssClass: 'ionicPopup',
@@ -373,12 +373,12 @@
                     approveRoute = 'sap/pr/purchase_requisitions/' + $scope.num + '/items/' + $scope.itemId + '/approve';
                     resetRoute = 'sap/pr/purchase_requisitions/' + $scope.num + '/items/' + $scope.itemId + '/reset';
                 }
-                Restangular.all(statusRoute).customGET().then(function(response){
+                restApi.getData(statusRoute).then(function(response){
                   console.log(response.results[0].DM_STATUS);
                   console.log($scope.status);
                   if(response.results[0].DM_STATUS == $scope.status) {
                     if($scope.buttonText == 'Approve'){
-                      Restangular.all(approveRoute).post().then(function(response){
+                      restApi.post(approveRoute).then(function(response){
                         $ionicLoading.hide();
                         if(typeof $scope.itemId  == 'undefined') {
                           $state.go('approveDetail',{poNumber:$scope.num});
@@ -393,7 +393,7 @@
                         console.log(err);
                       });
                     }else if( $scope.buttonText =='Reset'){
-                      Restangular.all(resetRoute).post().then(function(response){
+                      restApi.post(resetRoute).then(function(response){
                         $ionicLoading.hide();
                         if(typeof $scope.itemId  == 'undefined') {
                           $state.go('approveDetail',{poNumber:$scope.num});

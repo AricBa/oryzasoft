@@ -13,8 +13,8 @@
         refreshData: function(route,prams,headers){
           return Restangular.all(route).get(prams,headers);
         },
-        post: function(route){
-          return Restangular.all(route).post();
+        post: function(route,params){
+          return Restangular.all(route).post(params);
         }
       };
 
