@@ -37,7 +37,10 @@
                             saveUserAndToken(response.token);
                         },function(err){
                           d.reject(err);
-                        });
+                        }).catch(function(err){
+                        console.log(err);
+                        d.reject(err);
+                      });
                     return d.promise;
                   },
                   signout: function() {
@@ -48,6 +51,7 @@
                           console.log("logout");
                             currentUser = null;
                             Token.remove();
+                            localStorageService.remove('user');
                         });
                   },
                   isAuthenticated: function() {
