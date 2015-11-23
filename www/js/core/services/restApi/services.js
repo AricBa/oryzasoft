@@ -10,15 +10,25 @@
         getData: function(route,path,params,headers){
           return Restangular.all(route).customGET(path,params,headers);
         },
-        refreshData: function(route,prams,headers){
-          return Restangular.all(route).get(prams,headers);
-        },
+        //refreshData: function(route,prams,headers){
+        //  return Restangular.all(route).get(prams,headers);
+        //},
         post: function(route,params){
           return Restangular.all(route).post(params);
         }
       };
 
       return restApi;
+    })
+
+    .factory('localService',function(){
+      var localService;
+      localService = {
+        initDB : function (){
+          var oryzasoftDb = new PouchDB('oryzasoft');
+        }
+      }
+
     });
 
 })();
