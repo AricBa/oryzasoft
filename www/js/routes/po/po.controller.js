@@ -341,7 +341,7 @@
           num: '=',
           itemId: '='
         },
-        controller: function ($ionicPopup,$scope,Restangular,$ionicLoading,$timeout,$state) {
+        link: function ($ionicPopup,$scope,Restangular,$ionicLoading,$timeout,$state) {
           $scope.ionicPopup = {
             title: $scope.buttonText,
             cssClass: 'ionicPopup',
