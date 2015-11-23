@@ -24,6 +24,7 @@
         'angularMoment',
 
         // app modules
+        'app.service',
         'app.core',
         'app.signup',
         'app.signin',
