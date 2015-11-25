@@ -56,7 +56,7 @@
                 }
             });
 
-
+            $rootScope.newMessage = '';
         });
 
         function onDeviceReady() {
