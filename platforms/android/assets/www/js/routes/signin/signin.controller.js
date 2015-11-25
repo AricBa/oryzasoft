@@ -31,7 +31,10 @@
                   console.log( error);
                 //alert(error.data.message);
                 customFunct.myNotice(error.data.message,2000);
-              });
+              })
+                .catch(function(err){
+                  console.log(err);
+                });
         };
         $scope.goToSignup = function(){
               $state.go('signup');

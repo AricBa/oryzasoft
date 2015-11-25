@@ -12,15 +12,16 @@
   </ion-nav-bar>
 
   <ion-content padding="true">
-    <ion-item>
-    <hr />
-    <ion-item class="flex-container wrap" ng-repeat="pr in results">
-      <div  >PREQ_ITEM :</div>
-      <div >{{pr.PREQ_ITEM}}</div>
-      <div  >C_AMT_BAPI :</div>
-      <div  >{{ pr.C_AMT_BAPI | currency}}</div>
-      <div  >CREATED_BY :</div>
-      <div  >{{ pr.CREATED_BY}}</div>
+    <ion-item ng-repeat="pr in results" bindonce
+              class="item-text-wrap" ui-sref = "prItemDetail({purchaseRequisitionID : pr.PREQ_NO, itemID : pr.PREQ_ITEM})">
+      <div class=" bodyFont2">ITEM: {{ pr.PREQ_ITEM}}</div>
+      <div class=" bodyFont1">{{ pr.C_AMT_BAPI }}
+      </div>
+      <div >{{ pr.CREATED_BY}}
+      </div>
+      <div class="captionFont3"><span am-time-ago="pr.LAST_CHANGE_TIME"></span>
+      </div>
+      <div>{{pr.DM_STATUS}}</div>
     </ion-item>
 
   </ion-content>

@@ -16,66 +16,58 @@
 
               return {
                   signup: function(params) {
-                      return Restangular
-                        .all('users/register')
-                        .post(params);
+                      return Restangular.all('users/register').post(params);
                   },
                   signupwithcom :function(params){
-                    return Restangular
-                      .all('users/company')
-                      .get('',params);
+                    return  Restangular.all('users/company').customGET('',params);
                   },
                   signin: function(params) {
                     var d = $q.defer();
-                    Restangular
-                        .all('users/login')
-                          //.customGET('',params)
-                        .get('',params)
+                    Restangular.all('users/login')
+                      .customGET('',params)
                         .then(function(response) {
                             d.resolve(response);
                             console.log(response.token);
                             saveUserAndToken(response.token);
                         },function(err){
                           d.reject(err);
-                        });
+                        }).catch(function(err){
+                        console.log(err);
+                        d.reject(err);
+                      });
                     return d.promise;
                   },
                   signout: function() {
-                      return Restangular
-                        .one('users/logout')
-                        .get()
+                      return  Restangular.all('users/logout')
+                        .customGET()
                         .then(function(){
                           console.log("logout");
                             currentUser = null;
                             Token.remove();
+                            localStorageService.remove('user');
                         });
                   },
                   isAuthenticated: function() {
                       return !!Token.get();
                   },
                   forgetPassword:function(params){
-                      return Restangular
-                        .all('users/password/forget')
-                        .get('',params);
+                      return  Restangular.all('users/password/forget')
+                        .customGET('',params);
                   },
                   getCode:function(params){
-                    return Restangular
-                      .all('sms/code')
-                      .get('',params);
+                    return Restangular.all('sms/code')
+                      .customGET('',params);
                   },
                   experenceLogin:function(params){
-                    return Restangular
-                      .all('users/logindemo')
-                      .get('',params);
+                    return Restangular.all('users/logindemo')
+                      .customGET('',params);
                   },
                   getSAPAccount:function(){
-                    return Restangular
-                      .all('users/sap_account')
-                      .get();
+                    return Restangular.all('users/sap_account')
+                      .customGET();
                   },
                   postSAPAccount:function(params){
-                    return Restangular
-                      .all('users/sap_account')
+                    return  Restangular.all('users/sap_account')
                       .post(params);
                   },
                   getCurrentUser: function() {

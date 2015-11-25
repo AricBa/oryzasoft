@@ -6,29 +6,29 @@
   </ion-nav-buttons>
 
   <ion-nav-title>
-    <div class="view-title ">Po Detail {{po.PO_NUMBER}}</div>
+    <div class="view-title ">Po Detail {{PODetail.PO_NUMBER}}</div>
   </ion-nav-title>
 
   <ion-content padding="true">
     <ion-item class="flex-container wrap">
       <div class="column bodyFont1" >PO_NUMBER :</div>
-      <div class="column1  bodyFont2" >{{po.PO_NUMBER}}</div>
+      <div class="column1  bodyFont2" >{{PODetail.PO_NUMBER}}</div>
     </ion-item>
     <hr />
     <ion-item class="flex-container wrap">
       <div class="column bodyFont1" >TARGET_VAL :</div>
-      <div class="column1  bodyFont2" >{{ po.TARGET_VAL | currency:po.CURRENCY_ISO}}</div>
+      <div class="column1  bodyFont2" >{{ PODetail.TARGET_VAL | currency:PODetail.CURRENCY_ISO}}</div>
     </ion-item>
     <hr />
     <ion-item class="flex-container wrap">
       <div class="column bodyFont1" >VEND_NAME :</div>
-      <div class="column1  bodyFont2" >{{ po.VEND_NAME}}</div>
+      <div class="column1  bodyFont2" >{{ PODetail.VEND_NAME}}</div>
       <i class="icon ion-ios-arrow-right muted"></i>
     </ion-item>
     <hr />
     <ion-item class="flex-container wrap">
       <div class="column bodyFont1" >CREATED_BY :</div>
-      <div class="column1  bodyFont2" >{{ po.CREATED_BY}}</div>
+      <div class="column1  bodyFont2" >{{ PODetail.CREATED_BY}}</div>
       <i class="icon ion-ios-arrow-right muted"></i>
     </ion-item>
     <hr />
@@ -38,7 +38,7 @@
       <i class="icon ion-ios-arrow-right muted"></i>
     </ion-item>
     <hr />
-    <ion-item class="flex-container wrap" ng-click="goToApproveDetail()" ng-show="po.DM_STATUS != 0">
+    <ion-item class="flex-container wrap" ng-click="goToApproveDetail()" ng-show="PODetail.DM_STATUS != 0">
       <div class="column bodyFont1" >Arrpove Detail</div>
       <div class="column1  bodyFont2" >{{detail}}</div>
       <i class="icon ion-ios-arrow-right muted"></i>
@@ -46,15 +46,14 @@
     <!--<ion-item>-->
 
     <!--</ion-item>-->
+
   </ion-content>
   <ion-footer-bar class="bar bar-footer bar-positive">
-
       <create-task ng-disabled="approve == 'Lock'"
                    class="button button-icon"
                    button-text="approve"
-                   po-num="po.PO_NUMBER"
-                   status="po.DM_STATUS"
+                   num="PODetail.PO_NUMBER"
+                   status="PODetail.DM_STATUS"
               ></create-task>
-
   </ion-footer-bar>
 </ion-view>

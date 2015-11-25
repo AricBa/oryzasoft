@@ -1,26 +1,33 @@
 (function () {
   'use strict';
-
-  /**
-   * @ngdoc module
-   * @name app.galleries
-   */
   angular.module('app.po', [])
-    .factory('restApi',function(Restangular){
-      var restApi;
-      restApi = {
-        getData: function(route,path,params,headers){
-          return Restangular.all(route).customGET(path,params,headers);
+    .factory('POData',function(Restangular){
+      var POData ;
+      var poRoute = 'sap/po/purchase_orders';
+      POData = {
+        getPOList : function(path,params){
+          return Restangular.all(poRoute).customGET(path,params);
         },
-        refreshData: function(route,prams,headers){
-          return Restangular.all(route).get(prams,headers);
+        getPODetail: function(purchaseOrderID){
+          return Restangular.all(poRoute + '/'+ purchaseOrderID).customGET();
         },
-        post: function(route){
-          return Restangular.all(route).post();
+        //getPOStatus: function(purchaseOrderID){
+        //  return Restangular.all(poRoute +'/'+ purchaseOrderID +'/status').customGET();
+        //},
+        //approvePO : function(purchaseOrderID){
+        //  return Restangular.all(poRoute +'/'+ purchaseOrderID +'/approve').post();
+        //},
+        //resetPO : function(purchaseOrderID){
+        //  return Restangular.all(poRoute +'/'+ purchaseOrderID +'/reset').post();
+        //},
+        getPOItemList : function(purchaseOrderID,path,params){
+          return Restangular.all(poRoute+'/' +purchaseOrderID+'/items').customGET(path,params);
+        },
+        getPOItemDetail: function(purchaseOrderID,itemID){
+          return Restangular.all(poRoute+'/' +purchaseOrderID+'/items/'+itemID).customGET();
         }
       };
-
-      return restApi;
+      return POData;
     });
 
 })();

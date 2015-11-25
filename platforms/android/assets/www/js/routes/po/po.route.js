@@ -10,26 +10,23 @@
           url: '/po',
           views:{
             'po':{
-              templateUrl: 'js/routes/po/po.html',
-              controller: 'poCtrl'
+              templateUrl: 'js/routes/po/poList.html',
+              controller: 'poListCtrl'
             }
           },
-          cache:false,
+          cache : false,
           resolve: {/* @ngInject */
-            poList: function(restApi,$q,$ionicLoading){
+            poList: function(POData,$q,$ionicLoading){
               var d = $q.defer();
-
               $ionicLoading.show({
                 template:'Loading...'
               });
-              var route =  'sap/po/purchase_orders';
-
               var path ='';
               var params = {
                 pageIndex : '1',
                 filter: "0,6"
               };
-              restApi.getData(route,path,params).then(function(response){
+              POData.getPOList(path,params).then(function(response){
                 d.resolve(response);
                 console.log(response);
                 $ionicLoading.hide();
@@ -49,16 +46,14 @@
           controller:'poDetailCtrl',
           cache:false,
           resolve:{
-            PO :function ($stateParams,restApi,$q,$ionicLoading){
+            PODetail :function ($stateParams,POData,$q,$ionicLoading){
               var d = $q.defer();
 
               $ionicLoading.show({
                 template:'Loading...'
               });
 
-              var route = 'sap/po/purchase_orders/'+$stateParams.poNumber;
-
-              restApi.getData(route).then(function(response){
+              POData.getPODetail($stateParams.poNumber).then(function(response){
                 if(response.results[0].DM_STATUS == 0 || response.results[0].DM_STATUS == 6) {
                   d.resolve([response,'Approve']);
                 }else if (response.results[0].DM_STATUS == 1 || response.results[0].DM_STATUS == 5 ){
@@ -78,30 +73,26 @@
           data: {
             authenticate: true
           }
-
         })
         .state('poItems',{
           url:'poDetail/:poNumber/items',
-          templateUrl: 'js/routes/po/items.html',
-          controller:'itemsCtrl',
-          cache:false,
+          templateUrl: 'js/routes/po/poItems.html',
+          controller:'POItemsCtrl',
           resolve:{
-            items:function($stateParams,restApi,$q,$ionicLoading){
+            POItemList:function($stateParams,POData,$q,$ionicLoading){
               var d = $q.defer();
               $ionicLoading.show({
                 template:'Loading...'
               });
 
-              var route =  'sap/po/purchase_orders/'+$stateParams.poNumber+'/items';
               var path ='';
               var params = {
                 pageIndex : '1'
               };
-              restApi.getData(route,path,params).then(function(response){
+              POData.getPOItemList($stateParams.poNumber,path,params).then(function(response){
                 d.resolve(response);
                 $ionicLoading.hide();
               });
-
               return d.promise;
             }
           },
@@ -109,24 +100,19 @@
             authenticate: true
           }
         })
-        .state('itemDetail',{
+        .state('poItemDetail',{
           url:'poDetail/:poNumber/items/:itemId',
-          templateUrl: 'js/routes/po/itemDetail.html',
-          controller:'itemDetailCtrl',
-          cache:false,
+          templateUrl: 'js/routes/po/poItemDetail.html',
+          controller:'poItemDetailCtrl',
           resolve:{
-            item:function($stateParams,restApi,$q,$ionicLoading){
+            POItemDetail:function($stateParams,POData,$q,$ionicLoading){
               var d = $q.defer();
               $ionicLoading.show({
                 template:'Loading...'
               });
 
               var route =  'sap/po/purchase_orders/'+$stateParams.poNumber+'/items/'+$stateParams.itemId;
-              var path ='';
-              var params = {
-                pageIndex : '1'
-              };
-              restApi.getData(route,path,params).then(function(response){
+              POData.getPOItemDetail($stateParams.poNumber,$stateParams.itemId).then(function(response){
                 d.resolve(response);
                 $ionicLoading.hide();
               });
@@ -138,28 +124,21 @@
             authenticate: true
           }
         })
-        .state('approveDetail',{
+        .state('poApproveDetail',{
           url:'approveDetail/:poNumber',
-          templateUrl:'js/routes/po/approveDetail.html',
-          controller:'approveDetailCtrl',
+          templateUrl:'js/routes/po/poApproveDetail.html',
+          controller:'poApproveDetailCtrl',
           cache:false,
           resolve:{
-            poApprove:function($q,$ionicLoading,restApi,$stateParams){
+            poApprove:function($q,$ionicLoading,POData,$stateParams){
               var d = $q.defer();
               $ionicLoading.show({
                 template:'Loading...'
               });
-
-              var route =  'sap/po/purchase_orders/'+$stateParams.poNumber;
-              var path ='';
-              var params = {
-                pageIndex : '1'
-              };
-              restApi.getData(route,path,params).then(function(response){
+              POData.getPODetail($stateParams.poNumber).then(function(response){
                 d.resolve(response);
                 $ionicLoading.hide();
               });
-
               return d.promise;
             }
           },

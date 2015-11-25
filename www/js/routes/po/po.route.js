@@ -78,7 +78,6 @@
           url:'poDetail/:poNumber/items',
           templateUrl: 'js/routes/po/poItems.html',
           controller:'POItemsCtrl',
-          cache:false,
           resolve:{
             POItemList:function($stateParams,POData,$q,$ionicLoading){
               var d = $q.defer();
@@ -105,7 +104,6 @@
           url:'poDetail/:poNumber/items/:itemId',
           templateUrl: 'js/routes/po/poItemDetail.html',
           controller:'poItemDetailCtrl',
-          cache:false,
           resolve:{
             POItemDetail:function($stateParams,POData,$q,$ionicLoading){
               var d = $q.defer();
