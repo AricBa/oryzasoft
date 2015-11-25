@@ -7,9 +7,8 @@
   <ion-content class="has-header2" has-header="true" padding="true">
 
     <!--<div class="item item-text-wrap" >-->
-    <div class="flex-container wrap" ng-repeat="(key,value) in POItemDetail" ng-show = "value">
-      <div class="column bodyFont1" >{{key}}</div>
-      <div class="column1  bodyFont2" >{{value}}</div>
+    <div class="list" ng-repeat="(key,value) in POItemDetail" ng-if = "value">
+      <div class="item" ><h3>{{key}}:{{value}}</h3></div>
     </div>
 
     <!--</div>-->
