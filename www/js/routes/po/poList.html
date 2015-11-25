@@ -5,9 +5,8 @@
 
     <div class="button-bar">
       <a class="button" bindonce ng-repeat="btn in listButtonBar"  ng-class="{'button-positive': btn===selected}"
-         ng-click="swithPage(btn)"
-         onselect="btn===selected"
-         eat-click-if="btn===selected">
+         ng-click="btn!==selected && swithPage(btn)"
+         onselect="btn===selected">
         {{btn}}
       </a>
     </div>
