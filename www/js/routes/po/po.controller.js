@@ -10,6 +10,9 @@
       var path ='';
       $scope.listButtonBar = ["UnApproved", "Approved"];
       $scope.swithPage = function(button){
+        $ionicLoading.show({
+          template: 'Loading...'
+        });
           if(button == "UnApproved"){
             var params = {
               pageIndex : '1',
@@ -29,6 +32,7 @@
             $scope.page = response.pageIndex;
             $scope.pageSize = response.pageSize;
             console.log(response);
+            $ionicLoading.hide();
           });
       };
 
@@ -175,7 +179,7 @@
       };
 
       $scope.goToApproveDetail = function(){
-        $state.go('approveDetail',{poNumber:$scope.PODetail.PO_NUMBER});
+        $state.go('poApproveDetail',{poNumber:$scope.PODetail.PO_NUMBER});
       };
 
       if ($scope.PODetail.DM_STATUS == 1 || $scope.PODetail.DM_STATUS == 5){
