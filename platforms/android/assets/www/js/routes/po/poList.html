@@ -1,0 +1,35 @@
+<ion-view>
+  <ion-content>
+
+    <ion-refresher on-refresh="refresh()"></ion-refresher>
+
+    <div class="button-bar">
+      <a class="button" bindonce ng-repeat="btn in listButtonBar"  ng-class="{'button-positive': btn===selected}"
+         ng-click="btn!==selected && swithPage(btn)"
+         onselect="btn===selected">
+        {{btn}}
+      </a>
+    </div>
+
+    <div ng-if="results===''" class="center">
+      <p>no data</p>
+    </div>
+
+    <div ng-if="note !== ''" class="center">
+      <p>{{note}}</p>
+    </div>
+
+    <div ng-if="message==='create Task' && note === ''" class="center">
+      <p><h3>Getting data from SAP, wait from message!</h3></p>
+    </div>
+
+    <div ng-if="results !==''" >
+      <ng-include src="'js/routes/po/poListPart.html'">
+      </ng-include>
+    </div>
+
+    <ion-infinite-scroll ng-if="isMoreData()" on-infinite="loadMoreData()" distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>
+

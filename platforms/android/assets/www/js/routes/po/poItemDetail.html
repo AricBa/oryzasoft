@@ -1,0 +1,16 @@
+<ion-view>
+  <ion-nav-title>Item Detail</ion-nav-title>
+
+  <ion-header-bar class="bar-positive bar-header2">
+
+  </ion-header-bar>
+  <ion-content class="has-header2" has-header="true" padding="true">
+
+    <!--<div class="item item-text-wrap" >-->
+    <div class="list" ng-repeat="(key,value) in POItemDetail" ng-if = "value">
+      <div class="item" ><h3>{{key}}:{{value}}</h3></div>
+    </div>
+
+    <!--</div>-->
+  </ion-content>
+</ion-view>
