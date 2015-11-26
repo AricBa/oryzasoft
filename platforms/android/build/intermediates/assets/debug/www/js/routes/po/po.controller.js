@@ -5,7 +5,13 @@
   'use strict';
   angular
     .module('app.po')
-    .controller('poListCtrl', function($scope,poList,$state,POData,$ionicLoading) {
+    .controller('poListCtrl', function($scope,poList,$state,POData,$rootScope,$ionicLoading) {
+      $scope.results = poList.results;
+      $scope.count = poList.totalCount;
+      $scope.page = poList.pageIndex;
+      $scope.pageSize = poList.pageSize;
+      $scope.message = poList.message;
+
       $scope.selected = "UnApproved";
       var path ='';
       $scope.listButtonBar = ["UnApproved", "Approved"];
@@ -35,11 +41,6 @@
             $ionicLoading.hide();
           });
       };
-
-      $scope.results = poList.results;
-      $scope.count = poList.totalCount;
-      $scope.page = poList.pageIndex;
-      $scope.pageSize = poList.pageSize;
 
 
       $scope.goDetail = function(index){
@@ -95,6 +96,8 @@
             $scope.count = response.totalCount;
             $scope.page = response.pageIndex;
             $scope.pageSize = response.pageSize;
+            $scope.message = response.message;
+            $rootScope.note ='';
           }).finally(function(){
             console.log('$scope.refresh');
             $scope.$broadcast('scroll.refreshComplete');

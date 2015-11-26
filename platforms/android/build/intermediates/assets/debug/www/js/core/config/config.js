@@ -33,7 +33,7 @@
     }
 
     /* @ngInject */
-    function onRun($ionicPlatform, $rootScope, $location, Authentication) {
+    function onRun($ionicPlatform, $rootScope, $location, Authentication,localStorageService,$state) {
         $ionicPlatform.ready(function() {
             // save user profile details to $rootScope
             $rootScope.me = Authentication.getCurrentUser();
@@ -55,12 +55,11 @@
                     $location.path('/#/signin');
                 }
             });
-
-            $rootScope.newMessage = '';
+            $rootScope.note = '';
         });
 
         function onDeviceReady() {
-            alert("deviceID:" + device.uuid);
+            //alert("deviceID:" + device.uuid);
             //alert(device.version);
 
             window.plugins.jPushPlugin.init();
@@ -83,8 +82,14 @@
                 }else{
                     alertContent   = event.aps.alert;
                 }
-                alert("open Notification:"+alertContent);
-
+                var notification = alertContent.split(" ");
+                if(notification[0] == "poList"){
+                    $state.go('sideMenu.poList');
+                    $rootScope.note ='';
+                    $rootScope.$apply($rootScope.note);
+                }else{
+                    $state.go('poApproveDetail',{poNumber:notification[0]},{reload:true});
+                }
             }
             catch(exception){
                 console.log("JPushPlugin:openNotification-->"+exception);
@@ -95,17 +100,22 @@
 
         var onReceiveNotification = function(event){
             try{
-                var alertContent
+                var alertContent;
                 if(device.platform == "Android"){
                     alertContent = window.plugins.jPushPlugin.receiveNotification.alert;
                 }else{
                     alertContent   = event.aps.alert;
                 }
-                alert("open Notification:"+alertContent);
+                //alert("open Notification:"+alertContent);
                 if(window.plugins.jPushPlugin.isPlatformIOS()){
                     window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
                 }
-
+                var notification = alertContent.split(" ");
+                if(notification[0] == "poList"){
+                    $rootScope.note = 'poList get success, please refesh the list';
+                    $rootScope.$apply($rootScope.note);
+                }
+                localStorageService.set('message',alertContent);
             }
             catch(exception){
                 console.log("JPushPlugin:receiveNotification-->"+exception);
@@ -116,13 +126,13 @@
 
         var onReceiveMessage = function(event){
             try{
-                var message
+                var message;
                 if(device.platform == "Android"){
                     message = window.plugins.jPushPlugin.receiveMessage.message;
                 }else{
                     message   = event.content;
                 }
-                alert(message);
+                alert("receive message:"+ message);
             }
             catch(exception){
                 console.log("JPushPlugin:onReceiveMessage-->"+exception);

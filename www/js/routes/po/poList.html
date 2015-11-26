@@ -10,10 +10,17 @@
         {{btn}}
       </a>
     </div>
-    <div ng-if = "newMessage !== ''">NEW MESSAGE</div>
 
-    <div ng-show="results===''" class="center">
+    <div ng-if="results===''" class="center">
       <p>no data</p>
+    </div>
+
+    <div ng-if="note !== ''" class="center">
+      <p>{{note}}</p>
+    </div>
+
+    <div ng-if="message==='create Task' && note === ''" class="center">
+      <p><h3>Getting data from SAP, wait from message!</h3></p>
     </div>
 
     <div ng-if="results !==''" >

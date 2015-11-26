@@ -1,21 +1,13 @@
 <ion-view>
 
-  <ion-nav-bar class="bar-positive nav-title-slide-ios7" align-title=" left">
-    <ion-nav-title>Approve Detail</ion-nav-title>
+  <ion-nav-title>Approve Detail</ion-nav-title>
 
-    <ion-nav-back-button>
-    </ion-nav-back-button>
-  </ion-nav-bar>
   <ion-header-bar class="bar-positive bar-header2">
     <div class="row row-top">
       <div class="col ">
         <h3>{{approveStatus}}</h3>
       </div>
     </div>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
     <div class="row">
       <div class="col">
         <h2>{{ results.TARGET_VAL | currency:results.CURRENCY_ISO}}</h2>
@@ -46,6 +38,9 @@
           <div class="col" ng-if="results.DM_STATUS == 5 || results.DM_STATUS == 6"><h3>approving</h3></div>
           <div class="col" ng-if="results.DM_STATUS == 6 "><h3>Resetted</h3></div>
         </div>
+      </li>
+      <li class="item">
+        <button ng-click="goBack()">Back</button>
       </li>
     </ul>
     <!--<ion-item class="flex-container wrap">-->

@@ -16,7 +16,7 @@
           },
           cache : false,
           resolve: {/* @ngInject */
-            poList: function(POData,$q,$ionicLoading){
+            poList: function(POData,$q,$ionicLoading,$timeout){
               var d = $q.defer();
               $ionicLoading.show({
                 template:'Loading...'

@@ -35,6 +35,15 @@
             authenticate: true
           }
         })
+        .state('message',{
+          url: '/message',
+          templateUrl: 'js/routes/user/message.html',
+          controller: 'messageCtrl',
+          cache:false,
+          data: {
+            authenticate: true
+          }
+        })
         .state('addsapaccount', {
           url: '/addsapaccount',
           templateUrl: 'js/routes/user/addsapaccount.html',

@@ -44,4 +44,7 @@
     .controller('aboutCtrl',function(){
 
     })
+    .controller('messageCtrl',function($scope,localStorageService){
+      $scope.messages = localStorageService.get('message');
+    })
 })();
