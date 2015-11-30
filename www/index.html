@@ -26,9 +26,15 @@
 
         <ion-nav-bar class="bar-positive nav-title-slide-ios7" align-title=" left">
             <ion-nav-back-button></ion-nav-back-button>
+            <!--<ion-nav-buttons side="left">-->
+
+                <!--<button ng-if="$root.showCustomBack" ng-click="$root.goBack()"-->
+                        <!--class=" button-icon button-clear  button-small nav-left-button ion-ios-arrow-left">-->
+                <!--</button>-->
+            <!--</ion-nav-buttons>-->
         </ion-nav-bar>
 
-        <ion-nav-view></ion-nav-view>
+        <ion-nav-view animation="slide-left-right-ios7"></ion-nav-view>
 
         <!-- ionic/angularjs js -->
         <script src="lib/ionic/js/ionic.bundle.js"></script>

@@ -37,6 +37,7 @@
             $scope.count = response.totalCount;
             $scope.page = response.pageIndex;
             $scope.pageSize = response.pageSize;
+            $scope.message = response.message;
             console.log(response);
             $ionicLoading.hide();
           });
