@@ -38,6 +38,7 @@
             $scope.page = response.pageIndex;
             $scope.pageSize = response.pageSize;
             $scope.message = response.message;
+            $rootScope.note ='';
             console.log(response);
             $ionicLoading.hide();
           });

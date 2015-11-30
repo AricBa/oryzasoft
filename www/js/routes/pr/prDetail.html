@@ -12,7 +12,7 @@
   </ion-nav-bar>
 
   <ion-content padding="true">
-    <ion-item ng-repeat="pr in results" bindonce
+    <ion-item collection-repeat="pr in results" bindonce
               class="item-text-wrap" ui-sref = "prItemDetail({purchaseRequisitionID : pr.PREQ_NO, itemID : pr.PREQ_ITEM})">
       <div class=" bodyFont2">ITEM: {{ pr.PREQ_ITEM}}</div>
       <div class=" bodyFont1">{{ pr.C_AMT_BAPI }}

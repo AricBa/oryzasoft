@@ -8,7 +8,7 @@
 
     <ion-list can-swipe="true">
       <ion-item class="item item-icon-right "
-                bindonce ng-repeat="item in results" ng-click="goDetail(item.PO_ITEM)">
+                bindonce collection-repeat="item in results" ng-click="goDetail(item.PO_ITEM)">
         <h2>{{ item.PO_ITEM}} {{ item.PUR_MAT}}</h2>
         <p>{{ item.NET_PRICE}} {{ item.DISP_QUAN}}</p>
         {{ item.SHORT_TEXT}}
