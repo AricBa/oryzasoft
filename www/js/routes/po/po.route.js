@@ -9,7 +9,7 @@
         .state('sideMenu.poList', {
           url: '/po',
           views:{
-            'po':{
+            'list':{
               templateUrl: 'js/routes/po/poList.html',
               controller: 'poListCtrl'
             }

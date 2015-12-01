@@ -1,4 +1,22 @@
 <ion-view>
+  <ion-nav-bar class="bar-positive">
+
+    <ion-nav-buttons side="left">
+
+      <button ng-click="goBack()"
+              class=" button-icon button-clear  button-small nav-left-button ion-ios-arrow-left">
+      </button>
+
+    </ion-nav-buttons>
+
+    <ion-nav-title>Po  List</ion-nav-title>
+
+    <ion-nav-buttons side="right">
+      <button class="button button-icon " menu-toggle="right">
+        Filter
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
   <ion-content>
     <ion-refresher on-refresh="refresh()" pulling-text="refresh"></ion-refresher>
 
@@ -10,7 +28,7 @@
       </a>
     </div>
 
-    <div ng-if="results===''" class="center">
+    <div ng-if="count == 0" class="center">
       <p>no data</p>
     </div>
 
@@ -18,13 +36,13 @@
       <p>{{note}}</p>
     </div>
 
-    <div ng-if="message==='create Task' && note === ''" class="center">
-      <p><h3>Getting data from SAP, wait for message!</h3></p>
-    </div>
-
-    <div ng-if="results !==''" >
+    <div ng-if="count !== 0" >
       <ng-include src="'js/routes/po/poListPart.html'">
       </ng-include>
+    </div>
+
+    <div ng-if="count !== 0 && !isMoreData()" class="center">
+      <p>no more data</p>
     </div>
 
     <ion-infinite-scroll ng-if="isMoreData()" on-infinite="loadMoreData()" distance="1%">

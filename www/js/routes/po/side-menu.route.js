@@ -10,7 +10,7 @@
         .state('sideMenu', {
           url: '',
           abstract: true,
-          cache:false,
+          cache: false,
           templateUrl: 'js/routes/po/side-menu.html',
           controller: 'sideMenuCtrl',
           data: {
