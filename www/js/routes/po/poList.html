@@ -1,7 +1,6 @@
 <ion-view>
   <ion-content>
-
-    <ion-refresher on-refresh="refresh()"></ion-refresher>
+    <ion-refresher on-refresh="refresh()" pulling-text="refresh"></ion-refresher>
 
     <div class="button-bar">
       <a class="button" bindonce ng-repeat="btn in listButtonBar"  ng-class="{'button-positive': btn===selected}"
@@ -20,7 +19,7 @@
     </div>
 
     <div ng-if="message==='create Task' && note === ''" class="center">
-      <p><h3>Getting data from SAP, wait from message!</h3></p>
+      <p><h3>Getting data from SAP, wait for message!</h3></p>
     </div>
 
     <div ng-if="results !==''" >

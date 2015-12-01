@@ -1,8 +1,10 @@
 <ion-view>
-  <ion-nav-bar class="bar-positive">
-    <ion-nav-back-button></ion-nav-back-button>
-    <ion-nav-title>Add company info</ion-nav-title>
-  </ion-nav-bar>
+  <ion-nav-buttons side="left">
+    <button ng-click="goBack()"
+            class=" button-icon button-clear  button-small nav-left-button ion-ios-arrow-left">
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-title>Add company info</ion-nav-title>
 
   <ion-content>
     <form name="companyForm" ng-submit="addCompanyInfo(companyEmail, signupForm.$valid)">

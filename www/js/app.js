@@ -35,21 +35,6 @@
         'app.user'
     ])
       .run(function ($rootScope, $state, $stateParams,$ionicLoading,$timeout) {
-        $rootScope.$state = $state;
-        $rootScope.$stateParams = $stateParams;
-        $rootScope.goBack = function () {
-          // function to go back
-          window.history.back();
-        };
-
-        $rootScope.$on('$stateChangeSuccess', function () {
-          if ($state.$current == 'home' || $state.$current == 'setting' || $state.$current=='poDetail') {
-            $rootScope.showCustomBack = false;
-          } else {
-            $rootScope.showCustomBack = true;
-          }
-        });
-
         $rootScope.$on('$cordovaNetwork:offline',function(){
             $ionicLoading.show({template:'network not connect'});
             $timeout(function(){

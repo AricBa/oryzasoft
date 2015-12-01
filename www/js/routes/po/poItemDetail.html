@@ -1,5 +1,10 @@
 <ion-view>
   <ion-nav-title>Item Detail</ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button ng-click="goBack()"
+            class=" button-icon button-clear  button-small nav-left-button ion-ios-arrow-left">
+    </button>
+  </ion-nav-buttons>
 
   <ion-header-bar class="bar-positive bar-header2">
 
@@ -7,8 +12,8 @@
   <ion-content class="has-header2" has-header="true" padding="true">
 
     <!--<div class="item item-text-wrap" >-->
-    <div class="list" collection-repeat="(key,value) in POItemDetail" ng-if = "value">
-      <div class="item" ><h3>{{key}}:{{value}}</h3></div>
+    <div class="list" ng-repeat="(key,value) in POItemDetail" ng-if = "value">
+      <div class="item" >{{key}}:{{value}}</div>
     </div>
 
     <!--</div>-->

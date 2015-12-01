@@ -1,8 +1,10 @@
 <ion-view class="signup-header" >
-    <ion-nav-bar class="bar-positive">
     <ion-nav-title>Sign up</ion-nav-title>
-        <ion-nav-back-button></ion-nav-back-button>
-        </ion-nav-bar>
+    <ion-nav-buttons side="left">
+        <button ng-click="goBack()"
+                class=" button-icon button-clear  button-small nav-left-button ion-ios-arrow-left">
+        </button>
+    </ion-nav-buttons>
     <ion-content scroll="false" layout="column" class="has-header md-padding">
         <form name="signupForm" ng-submit="signUp(user, signupForm.$valid)">
             <div class="list">

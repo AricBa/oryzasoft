@@ -212,26 +212,30 @@
         $state.go('poItemDetail',{poNumber:$stateParams.poNumber,itemId:index});
       };
 
-      $scope.isMoreData = function () {
-        //console.log($scope.page < ($scope.count / $scope.pageSize));
-        return $scope.page < ($scope.count / $scope.pageSize);
+      $scope.goBack = function(){
+        $state.go('poDetail',{poNumber:$stateParams.poNumber});
       };
 
-      $scope.loadMoreData = function(){
-        $scope.page++;
-        $scope.path ='';
-        $scope.params = {
-          pageIndex : $scope.page
-        };
-        POData.getPOItemList($stateParams.poNumber,$scope.path,$scope.params).then(function(response){
-          Array.prototype.push.apply($scope.results, response.results);
-          $scope.$broadcast('scroll.infiniteScrollComplete');
-          console.log($scope.results);
-        })
-      };
-      //$scope.$on('$stateChangeSuccess', function() {
-      //    $scope.loadMoreData();
-      //});
+      //$scope.isMoreData = function () {
+      //  //console.log($scope.page < ($scope.count / $scope.pageSize));
+      //  return $scope.page < ($scope.count / $scope.pageSize);
+      //};
+      //
+      //$scope.loadMoreData = function(){
+      //  $scope.page++;
+      //  $scope.path ='';
+      //  $scope.params = {
+      //    pageIndex : $scope.page
+      //  };
+      //  POData.getPOItemList($stateParams.poNumber,$scope.path,$scope.params).then(function(response){
+      //    Array.prototype.push.apply($scope.results, response.results);
+      //    $scope.$broadcast('scroll.infiniteScrollComplete');
+      //    console.log($scope.results);
+      //  })
+      //};
+      ////$scope.$on('$stateChangeSuccess', function() {
+      ////    $scope.loadMoreData();
+      ////});
 
       $scope.refresh = function(){
         $ionicLoading.show({
@@ -254,14 +258,21 @@
         });
       };
     })
-    .controller('poItemDetailCtrl', function(POItemDetail,$scope){
+    .controller('poItemDetailCtrl', function(POItemDetail,$scope,$state,$stateParams){
       $scope.POItemDetail = POItemDetail.results[0];
+
+      $scope.goBack = function(){
+        $state.go('poDetail',{poNumber:$stateParams.poNumber});
+      };
     })
-    .controller('poApproveDetailCtrl',function(poApprove,$scope,$state){
+    .controller('poApproveDetailCtrl',function(poApprove,$scope,$state,$stateParams){
         $scope.results = poApprove.results[0];
         console.log($scope.results);
-        $scope.goBack = function(){
+        $scope.goToList = function(){
            $state.go('sideMenu.poList');
+        };
+        $scope.goBack = function(){
+          $state.go('poDetail',{poNumber:$stateParams.poNumber});
         };
 
         if ($scope.results.DM_STATUS == 1 || $scope.results.DM_STATUS == 5){

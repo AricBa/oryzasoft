@@ -1,5 +1,10 @@
 <ion-view >
   <ion-nav-title>Approve Detail</ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button ng-click="goBack()"
+            class=" button-icon button-clear  button-small nav-left-button ion-ios-arrow-left">
+    </button>
+  </ion-nav-buttons>
 
   <ion-header-bar class="bar-positive bar-header2">
     <div class="row">
@@ -42,7 +47,7 @@
         </div>
       </li>
       <li class="item">
-        <button ng-click="goBack()">Back</button>
+        <button ng-click="goToList()">Back to list</button>
       </li>
     </ul>
     <!--<ion-item class="flex-container wrap">-->
