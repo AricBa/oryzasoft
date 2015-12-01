@@ -41,8 +41,10 @@
     .controller('userDetailCtrl',function(){
 
     })
-    .controller('aboutCtrl',function(){
-
+    .controller('aboutCtrl',function($scope,versionUpdate){
+      $scope.update = function(){
+        versionUpdate.checkUpdate();
+      }
     })
     .controller('messageCtrl',function($scope,localStorageService){
       $scope.messages = localStorageService.get('message');

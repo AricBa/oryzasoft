@@ -1,6 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.martinmicunda.photo-gallery" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
+    <feature name="JPushPlugin">
+        <param name="android-package" value="cn.jpush.phonegap.JPushPlugin" />
+    </feature>
     <feature name="Sms">
         <param name="android-package" value="com.cordova.plugins.sms.Sms" />
     </feature>
@@ -10,8 +13,16 @@
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
+    <preference name="webView" value="org.crosswalk.engine.XWalkWebViewEngine" />
+    <preference default="15+" name="xwalkVersion" />
+    <preference default="--disable-pull-to-refresh-effect" name="xwalkCommandLine" />
+    <preference default="embedded" name="xwalkMode" />
+    <preference default="true" name="xwalkMultipleApk" />
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="FileOpener2">
+        <param name="android-package" value="io.github.pwlin.cordova.plugins.fileopener2.FileOpener2" />
     </feature>
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
@@ -32,9 +43,6 @@
     </feature>
     <feature name="Badge">
         <param name="android-package" value="de.appplant.cordova.plugin.badge.Badge" />
-    </feature>
-    <feature name="JPushPlugin">
-        <param name="android-package" value="cn.jpush.phonegap.JPushPlugin" />
     </feature>
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
@@ -82,9 +90,8 @@
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
-    <preference name="webView" value="org.crosswalk.engine.XWalkWebViewEngine" />
-    <preference default="15+" name="xwalkVersion" />
-    <preference default="--disable-pull-to-refresh-effect" name="xwalkCommandLine" />
-    <preference default="embedded" name="xwalkMode" />
-    <preference default="true" name="xwalkMultipleApk" />
+    <preference name="xwalkVersion" value="15+" />
+    <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
+    <preference name="xwalkMode" value="embedded" />
+    <preference name="xwalkMultipleApk" value="true" />
 </widget>

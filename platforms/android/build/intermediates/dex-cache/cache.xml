@@ -2,18 +2,32 @@
 <items version="2" >
 
     <item
-        jar="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\classes.jar"
+        jar="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\exploded-aar\me.leolin\ShortcutBadger\1.1.2\classes.jar"
         jumboMode="false"
         revision="23.0.0"
-        sha1="23172288e27b129ded2bfbfd85cfecf09edf4430">
-        <dex dex="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\pre-dexed\debug\classes-9b991a9ab2e16c9637652d459eee569978f8ab08.jar" />
+        sha1="0ffefd088682a655f7af7f34b22fc21e6ee2e34b">
+        <dex dex="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\pre-dexed\armv7\debug\classes-dbf640eb8c4869c9c010b166b2ed621e3bb88768.jar" />
     </item>
     <item
         jar="C:\document\WebAPP\oryzasoft\platforms\android\libs\jpush-sdk-release1.7.5.jar"
         jumboMode="false"
         revision="23.0.0"
         sha1="c10bf1a834e7a2caa3832c29b530e1ae7cfad0a2">
-        <dex dex="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\pre-dexed\debug\jpush-sdk-release1.7.5-bb1d40748a4b3e0b6c5323c348c45e17751d9d15.jar" />
+        <dex dex="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\pre-dexed\armv7\debug\jpush-sdk-release1.7.5-bb1d40748a4b3e0b6c5323c348c45e17751d9d15.jar" />
+    </item>
+    <item
+        jar="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\exploded-aar\android\CordovaLib\unspecified\debug\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="479b900e99a5f8812074f5278bd215a9796968b8">
+        <dex dex="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\pre-dexed\armv7\debug\classes-9b991a9ab2e16c9637652d459eee569978f8ab08.jar" />
+    </item>
+    <item
+        jar="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\exploded-aar\org.xwalk\xwalk_core_library\15.44.384.13\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="97a83e6397160ac73bcea710022b1048437e5771">
+        <dex dex="C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\pre-dexed\armv7\debug\classes-6d8407f5a4fad2a2429de96377e6d71aa0deb021.jar" />
     </item>
 
 </items>

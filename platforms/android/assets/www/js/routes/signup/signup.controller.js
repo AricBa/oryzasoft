@@ -5,23 +5,27 @@
         .module('app.signup')
         .controller('SignupCtrl',function($location, $rootScope, customFunct,$state, Authentication, $scope,$ionicLoading) {
         $scope.user = {};
-          $scope.signUp = function(user, isValid) {
-            console.log(user);
-              $ionicLoading.show({
-                template:'sign up...'
-              });
-              if(!isValid) {return;}
-              Authentication.signup(user).then(function (response) {
-                $scope.message = 'Next step';
-                $ionicLoading.hide();
-                console.log(response);
-                $state.go('company',{email : user.email,password : user.password});
-              }, function(err) {
-                console.error('error' + err);
-                $ionicLoading.hide();
-                customFunct.myNotice(err.data.message);
-              });
-          };
+
+        $scope.goBack = function(){
+          $state.go('signin');
+        };
+        $scope.signUp = function(user, isValid) {
+          console.log(user);
+            $ionicLoading.show({
+              template:'sign up...'
+            });
+            if(!isValid) {return;}
+            Authentication.signup(user).then(function (response) {
+              $scope.message = 'Next step';
+              $ionicLoading.hide();
+              console.log(response);
+              $state.go('company',{email : user.email,password : user.password});
+            }, function(err) {
+              console.error('error' + err);
+              $ionicLoading.hide();
+              customFunct.myNotice(err.data.message);
+            });
+        };
         })
       .controller('companyCtrl',function($state,$scope,customFunct,$stateParams,Authentication,$ionicLoading){
         $scope.companyEmail = '';
@@ -50,6 +54,9 @@
         };
         $scope.goToExperience = function(){
           $state.go('experience');
+        };
+        $scope.goBack = function(){
+          $state.go('signup');
         };
       });
 })();

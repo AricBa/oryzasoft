@@ -6,11 +6,11 @@
   angular
     .module('app.po')
     .controller('poListCtrl', function($scope,poList,$state,POData,$rootScope,$ionicLoading) {
+      $scope.choice = '10';
       $scope.results = poList.results;
       $scope.count = poList.totalCount;
       $scope.page = poList.pageIndex;
       $scope.pageSize = poList.pageSize;
-      $scope.message = poList.message;
 
       $scope.selected = "UnApproved";
       var path ='';
@@ -37,141 +37,180 @@
             $scope.count = response.totalCount;
             $scope.page = response.pageIndex;
             $scope.pageSize = response.pageSize;
+            $rootScope.note ='';
             console.log(response);
             $ionicLoading.hide();
           });
+
+        $scope.$emit('changePage',button);
+        $scope.choice = '10';
       };
 
+      $scope.$on('choice',function(event,data) {
+        $scope.choice= data;
+        $scope.refresh();
+      });
 
       $scope.goDetail = function(index){
           $state.go('poDetail',{poNumber:index});
-        };
+      };
+      $scope.goBack =function(){
+        $state.go('home');
+      };
 
-        $scope.isMoreData = function () {
-          //console.log($scope.page < ($scope.count / $scope.pageSize));
-          return $scope.page < ($scope.count / $scope.pageSize);
-        };
+      $scope.isMoreData = function () {
+        //console.log($scope.page < ($scope.count / $scope.pageSize));
+        return $scope.page < ($scope.count / $scope.pageSize);
+      };
 
-        $scope.loadMoreData = function(){
-          $scope.page++;
+      $scope.loadMoreData = function(){
+        $scope.page++;
 
-          $scope.path ='';
-          if($scope.selected == "UnApproved"){
-            $scope.params = {
-              pageIndex : $scope.page,
-              filter:"0,6"
-            };
-          }else {
-            $scope.params = {
-              pageIndex : $scope.page,
-              filter:"1,3,5"
-            };
-          }
-          POData.getPOList($scope.path,$scope.params).then(function(response){
-            Array.prototype.push.apply($scope.results, response.results);
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-            console.log($scope.results);
-          })
-        };
-
-        $scope.refresh = function(){
-          $ionicLoading.show({
-            template: 'Loading...'
-          });
-          $scope.path ='';
-
-          if($scope.selected == "UnApproved"){
+        $scope.path ='';
+        if($scope.selected == "UnApproved"){
+          if($scope.choice == '10'){
             $scope.params = {
               pageIndex : '1',
-              filter:"0,6"
+              filter : "0,6"
             };
-          }else {
-            $scope.params = {
-              pageIndex : '1',
-              filter:"1,3,5"
-            };
-          }
-          POData.getPOList($scope.path,$scope.params).then(function(response){
-            $scope.results= response.results;
-            $scope.count = response.totalCount;
-            $scope.page = response.pageIndex;
-            $scope.pageSize = response.pageSize;
-            $scope.message = response.message;
-            $rootScope.note ='';
-          }).finally(function(){
-            console.log('$scope.refresh');
-            $scope.$broadcast('scroll.refreshComplete');
-            $ionicLoading.hide();
-          });
-        };
-
-        $scope.$on('refresh',function(){
-          if($scope.$parent.status && $scope.selected == "UnApproved"){
-            if($scope.$parent.status == '0' || $scope.$parent.status == '6'){
-              $ionicLoading.show({
-                template: 'Loading...'
-              });
-              $scope.path ='';
-              $scope.stat = '';
-              $scope.stat = $scope.$parent.status;
-              $scope.params = {
-                pageIndex : '1',
-                filter: $scope.stat
-              };
-
-              POData.getPOList($scope.path,$scope.params).then(function(response){
-                $scope.results= response.results;
-                $scope.count = response.totalCount;
-                $scope.page = response.pageIndex;
-                $scope.pageSize = response.pageSize;
-              }).finally(function(){
-                $scope.stat = '';
-                console.log('$scope.refresh');
-                $scope.$broadcast('scroll.refreshComplete');
-                $ionicLoading.hide();
-              });
-            }else{
-              $scope.results= '';
-              $scope.count = '';
-              $scope.page = '';
-              $scope.pageSize = '';
-            }
-          }else if($scope.$parent.status && $scope.selected == "Approved") {
-            if ($scope.$parent.status == '1,5' || $scope.$parent.status == '3') {
-
-              $ionicLoading.show({
-                template: 'Loading...'
-              });
-              $scope.path = '';
-              $scope.stat = '';
-              $scope.stat = $scope.$parent.status;
-
-              $scope.params = {
-                pageIndex: '1',
-                filter: $scope.stat
-              };
-
-              POData.getPOList($scope.path, $scope.params).then(function (response) {
-                $scope.results = response.results;
-                $scope.count = response.totalCount;
-                $scope.page = response.pageIndex;
-                $scope.pageSize = response.pageSize;
-              }).finally(function () {
-                $scope.stat = '';
-                console.log('$scope.refresh');
-                $scope.$broadcast('scroll.refreshComplete');
-                $ionicLoading.hide();
-              });
-            } else {
-              $scope.results= '';
-              $scope.count = '';
-              $scope.page = '';
-              $scope.pageSize = '';
-            }
           }else{
-            $scope.refresh();
+            $scope.params = {
+              pageIndex : '1',
+              filter : $scope.choice
+            };
           }
+        }else {
+          if($scope.choice == '10'){
+            $scope.params = {
+              pageIndex : '1',
+              filter : "1,3,5"
+            };
+          }else{
+            $scope.params = {
+              pageIndex : '1',
+              filter : $scope.choice
+            };
+          }
+        }
+        POData.getPOList($scope.path,$scope.params).then(function(response){
+          Array.prototype.push.apply($scope.results, response.results);
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+          console.log($scope.results);
         })
+      };
+
+      $scope.refresh = function(){
+        $ionicLoading.show({
+          template: 'Loading...'
+        });
+        $scope.path ='';
+
+        if($scope.selected == "UnApproved"){
+          if($scope.choice == '10'){
+            $scope.params = {
+              pageIndex : '1',
+              filter : "0,6"
+            };
+          }else{
+            $scope.params = {
+              pageIndex : '1',
+              filter : $scope.choice
+            };
+          }
+        }else {
+          if($scope.choice == '10'){
+            $scope.params = {
+              pageIndex : '1',
+              filter : "1,3,5"
+            };
+          }else{
+            $scope.params = {
+              pageIndex : '1',
+              filter : $scope.choice
+            };
+          }
+        }
+        POData.getPOList($scope.path,$scope.params).then(function(response){
+          $scope.results= response.results;
+          $scope.count = response.totalCount;
+          $scope.page = response.pageIndex;
+          $scope.pageSize = response.pageSize;
+          $rootScope.note ='';
+          console.log(response);
+        }).finally(function(){
+          console.log('$scope.refresh');
+          $scope.$broadcast('scroll.refreshComplete');
+          $ionicLoading.hide();
+        });
+      };
+
+      //$scope.$on('refresh',function(){
+      //  if($scope.$parent.status && $scope.selected == "UnApproved"){
+      //    if($scope.$parent.status == '0' || $scope.$parent.status == '6'){
+      //      $ionicLoading.show({
+      //        template: 'Loading...'
+      //      });
+      //      $scope.path ='';
+      //      $scope.stat = '';
+      //      $scope.stat = $scope.$parent.status;
+      //      $scope.params = {
+      //        pageIndex : '1',
+      //        filter: $scope.stat
+      //      };
+      //
+      //      POData.getPOList($scope.path,$scope.params).then(function(response){
+      //        $scope.results= response.results;
+      //        $scope.count = response.totalCount;
+      //        $scope.page = response.pageIndex;
+      //        $scope.pageSize = response.pageSize;
+      //      }).finally(function(){
+      //        $scope.stat = '';
+      //        console.log('$scope.refresh');
+      //        $scope.$broadcast('scroll.refreshComplete');
+      //        $ionicLoading.hide();
+      //      });
+      //    }else{
+      //      $scope.results= '';
+      //      $scope.count = '';
+      //      $scope.page = '';
+      //      $scope.pageSize = '';
+      //    }
+      //  }else if($scope.$parent.status && $scope.selected == "Approved") {
+      //    if ($scope.$parent.status == '1,5' || $scope.$parent.status == '3') {
+      //
+      //      $ionicLoading.show({
+      //        template: 'Loading...'
+      //      });
+      //      $scope.path = '';
+      //      $scope.stat = '';
+      //      $scope.stat = $scope.$parent.status;
+      //
+      //      $scope.params = {
+      //        pageIndex: '1',
+      //        filter: $scope.stat
+      //      };
+      //
+      //      POData.getPOList($scope.path, $scope.params).then(function (response) {
+      //        $scope.results = response.results;
+      //        $scope.count = response.totalCount;
+      //        $scope.page = response.pageIndex;
+      //        $scope.pageSize = response.pageSize;
+      //      }).finally(function () {
+      //        $scope.stat = '';
+      //        console.log('$scope.refresh');
+      //        $scope.$broadcast('scroll.refreshComplete');
+      //        $ionicLoading.hide();
+      //      });
+      //    } else {
+      //      $scope.results= '';
+      //      $scope.count = '';
+      //      $scope.page = '';
+      //      $scope.pageSize = '';
+      //    }
+      //  }else{
+      //    $scope.refresh();
+      //  }
+      //})
     })
     .controller('poDetailCtrl',function(PODetail,$scope,$state){
       $scope.PODetail = PODetail[0].results[0];
@@ -210,26 +249,30 @@
         $state.go('poItemDetail',{poNumber:$stateParams.poNumber,itemId:index});
       };
 
-      $scope.isMoreData = function () {
-        //console.log($scope.page < ($scope.count / $scope.pageSize));
-        return $scope.page < ($scope.count / $scope.pageSize);
+      $scope.goBack = function(){
+        $state.go('poDetail',{poNumber:$stateParams.poNumber});
       };
 
-      $scope.loadMoreData = function(){
-        $scope.page++;
-        $scope.path ='';
-        $scope.params = {
-          pageIndex : $scope.page
-        };
-        POData.getPOItemList($stateParams.poNumber,$scope.path,$scope.params).then(function(response){
-          Array.prototype.push.apply($scope.results, response.results);
-          $scope.$broadcast('scroll.infiniteScrollComplete');
-          console.log($scope.results);
-        })
-      };
-      //$scope.$on('$stateChangeSuccess', function() {
-      //    $scope.loadMoreData();
-      //});
+      //$scope.isMoreData = function () {
+      //  //console.log($scope.page < ($scope.count / $scope.pageSize));
+      //  return $scope.page < ($scope.count / $scope.pageSize);
+      //};
+      //
+      //$scope.loadMoreData = function(){
+      //  $scope.page++;
+      //  $scope.path ='';
+      //  $scope.params = {
+      //    pageIndex : $scope.page
+      //  };
+      //  POData.getPOItemList($stateParams.poNumber,$scope.path,$scope.params).then(function(response){
+      //    Array.prototype.push.apply($scope.results, response.results);
+      //    $scope.$broadcast('scroll.infiniteScrollComplete');
+      //    console.log($scope.results);
+      //  })
+      //};
+      ////$scope.$on('$stateChangeSuccess', function() {
+      ////    $scope.loadMoreData();
+      ////});
 
       $scope.refresh = function(){
         $ionicLoading.show({
@@ -252,14 +295,21 @@
         });
       };
     })
-    .controller('poItemDetailCtrl', function(POItemDetail,$scope){
+    .controller('poItemDetailCtrl', function(POItemDetail,$scope,$state,$stateParams){
       $scope.POItemDetail = POItemDetail.results[0];
+
+      $scope.goBack = function(){
+        $state.go('poDetail',{poNumber:$stateParams.poNumber});
+      };
     })
-    .controller('poApproveDetailCtrl',function(poApprove,$scope,$state){
+    .controller('poApproveDetailCtrl',function(poApprove,$scope,$state,$stateParams){
         $scope.results = poApprove.results[0];
         console.log($scope.results);
-        $scope.goBack = function(){
+        $scope.goToList = function(){
            $state.go('sideMenu.poList');
+        };
+        $scope.goBack = function(){
+          $state.go('poDetail',{poNumber:$stateParams.poNumber});
         };
 
         if ($scope.results.DM_STATUS == 1 || $scope.results.DM_STATUS == 5){

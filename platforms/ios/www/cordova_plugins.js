@@ -131,6 +131,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-file-opener2/www/plugins.FileOpener2.js",
+        "id": "cordova-plugin-file-opener2.FileOpener2",
+        "clobbers": [
+            "cordova.plugins.fileOpener2"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -285,9 +292,9 @@ module.exports.metadata =
     "cordova-plugin-device": "1.0.1",
     "cordova-plugin-network-information": "1.0.1",
     "de.appplant.cordova.plugin.badge": "0.7.1",
-    "cordova-plugin-whitelist": "1.0.0",
+    "cordova-plugin-whitelist": "1.2.0",
     "cordova-plugin-inappbrowser": "1.0.1",
-    "cordova-plugin-splashscreen": "2.1.0",
+    "cordova-plugin-splashscreen": "3.0.0",
     "cordova-plugin-x-socialsharing": "5.0.7",
     "com.cordova.plugins.sms": "0.1.6",
     "com.verso.cordova.clipboard": "0.1.0",
@@ -295,6 +302,7 @@ module.exports.metadata =
     "org.apache.cordova.dialogs": "0.3.0",
     "org.apache.cordova.file-transfer": "0.5.0",
     "cordova-plugin-crosswalk-webview": "1.4.0",
+    "cordova-plugin-file-opener2": "2.0.2",
     "de.appplant.cordova.common.registerusernotificationsettings": "1.0.1",
     "org.apache.cordova.file": "1.3.3"
 }

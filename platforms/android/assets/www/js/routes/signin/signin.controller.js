@@ -48,7 +48,7 @@
           $state.go('experience');
         }
       })
-      .controller('forgetPasswordCtrl',function($scope,customFunct,Authentication,$ionicLoading){
+      .controller('forgetPasswordCtrl',function($scope,customFunct,$state,Authentication,$ionicLoading){
         $scope.email = '';
         $scope.getPassword = function(email,isValid){
           var params = {
@@ -69,6 +69,9 @@
 
           })
         };
+        $scope.goBack = function(){
+          $state.go('signin');
+        };
       })
       .controller('experienceCtrl',function($scope,customFunct,Authentication,$state,$ionicLoading){
         $scope.user = {};
@@ -88,7 +91,9 @@
              $ionicLoading.hide();
            });
          };
-
+        $scope.goBack = function(){
+          $state.go('signin');
+        };
         $scope.startExperience = function(user){
           console.log(user);
           var params = {

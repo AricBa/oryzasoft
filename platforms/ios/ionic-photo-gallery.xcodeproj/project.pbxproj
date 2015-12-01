@@ -79,6 +79,7 @@
 		714A837E7E004BE09291465D /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4379F8A158482B827DC9E9 /* CDVAssetLibraryFilesystem.m */; };
 		14285F2A02C844C1A8C50192 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DB05D9867A4B4B96BF030D /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		1B4F6000F49D41E08B9C089E /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BED82B5D53F4CDA86A1ACF2 /* CDVFileTransfer.m */; };
+		85F1336769A84326B3BFEBA0 /* FileOpener2.m in Sources */ = {isa = PBXBuildFile; fileRef = C74E474E0AE0424D9825F838 /* FileOpener2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +208,8 @@
 		99DB05D9867A4B4B96BF030D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 		2BED82B5D53F4CDA86A1ACF2 /* CDVFileTransfer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVFileTransfer.m"; path = "org.apache.cordova.file-transfer/CDVFileTransfer.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		5AFD94A206CD405BB1AB6EE2 /* CDVFileTransfer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVFileTransfer.h"; path = "org.apache.cordova.file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		C74E474E0AE0424D9825F838 /* FileOpener2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "FileOpener2.m"; path = "cordova-plugin-file-opener2/FileOpener2.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		424C9790BBF14FE3AB52BD16 /* FileOpener2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FileOpener2.h"; path = "cordova-plugin-file-opener2/FileOpener2.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,6 +388,8 @@
 				2305B10609FE4E7BBBB83F7F /* CDVAssetLibraryFilesystem.h */,
 				2BED82B5D53F4CDA86A1ACF2 /* CDVFileTransfer.m */,
 				5AFD94A206CD405BB1AB6EE2 /* CDVFileTransfer.h */,
+				C74E474E0AE0424D9825F838 /* FileOpener2.m */,
+				424C9790BBF14FE3AB52BD16 /* FileOpener2.h */,
 			);
 			name = Plugins;
 			path = "ionic-photo-gallery/Plugins";
@@ -607,6 +612,7 @@
 				7ACFB1F141754F39B4B2611F /* CDVLocalFilesystem.m in Sources */,
 				714A837E7E004BE09291465D /* CDVAssetLibraryFilesystem.m in Sources */,
 				1B4F6000F49D41E08B9C089E /* CDVFileTransfer.m in Sources */,
+				85F1336769A84326B3BFEBA0 /* FileOpener2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

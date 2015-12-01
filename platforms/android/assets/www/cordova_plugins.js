@@ -1,6 +1,13 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "file": "plugins/cn.jpush.phonegap.JPushPlugin/www/JPushPlugin.js",
+        "id": "cn.jpush.phonegap.JPushPlugin.JPushPlugin",
+        "clobbers": [
+            "window.plugins.jPushPlugin"
+        ]
+    },
+    {
         "file": "plugins/com.cordova.plugins.sms/www/sms.js",
         "id": "com.cordova.plugins.sms.Sms",
         "clobbers": [
@@ -47,6 +54,13 @@ module.exports = [
         "id": "cordova-plugin-device.device",
         "clobbers": [
             "device"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-file-opener2/www/plugins.FileOpener2.js",
+        "id": "cordova-plugin-file-opener2.FileOpener2",
+        "clobbers": [
+            "cordova.plugins.fileOpener2"
         ]
     },
     {
@@ -97,13 +111,6 @@ module.exports = [
         "clobbers": [
             "plugin.notification.badge",
             "cordova.plugins.notification.badge"
-        ]
-    },
-    {
-        "file": "plugins/cn.jpush.phonegap.JPushPlugin/www/JPushPlugin.js",
-        "id": "cn.jpush.phonegap.JPushPlugin.JPushPlugin",
-        "clobbers": [
-            "window.plugins.jPushPlugin"
         ]
     },
     {
@@ -292,23 +299,24 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
+    "cn.jpush.phonegap.JPushPlugin": "2.0.2",
     "com.cordova.plugins.sms": "0.1.6",
     "com.verso.cordova.clipboard": "0.1.0",
     "cordova-plugin-camera": "1.2.0",
-    "cordova-plugin-device": "1.0.1",
-    "cordova-plugin-inappbrowser": "1.0.1",
-    "cordova-plugin-network-information": "1.0.1",
-    "cordova-plugin-splashscreen": "2.1.0",
-    "cordova-plugin-whitelist": "1.0.0",
+    "cordova-plugin-crosswalk-webview": "1.4.0",
+    "cordova-plugin-device": "1.1.0",
+    "cordova-plugin-file-opener2": "2.0.2",
+    "cordova-plugin-inappbrowser": "1.1.0",
+    "cordova-plugin-network-information": "1.1.0",
+    "cordova-plugin-splashscreen": "3.0.0",
+    "cordova-plugin-whitelist": "1.2.0",
     "cordova-plugin-x-socialsharing": "5.0.7",
     "de.appplant.cordova.common.registerusernotificationsettings": "1.0.1",
     "de.appplant.cordova.plugin.badge": "0.7.1",
-    "cn.jpush.phonegap.JPushPlugin": "2.0.2",
     "org.apache.cordova.dialogs": "0.3.0",
     "org.apache.cordova.file": "1.3.3",
     "org.apache.cordova.file-transfer": "0.5.0",
-    "org.apache.cordova.vibration": "0.3.13",
-    "cordova-plugin-crosswalk-webview": "1.4.0"
+    "org.apache.cordova.vibration": "0.3.13"
 }
 // BOTTOM OF METADATA
 });

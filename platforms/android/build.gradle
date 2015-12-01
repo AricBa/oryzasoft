@@ -97,6 +97,7 @@ ext {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "cordova-plugin-crosswalk-webview/photo_gallery-xwalk.gradle"
+apply from: "de.appplant.cordova.plugin.badge/photo_gallery-badge.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()

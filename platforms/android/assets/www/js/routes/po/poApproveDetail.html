@@ -1,16 +1,23 @@
-<ion-view>
-
+<ion-view >
   <ion-nav-title>Approve Detail</ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button ng-click="goBack()"
+            class=" button-icon button-clear  button-small nav-left-button ion-ios-arrow-left">
+    </button>
+  </ion-nav-buttons>
 
   <ion-header-bar class="bar-positive bar-header2">
-    <div class="row row-top">
-      <div class="col ">
-        <h3>{{approveStatus}}</h3>
-      </div>
-    </div>
     <div class="row">
-      <div class="col">
-        <h2>{{ results.TARGET_VAL | currency:results.CURRENCY_ISO}}</h2>
+      <div class="col col-80">
+        <div class="row responsive-sm">
+          <div class="col bar-text "><h4>{{approveStatus}}</h4></div>
+        </div>
+        </br>
+        </br>
+        </br>
+        <div class="row responsive-sm">
+          <div class="col bar-text"><h1>{{ results.TARGET_VAL | currency:results.CURRENCY_ISO}}</h1></div>
+        </div>
       </div>
     </div>
   </ion-header-bar>
@@ -40,7 +47,7 @@
         </div>
       </li>
       <li class="item">
-        <button ng-click="goBack()">Back</button>
+        <button ng-click="goToList()">Back to list</button>
       </li>
     </ul>
     <!--<ion-item class="flex-container wrap">-->

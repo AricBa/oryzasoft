@@ -9,6 +9,10 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<feature name=\"JPushPlugin\"><param name=\"android-package\" value=\"cn.jpush.phonegap.JPushPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Sms\"><param name=\"android-package\" value=\"com.cordova.plugins.sms.Sms\" /></feature>",
                             "count": 1
                         },
@@ -21,7 +25,31 @@
                             "count": 1
                         },
                         {
+                            "xml": "<preference name=\"webView\" value=\"org.crosswalk.engine.XWalkWebViewEngine\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference default=\"15+\" name=\"xwalkVersion\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference default=\"--disable-pull-to-refresh-effect\" name=\"xwalkCommandLine\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference default=\"embedded\" name=\"xwalkMode\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference default=\"true\" name=\"xwalkMultipleApk\" />",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileOpener2\"><param name=\"android-package\" value=\"io.github.pwlin.cordova.plugins.fileopener2.FileOpener2\" /></feature>",
                             "count": 1
                         },
                         {
@@ -49,10 +77,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"JPushPlugin\"><param name=\"android-package\" value=\"cn.jpush.phonegap.JPushPlugin\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
                             "count": 1
                         },
@@ -67,26 +91,6 @@
                         {
                             "xml": "<feature name=\"Vibration\"><param name=\"android-package\" value=\"org.apache.cordova.vibration.Vibration\" /></feature>",
                             "count": 1
-                        },
-                        {
-                            "xml": "<preference name=\"webView\" value=\"org.crosswalk.engine.XWalkWebViewEngine\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<preference default=\"15+\" name=\"xwalkVersion\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<preference default=\"--disable-pull-to-refresh-effect\" name=\"xwalkCommandLine\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<preference default=\"embedded\" name=\"xwalkMode\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<preference default=\"true\" name=\"xwalkMultipleApk\" />",
-                            "count": 1
                         }
                     ]
                 }
@@ -94,18 +98,6 @@
             "AndroidManifest.xml": {
                 "parents": {
                     "/manifest": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.SEND_SMS\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
-                            "count": 2
-                        },
-                        {
-                            "xml": "<uses-feature android:name=\"android.hardware.telephony\" android:required=\"false\" />",
-                            "count": 1
-                        },
                         {
                             "xml": "<uses-permission android:name=\"com.martinmicunda.photo_gallery.permission.JPUSH_MESSAGE\" />",
                             "count": 1
@@ -121,6 +113,10 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
@@ -153,27 +149,17 @@
                         {
                             "xml": "<permission android:name=\"com.martinmicunda.photo_gallery.permission.JPUSH_MESSAGE\" android:protectionLevel=\"signature\" />",
                             "count": 1
-                        }
-                    ],
-                    "/*": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 4
                         },
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-                            "count": 2
+                            "xml": "<uses-permission android:name=\"android.permission.SEND_SMS\" />",
+                            "count": 1
                         },
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
+                            "xml": "<uses-feature android:name=\"android.hardware.telephony\" android:required=\"false\" />",
                             "count": 1
                         }
                     ],
                     "/manifest/application": [
-                        {
-                            "xml": "<activity android:exported=\"false\" android:launchMode=\"singleInstance\" android:name=\"de.appplant.cordova.plugin.badge.LaunchActivity\" android:theme=\"@android:style/Theme.Black.NoTitleBar\" />",
-                            "count": 1
-                        },
                         {
                             "xml": "<activity android:configChanges=\"orientation|keyboardHidden\" android:name=\"cn.jpush.android.ui.PushActivity\" android:theme=\"@android:style/Theme.Translucent.NoTitleBar\"><intent-filter><action android:name=\"cn.jpush.android.ui.PushActivity\" /><category android:name=\"android.intent.category.DEFAULT\" /><category android:name=\"com.martinmicunda.photo_gallery\" /></intent-filter></activity>",
                             "count": 1
@@ -205,6 +191,28 @@
                         {
                             "xml": "<meta-data android:name=\"JPUSH_APPKEY\" android:value=\"2b0f48bb4b6f31d404ebc411\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<activity android:exported=\"false\" android:launchMode=\"singleInstance\" android:name=\"de.appplant.cordova.plugin.badge.LaunchActivity\" android:theme=\"@android:style/Theme.Black.NoTitleBar\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 4
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 2
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -212,6 +220,9 @@
         }
     },
     "installed_plugins": {
+        "cn.jpush.phonegap.JPushPlugin": {
+            "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
+        },
         "com.cordova.plugins.sms": {
             "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
         },
@@ -221,7 +232,13 @@
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
         },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
+        },
         "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
+        },
+        "cordova-plugin-file-opener2": {
             "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
         },
         "cordova-plugin-inappbrowser": {
@@ -245,9 +262,6 @@
         "de.appplant.cordova.plugin.badge": {
             "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
         },
-        "cn.jpush.phonegap.JPushPlugin": {
-            "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
-        },
         "org.apache.cordova.dialogs": {
             "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
         },
@@ -258,9 +272,6 @@
             "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
         },
         "org.apache.cordova.vibration": {
-            "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
-        },
-        "cordova-plugin-crosswalk-webview": {
             "PACKAGE_NAME": "com.martinmicunda.photo_gallery"
         }
     },

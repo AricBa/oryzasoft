@@ -1,11 +1,15 @@
-<ion-item ng-repeat="item in results" bindonce
+<ion-item collection-repeat="item in results" bindonce
     class="item-text-wrap" ng-click="goDetail(item.PO_NUMBER)">
     <div class=" bodyFont2">{{ item.PO_NUMBER}}</div>
     <div class=" bodyFont1">{{ item.TARGET_VAL | currency:item.CURRENCY_ISO}}
     </div>
     <div >{{ item.VEND_NAME}}{{item.DOC_DATE}}
     </div>
-    <div class="captionFont3"><span am-time-ago="item.LAST_CHANGE_TIME"></span>
+    <div >Created by: {{ item.CREATED_BY}}</div>
+        <div class="captionFont3">{{item.LAST_CHANGE_TIME}} <span am-time-ago="item.LAST_CHANGE_TIME"></span>
     </div>
-    <div>{{item.DM_STATUS}}</div>
-  </ion-item>
+    <div ng-if="item.DM_STATUS === '0'" class="positive">New</div>
+    <div ng-if="item.DM_STATUS === '1' || item.DM_STATUS === '5'" class="positive">Lock</div>
+    <div ng-if="item.DM_STATUS === '3'" class="positive">Approved</div>
+    <div ng-if="item.DM_STATUS === '6'" class="positive">Resetted</div>
+</ion-item>

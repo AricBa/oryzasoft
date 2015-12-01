@@ -9,14 +9,14 @@
         .state('sideMenu.poList', {
           url: '/po',
           views:{
-            'po':{
+            'list':{
               templateUrl: 'js/routes/po/poList.html',
               controller: 'poListCtrl'
             }
           },
           cache : false,
           resolve: {/* @ngInject */
-            poList: function(POData,$q,$ionicLoading,$timeout){
+            poList: function(POData,$q,$ionicLoading,$timeout,$rootScope){
               var d = $q.defer();
               $ionicLoading.show({
                 template:'Loading...'
@@ -27,6 +27,7 @@
                 filter: "0,6"
               };
               POData.getPOList(path,params).then(function(response){
+                $rootScope.note ='';
                 d.resolve(response);
                 console.log(response);
                 $ionicLoading.hide();

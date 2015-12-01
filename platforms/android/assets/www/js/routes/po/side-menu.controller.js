@@ -4,31 +4,30 @@
 (function () {
   'use strict';
 
-  /**
-   * @ngdoc controller
-   * @name LayoutCtrl
-   * @module app.gallery
-   * @requires $state
-   * @requires Authentication
-   * @description
-   * Controller for the layout page.
-   *
-   * @ngInject
-   */
-
   angular
     .module('app.sideMenu')
-    .controller('sideMenuCtrl',  function($scope,$state) {
-
-      $scope.goBack =function(){
-        $state.go('home');
+    .controller('sideMenuCtrl',  function($scope) {
+      $scope.click = function(){
+        $scope.$broadcast('choice',$scope.choice.data);
       };
-
-      $scope.goDetail = function(status){
-        $scope.status = status;
-        console.log($scope.status);
-        $scope.$broadcast('refresh');
+      $scope.choice = {
+        data : "10"
       };
+      $scope.page = 'UnApproved';
+      $scope.unApprovedFilter = [
+        {text: "All" ,value: "10"},
+        {text: "Unapproved" ,value: "0"},
+        {text: "Resetted" ,value: "6"}];
+      $scope.approvedFilter = [
+        {text: "All" ,value: "10"},
+        {text: "Locked" ,value: "1,5"},
+        {text: "Approved" ,value: "3"}
+      ];
+
+      $scope.$on('changePage',function(event,data) {
+        $scope.page= data;	   //??????
+        $scope.choice.data = '10';
+      });
     }
   );
 })();

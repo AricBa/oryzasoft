@@ -1,3 +1,0 @@
-C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\classes\debug
-C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\pre-dexed\debug\classes-9b991a9ab2e16c9637652d459eee569978f8ab08.jar
-C:\document\WebAPP\oryzasoft\platforms\android\build\intermediates\pre-dexed\debug\jpush-sdk-release1.7.5-bb1d40748a4b3e0b6c5323c348c45e17751d9d15.jar

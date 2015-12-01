@@ -48,7 +48,9 @@
     "cordova-sms-plugin",
     "C:\\document\\WebAPP\\oryzasoft\\plugins\\jpush-phonegap-plugin",
     "org.apache.cordova.device",
-    "cordova-plugin-crosswalk-webview"
+    "cordova-plugin-crosswalk-webview",
+    "cordova-plugin-file-transfer",
+    "cordova-plugin-file-opener2"
   ],
   "cordovaPlatforms": [
     "android",
