@@ -28,7 +28,7 @@
             method: 'POST',
             url:'http://www.pgyer.com/apiv1/app/getAppKeyByShortcut',
             data: $.param({
-              shortcut: "MRKK",
+              shortcut: "vWzX",
               _api_key: "3e82e9b1d0472abd52e0b292b5ff02cd"
             }),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -48,7 +48,7 @@
                   });
 
                   var url= "http://www.pgyer.com/apiv1/app/install?_api_key=3e82e9b1d0472abd52e0b292b5ff02cd" +
-                    "&aKey="+data.data.appKey+"&password=123";
+                    "&aKey="+data.data.appKey+"&password=";
                   var targetPath ="file:///storage/sdcard0/Download/test.apk";
                   var trustHosts = true;
                   var options = {};
