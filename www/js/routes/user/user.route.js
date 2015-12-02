@@ -10,7 +10,7 @@
       $stateProvider
         .state('user', {
           url: '/user',
-          templateUrl: 'js/routes/user/user.html',
+          templateUrl: 'templates/user.html',
           controller: 'userCtrl',
           cache:false,
           data: {
@@ -19,7 +19,7 @@
         })
         .state('userDetail', {
           url: '/userDetail',
-          templateUrl: 'js/routes/user/userDetail.html',
+          templateUrl: 'templates/userDetail.html',
           controller: 'userDetailCtrl',
           cache:false,
           data: {
@@ -28,7 +28,7 @@
         })
         .state('about', {
           url: '/about',
-          templateUrl: 'js/routes/user/about.html',
+          templateUrl: 'templates/about.html',
           controller: 'aboutCtrl',
           cache:false,
           data: {
@@ -37,7 +37,7 @@
         })
         .state('message',{
           url: '/message',
-          templateUrl: 'js/routes/user/message.html',
+          templateUrl: 'templates/message.html',
           controller: 'messageCtrl',
           cache:false,
           data: {
@@ -46,7 +46,7 @@
         })
         .state('addsapaccount', {
           url: '/addsapaccount',
-          templateUrl: 'js/routes/user/addsapaccount.html',
+          templateUrl: 'templates/addsapaccount.html',
           controller: 'addsapCtrl',
           cache:false,
           data: {

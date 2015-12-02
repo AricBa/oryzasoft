@@ -11,7 +11,7 @@
           url: '',
           abstract: true,
           cache: false,
-          templateUrl: 'js/routes/po/side-menu.html',
+          templateUrl: 'templates/side-menu.html',
           controller: 'sideMenuCtrl',
           data: {
             authenticate: true

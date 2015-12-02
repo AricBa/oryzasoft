@@ -25,7 +25,7 @@
               suffix: '.json'
             }]
           });
-            $translateProvider.preferredLanguage('E');
+            $translateProvider.preferredLanguage('1');
       }])
         .run(['$ionicPlatform', '$rootScope', '$location', 'Authentication','localStorageService','$state',
         '$translate','amMoment',

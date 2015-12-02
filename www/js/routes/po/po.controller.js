@@ -302,7 +302,7 @@
       $scope.POItemDetail = POItemDetail.results[0];
 
       $scope.goBack = function(){
-        $state.go('poDetail',{poNumber:$stateParams.poNumber});
+        $state.go('poItems',{poNumber:$stateParams.poNumber});
       };
     }])
     .controller('poApproveDetailCtrl',['poApprove','$scope','$state','$stateParams',
