@@ -7,14 +7,14 @@
             <div class="list">
                 <label class="item item-input">
                     <span class="input-label"><i class="icon ion-email"></i></span>
-                    <input ng-model="credentials.email" type="email" name="email" placeholder="Email" ng-required="true">
+                    <input ng-model="credentials.email" type="email" name="email" placeholder={{"Email/PhoneNumber"|translate}} ng-required="true">
                 </label>
                 <div ng-if="signinForm.email.$invalid && signinForm.email.$dirty" ng-messages="signinForm.email.$error" class="messages">
                     <div ng-message="email">Your email address is invalid.</div>
                 </div>
                 <label class="item item-input">
                     <span class="input-label"><i class="icon ion-locked"></i></span>
-                    <input ng-model="credentials.password" type="password" name="password" placeholder="Password" ng-required="true">
+                    <input ng-model="credentials.password" type="password" name="password" placeholder={{"Password"|translate}} ng-required="true">
                 </label>
                 <div ng-if="signinForm.password.$invalid && signinForm.password.$dirty" ng-messages="signinForm.password.$error" class="messages">
                     <div ng-message="required">This field is required.</div>
@@ -22,14 +22,13 @@
             </div>
             <div class="padding">
                 <button type="submit" class="button button-block">
-
-                    Sign In
+                    {{'Sign In' | translate}}
                 </button>
             </div>
         </form>
-        <p class="text-right text-muted text-small"><a ng-click="goToForPas()">Forget password ?</a></p>
+        <p class="text-right text-muted text-small"><a ng-click="goToForPas()">{{'Forget Password' | translate}}?</a></p>
         <br/><br/>
-        <p class="foot text-muted text-small">Don't have an account yet? <a  ng-click="goToSignup()">Sign Up</a></p>
-        <p class="foot text-muted text-small">Or  <a  ng-click="goToExperience()">experience?</a></p>
+        <p class="foot text-muted text-small"><a  ng-click="goToSignup()">{{'Sign Up'|translate }}</a></p>
+        <p class="foot text-muted text-small"><a  ng-click="goToExperience()">{{"No account, quick experience" | translate}}</a></p>
     </ion-content>
 </ion-view>
