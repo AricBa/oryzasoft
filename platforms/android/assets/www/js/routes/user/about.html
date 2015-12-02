@@ -7,11 +7,14 @@
 
   </ion-header-bar>
   <ion-content class="has-header2" has-header="true" padding="true">
-    <ion-item ng-click="update()">
+    <ion-item class="item item-icon-left" ng-click="update()">
       update
+       <span class="item-note">
+       {{currentVersion}}
+    </span>
     </ion-item>
     <ion-item>
-      version
+      {{currentVersion}}
     </ion-item>
     <ion-item>
       FeedBack

@@ -59,6 +59,9 @@
         });
 
         function onDeviceReady() {
+            cordova.getAppVersion.getVersionNumber().then(function (version) {
+                $rootScope.currentVersion = version;
+            });
             //alert("deviceID:" + device.uuid);
             //alert(device.version);
 
@@ -110,6 +113,7 @@
                 if(window.plugins.jPushPlugin.isPlatformIOS()){
                     window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
                 }
+                //alert("receive" + alertContent);
                 var notification = alertContent.split(" ");
                 if(notification[0] == "poList"){
                     $rootScope.note = 'poList get success, please refesh the list';

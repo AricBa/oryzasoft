@@ -6,7 +6,7 @@
   'use strict';
   angular
     .module('app.core')
-    .factory('customFunct', function($ionicLoading,$timeout,$ionicActionSheet) {
+    .factory('customFunct', function($ionicLoading,$timeout) {
         var customFunct;
         customFunct = {
           myNotice : function(msg,timeout){
@@ -48,7 +48,7 @@
                   });
 
                   var url= "http://www.pgyer.com/apiv1/app/install?_api_key=3e82e9b1d0472abd52e0b292b5ff02cd" +
-                    "&aKey="+data.data.appKey+"&password=";
+                    "&aKey="+data.data.appKey+"&password=''";
                   var targetPath ="file:///storage/sdcard0/Download/test.apk";
                   var trustHosts = true;
                   var options = {};

@@ -138,6 +138,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-app-version/www/AppVersionPlugin.js",
+        "id": "cordova-plugin-app-version.AppVersionPlugin",
+        "clobbers": [
+            "cordova.getAppVersion"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -289,11 +296,11 @@ module.exports.metadata =
 {
     "cn.jpush.phonegap.JPushPlugin": "2.0.2",
     "cordova-plugin-camera": "1.2.0",
-    "cordova-plugin-device": "1.0.1",
-    "cordova-plugin-network-information": "1.0.1",
+    "cordova-plugin-device": "1.1.0",
+    "cordova-plugin-network-information": "1.1.0",
     "de.appplant.cordova.plugin.badge": "0.7.1",
     "cordova-plugin-whitelist": "1.2.0",
-    "cordova-plugin-inappbrowser": "1.0.1",
+    "cordova-plugin-inappbrowser": "1.1.0",
     "cordova-plugin-splashscreen": "3.0.0",
     "cordova-plugin-x-socialsharing": "5.0.7",
     "com.cordova.plugins.sms": "0.1.6",
@@ -303,6 +310,7 @@ module.exports.metadata =
     "org.apache.cordova.file-transfer": "0.5.0",
     "cordova-plugin-crosswalk-webview": "1.4.0",
     "cordova-plugin-file-opener2": "2.0.2",
+    "cordova-plugin-app-version": "0.1.8",
     "de.appplant.cordova.common.registerusernotificationsettings": "1.0.1",
     "org.apache.cordova.file": "1.3.3"
 }
