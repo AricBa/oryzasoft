@@ -15,9 +15,11 @@
           Status
         </div>
         <ion-radio ng-repeat="item in unApprovedFilter" ng-model="choice.data" ng-value="item.value"
-                   ng-if="page ==='UnApproved'" ng-click="click()" menu-close>{{item.text}}</ion-radio>
+                   ng-if="page ==='UnApproved'" ng-click="click()"
+                   ng-disabled="choice.data === item.value" menu-close>{{item.text}}</ion-radio>
         <ion-radio ng-repeat="item in approvedFilter" ng-model="choice.data" ng-value="item.value"
-                   ng-if="page === 'Approved'" ng-click="click()" menu-close>{{item.text}}</ion-radio>
+                   ng-if="page === 'Approved'" ng-click="click()"
+                   ng-disabled="choice.data === item.value" menu-close>{{item.text}}</ion-radio>
       </ion-item>
     </ion-content>
   </ion-side-menu>
