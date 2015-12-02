@@ -9,20 +9,12 @@
     'use strict';
 
     angular.module('app', [
-        // angular modules
-        'ngAnimate',
-        'ngSanitize',
-        'ngMessages',
-        //'ngMaterial',
-
-        // 3rd party modules
-        'ui.router',
         'ionic',
         'restangular',
         'LocalStorageModule',
         'ngCordova',
         'angularMoment',
-      'pascalprecht.translate',
+        'pascalprecht.translate',
 
         // app modules
         'app.directive',

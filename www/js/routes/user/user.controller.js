@@ -20,6 +20,10 @@
         Authentication.postSAPAccount()
 
       };
+
+      $scope.goBack = function(){
+        $state.go('home');
+      }
     }])
     .controller('addsapCtrl',['Authentication','$scope','$ionicLoading',
       function(Authentication,$scope,$ionicLoading){
