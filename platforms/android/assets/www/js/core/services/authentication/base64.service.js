@@ -3,7 +3,7 @@
     'use strict';
     angular
         .module('app.core')
-        .factory('Base64', function() {
+        .factory('Base64', [function() {
           return {
               // this is used to parse the user profile
               decode: function(str) {
@@ -25,6 +25,6 @@
               }
           };
 
-      });
+      }]);
 
 })();

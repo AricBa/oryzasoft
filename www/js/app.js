@@ -22,6 +22,7 @@
         'LocalStorageModule',
         'ngCordova',
         'angularMoment',
+      'pascalprecht.translate',
 
         // app modules
         'app.directive',

@@ -22,6 +22,7 @@
         'LocalStorageModule',
         'ngCordova',
         'angularMoment',
+      'pascalprecht.translate',
 
         // app modules
         'app.directive',
@@ -53,8 +54,8 @@
 
       })
 
-      .config(function($ionicConfigProvider) {
+      .config(['$ionicConfigProvider',function($ionicConfigProvider) {
         $ionicConfigProvider.backButton.previousTitleText(false).text('');
-      });
+      }]);
 
 })();

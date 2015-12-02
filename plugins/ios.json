@@ -185,6 +185,10 @@
                         {
                             "xml": "<feature name=\"AppVersion\"><param name=\"ios-package\" value=\"AppVersion\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Globalization\"><param name=\"ios-package\" value=\"CDVGlobalization\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -251,6 +255,9 @@
             "PACKAGE_NAME": "com.martinmicunda.photo-gallery"
         },
         "cordova-plugin-app-version": {
+            "PACKAGE_NAME": "com.martinmicunda.photo-gallery"
+        },
+        "org.apache.cordova.globalization": {
             "PACKAGE_NAME": "com.martinmicunda.photo-gallery"
         }
     },

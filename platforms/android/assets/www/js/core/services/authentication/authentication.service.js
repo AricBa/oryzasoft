@@ -2,7 +2,7 @@
     'use strict';
     angular
         .module('app.core')
-        .provider('Authentication',function() {
+        .provider('Authentication',[function() {
           this.$get = function($http, Restangular, Token, localStorageService,$q) {
               var currentUser = null;
               function saveUserAndToken(token) {
@@ -75,5 +75,5 @@
                   }
               };
           };
-      });
+      }]);
 })();

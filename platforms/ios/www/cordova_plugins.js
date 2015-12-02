@@ -145,6 +145,20 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.globalization/www/GlobalizationError.js",
+        "id": "org.apache.cordova.globalization.GlobalizationError",
+        "clobbers": [
+            "window.GlobalizationError"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.globalization/www/globalization.js",
+        "id": "org.apache.cordova.globalization.globalization",
+        "clobbers": [
+            "navigator.globalization"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -311,6 +325,7 @@ module.exports.metadata =
     "cordova-plugin-crosswalk-webview": "1.4.0",
     "cordova-plugin-file-opener2": "2.0.2",
     "cordova-plugin-app-version": "0.1.8",
+    "org.apache.cordova.globalization": "0.3.4",
     "de.appplant.cordova.common.registerusernotificationsettings": "1.0.1",
     "org.apache.cordova.file": "1.3.3"
 }

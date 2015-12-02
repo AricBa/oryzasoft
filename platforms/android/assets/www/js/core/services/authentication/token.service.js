@@ -2,7 +2,7 @@
     'use strict';
     angular
         .module('app.core')
-        .factory('Token',  function(localStorageService, Base64) {
+        .factory('Token',  ['localStorageService', 'Base64',function(localStorageService, Base64) {
           var _tokenStorageKey = 'token';
           var _cachedToken = '';
 
@@ -48,5 +48,5 @@
               remove: remove,
               decodeToken: decodeToken
           }
-      });
+      }]);
 })();

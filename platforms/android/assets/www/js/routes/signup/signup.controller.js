@@ -2,8 +2,9 @@
 (function () {
     'use strict';
     angular
-        .module('app.signup')
-        .controller('SignupCtrl',function($location, $rootScope, customFunct,$state, Authentication, $scope,$ionicLoading) {
+      .module('app.signup')
+      .controller('SignupCtrl',['$location', '$rootScope', 'customFunct','$state', 'Authentication','$scope','$ionicLoading',
+        function($location, $rootScope, customFunct,$state, Authentication, $scope,$ionicLoading) {
         $scope.user = {};
 
         $scope.goBack = function(){
@@ -26,8 +27,9 @@
               customFunct.myNotice(err.data.message);
             });
         };
-        })
-      .controller('companyCtrl',function($state,$scope,customFunct,$stateParams,Authentication,$ionicLoading){
+        }])
+      .controller('companyCtrl',['$state','$scope','customFunct','$stateParams','Authentication','$ionicLoading',
+        function($state,$scope,customFunct,$stateParams,Authentication,$ionicLoading){
         $scope.companyEmail = '';
         $scope.password =$stateParams.password;
         $scope.email = $stateParams.email;
@@ -58,5 +60,5 @@
         $scope.goBack = function(){
           $state.go('signup');
         };
-      });
+      }]);
 })();

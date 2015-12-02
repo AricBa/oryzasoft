@@ -81,6 +81,7 @@
 		1B4F6000F49D41E08B9C089E /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BED82B5D53F4CDA86A1ACF2 /* CDVFileTransfer.m */; };
 		85F1336769A84326B3BFEBA0 /* FileOpener2.m in Sources */ = {isa = PBXBuildFile; fileRef = C74E474E0AE0424D9825F838 /* FileOpener2.m */; };
 		D643E05A8BB341C9B04E667E /* AppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = DB83EBAF22514E528984F335 /* AppVersion.m */; };
+		73AD89AEB235427E84F0B094 /* CDVGlobalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 053961683FA54D98ABA93AEA /* CDVGlobalization.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +214,8 @@
 		424C9790BBF14FE3AB52BD16 /* FileOpener2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FileOpener2.h"; path = "cordova-plugin-file-opener2/FileOpener2.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		DB83EBAF22514E528984F335 /* AppVersion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AppVersion.m"; path = "cordova-plugin-app-version/AppVersion.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		032199690A374870B02A73AC /* AppVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AppVersion.h"; path = "cordova-plugin-app-version/AppVersion.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		053961683FA54D98ABA93AEA /* CDVGlobalization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVGlobalization.m"; path = "org.apache.cordova.globalization/CDVGlobalization.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		9920520266004F5795386253 /* CDVGlobalization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVGlobalization.h"; path = "org.apache.cordova.globalization/CDVGlobalization.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +398,8 @@
 				424C9790BBF14FE3AB52BD16 /* FileOpener2.h */,
 				DB83EBAF22514E528984F335 /* AppVersion.m */,
 				032199690A374870B02A73AC /* AppVersion.h */,
+				053961683FA54D98ABA93AEA /* CDVGlobalization.m */,
+				9920520266004F5795386253 /* CDVGlobalization.h */,
 			);
 			name = Plugins;
 			path = "ionic-photo-gallery/Plugins";
@@ -619,6 +624,7 @@
 				1B4F6000F49D41E08B9C089E /* CDVFileTransfer.m in Sources */,
 				85F1336769A84326B3BFEBA0 /* FileOpener2.m in Sources */,
 				D643E05A8BB341C9B04E667E /* AppVersion.m in Sources */,
+				73AD89AEB235427E84F0B094 /* CDVGlobalization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

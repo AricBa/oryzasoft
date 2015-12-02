@@ -3,8 +3,10 @@
 
     angular
         .module('app.core')
-        .config(['$urlRouterProvider', 'RestangularProvider', 'localStorageServiceProvider', 'SERVER_API_URL',
-          function($urlRouterProvider, RestangularProvider, localStorageServiceProvider, SERVER_API_URL) {
+        .config(['$urlRouterProvider', 'RestangularProvider', 'localStorageServiceProvider',
+        'SERVER_API_URL','$translateProvider',
+          function($urlRouterProvider, RestangularProvider, localStorageServiceProvider,
+                   SERVER_API_URL,$translateProvider) {
           localStorageServiceProvider.setPrefix('ionic-photo-gallery')
             .setNotify(true, true);
 
@@ -17,24 +19,18 @@
 
           $urlRouterProvider.otherwise('/signin');
 
-          //RestangularProvider.setDefaultHttpFields({cache: true});
-
-          //RestangularProvider.addRequestInterceptor(function(element, operation, route, url) {
-          //    if(operation == 'customGET'){
-          //        debugger;
-          //
-          //    }
-          //    return element;
-          //});
-
-          //RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred){
-          //    if( operation == 'customGET' || operation == 'get'){
-          //        //localStorageService.set(url,data);
-          //    }
-          //});
+          $translateProvider.useStaticFilesLoader({
+            files: [{
+              prefix: 'resourses/language/locale-',
+              suffix: '.json'
+            }]
+          });
+            $translateProvider.preferredLanguage('E');
       }])
         .run(['$ionicPlatform', '$rootScope', '$location', 'Authentication','localStorageService','$state',
-          function($ionicPlatform, $rootScope, $location, Authentication,localStorageService,$state) {
+        '$translate','amMoment',
+          function($ionicPlatform, $rootScope, $location, Authentication,localStorageService,$state,
+                   $translate,amMoment) {
           $ionicPlatform.ready(function() {
               // save user profile details to $rootScope
               $rootScope.me = Authentication.getCurrentUser();
@@ -57,6 +53,7 @@
                   }
               });
               $rootScope.note = '';
+
           });
 
           function onDeviceReady() {
@@ -72,9 +69,24 @@
               //if(window.plugins.jPushPlugin.isPlatformIOS()){
               //window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
               //window.plugins.jPushPlugin.setBadge(10);
-
               //}
               //window.plugins.jPushPlugin.reSetBadge();
+
+            navigator.globalization.getPreferredLanguage(
+              function (language) {
+                alert('language: ' + language.value + '\n');
+                if(language.value == 'en-US'){
+                  $translate.use('E');
+                  amMoment.changeLocale('en-gb');
+                }else if(language.value == 'zh-CN'){
+                  $translate.use('1');
+                  amMoment.changeLocale('zh-cn');
+                }
+              },
+              function () {
+                alert('Error getting language\n');
+              }
+            );
           }
           window.document.addEventListener("deviceready", onDeviceReady, false);
 

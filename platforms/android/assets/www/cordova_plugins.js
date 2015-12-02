@@ -301,6 +301,20 @@ module.exports = [
         "clobbers": [
             "cordova.getAppVersion"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.globalization/www/GlobalizationError.js",
+        "id": "org.apache.cordova.globalization.GlobalizationError",
+        "clobbers": [
+            "window.GlobalizationError"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.globalization/www/globalization.js",
+        "id": "org.apache.cordova.globalization.globalization",
+        "clobbers": [
+            "navigator.globalization"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -324,7 +338,8 @@ module.exports.metadata =
     "org.apache.cordova.file": "1.3.3",
     "org.apache.cordova.file-transfer": "0.5.0",
     "org.apache.cordova.vibration": "0.3.13",
-    "cordova-plugin-app-version": "0.1.8"
+    "cordova-plugin-app-version": "0.1.8",
+    "org.apache.cordova.globalization": "0.3.4"
 }
 // BOTTOM OF METADATA
 });

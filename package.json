@@ -51,7 +51,8 @@
     "cordova-plugin-crosswalk-webview",
     "cordova-plugin-file-transfer",
     "cordova-plugin-file-opener2",
-    "cordova-plugin-app-version"
+    "cordova-plugin-app-version",
+    "org.apache.cordova.globalization"
   ],
   "cordovaPlatforms": [
     "android",

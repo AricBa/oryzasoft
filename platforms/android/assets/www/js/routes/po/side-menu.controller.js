@@ -6,7 +6,7 @@
 
   angular
     .module('app.sideMenu')
-    .controller('sideMenuCtrl',  function($scope) {
+    .controller('sideMenuCtrl',  ['$scope',function($scope) {
       $scope.click = function(){
         $scope.$broadcast('choice',$scope.choice.data);
       };
@@ -28,6 +28,5 @@
         $scope.page= data;	   //??????
         $scope.choice.data = '10';
       });
-    }
-  );
+    }]);
 })();
