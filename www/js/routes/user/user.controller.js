@@ -5,7 +5,7 @@
   'use strict';
   angular
     .module('app.user')
-    .controller('userCtrl',function(Authentication,$scope,$state){
+    .controller('userCtrl',['Authentication','$scope','$state',function(Authentication,$scope,$state){
        $scope.signOut = function(){
          Authentication.signout().then(function () {
            $state.go('signin');
@@ -20,8 +20,9 @@
         Authentication.postSAPAccount()
 
       };
-    })
-    .controller('addsapCtrl',function(Authentication,$scope,$ionicLoading){
+    }])
+    .controller('addsapCtrl',['Authentication','$scope','$ionicLoading',
+      function(Authentication,$scope,$ionicLoading){
       $scope.sapaccount = {};
 
       $scope.addSAPAccount = function(account,isValid){
@@ -37,16 +38,16 @@
           console.log(err);
         })
       };
-    })
-    .controller('userDetailCtrl',function(){
+    }])
+    .controller('userDetailCtrl',[function(){
 
-    })
-    .controller('aboutCtrl',function($scope,versionUpdate){
+    }])
+    .controller('aboutCtrl',['$scope','versionUpdate',function($scope,versionUpdate){
       $scope.update = function(){
         versionUpdate.checkUpdate();
       }
-    })
-    .controller('messageCtrl',function($scope,localStorageService){
+    }])
+    .controller('messageCtrl',['$scope','localStorageService',function($scope,localStorageService){
       $scope.messages = localStorageService.get('message');
-    })
+    }])
 })();

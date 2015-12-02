@@ -2,7 +2,9 @@
     'use strict';
     angular
       .module('app.signin')
-      .controller('SigninCtrl',function($scope,customFunct,$rootScope,$timeout, $state, Authentication, $cordovaVibration,$ionicLoading) {
+      .controller('SigninCtrl',['$scope','customFunct','$rootScope','$timeout', '$state',
+                                'Authentication', '$cordovaVibration','$ionicLoading',
+        function($scope,customFunct,$rootScope, $timeout, $state, Authentication, $cordovaVibration,$ionicLoading) {
         $scope.credentials = {};
 
         $scope.signIn = function(credentials, isValid) {
@@ -47,8 +49,9 @@
         $scope.goToExperience = function(){
           $state.go('experience');
         }
-      })
-      .controller('forgetPasswordCtrl',function($scope,customFunct,$state,Authentication,$ionicLoading){
+      }])
+      .controller('forgetPasswordCtrl',['$scope','customFunct','$state','Authentication','$ionicLoading',
+        function($scope,customFunct,$state,Authentication,$ionicLoading){
         $scope.email = '';
         $scope.getPassword = function(email,isValid){
           var params = {
@@ -72,8 +75,9 @@
         $scope.goBack = function(){
           $state.go('signin');
         };
-      })
-      .controller('experienceCtrl',function($scope,customFunct,Authentication,$state,$ionicLoading){
+      }])
+      .controller('experienceCtrl',['$scope','customFunct','Authentication','$state','$ionicLoading',
+        function($scope,customFunct,Authentication,$state,$ionicLoading){
         $scope.user = {};
          $scope.getVerificationCode = function(phoneNumber){
            console.log(phoneNumber);
@@ -114,5 +118,5 @@
           });
         };
 
-      });
+      }]);
 })();

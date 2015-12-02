@@ -5,7 +5,8 @@
   'use strict';
   angular
     .module('app.po')
-    .controller('poListCtrl', function($scope,poList,$state,POData,$rootScope,$ionicLoading) {
+    .controller('poListCtrl', ['$scope','poList','$state','POData','$rootScope','$ionicLoading',
+      function($scope,poList,$state,POData,$rootScope,$ionicLoading) {
       $scope.choice = '10';
       $scope.results = poList.results;
       $scope.count = poList.totalCount;
@@ -211,8 +212,8 @@
       //    $scope.refresh();
       //  }
       //})
-    })
-    .controller('poDetailCtrl',function(PODetail,$scope,$state){
+    }])
+    .controller('poDetailCtrl',['PODetail','$scope','$state',function(PODetail,$scope,$state){
       $scope.PODetail = PODetail[0].results[0];
       $scope.approve = PODetail[1];
 
@@ -236,8 +237,9 @@
         $state.go('sideMenu.poList');
       }
 
-    })
-    .controller('POItemsCtrl',function(POItemList,$scope,$state,$stateParams,POData,$ionicLoading){
+    }])
+    .controller('POItemsCtrl',['POItemList','$scope','$state','$stateParams','POData','$ionicLoading',
+      function(POItemList,$scope,$state,$stateParams,POData,$ionicLoading){
 
       $scope.count = POItemList.totalCount;
       $scope.page = POItemList.pageIndex;
@@ -294,15 +296,17 @@
           $ionicLoading.hide();
         });
       };
-    })
-    .controller('poItemDetailCtrl', function(POItemDetail,$scope,$state,$stateParams){
+    }])
+    .controller('poItemDetailCtrl',['POItemDetail','$scope','$state','$stateParams',
+      function(POItemDetail,$scope,$state,$stateParams){
       $scope.POItemDetail = POItemDetail.results[0];
 
       $scope.goBack = function(){
         $state.go('poDetail',{poNumber:$stateParams.poNumber});
       };
-    })
-    .controller('poApproveDetailCtrl',function(poApprove,$scope,$state,$stateParams){
+    }])
+    .controller('poApproveDetailCtrl',['poApprove','$scope','$state','$stateParams',
+      function(poApprove,$scope,$state,$stateParams){
         $scope.results = poApprove.results[0];
         console.log($scope.results);
         $scope.goToList = function(){
@@ -320,5 +324,5 @@
           $scope.approveStatus=  'resetted';
         }
 
-    });
+    }]);
 })();

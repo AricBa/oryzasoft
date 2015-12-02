@@ -5,7 +5,9 @@
   'use strict';
   angular
     .module('app.home')
-    .controller('homeCtrl', function($cordovaInAppBrowser,$scope,$ionicPopup,$timeout,
+    .controller('homeCtrl', ['$cordovaInAppBrowser','$scope','$ionicPopup','$timeout',
+      '$cordovaClipboard','$cordovaCamera','$ionicActionSheet','localStorageService',
+      function($cordovaInAppBrowser,$scope,$ionicPopup,$timeout,
                                      $cordovaClipboard,$cordovaCamera,$ionicActionSheet,localStorageService){
 
 
@@ -139,5 +141,5 @@
           //};
           //
           //$scope.local = localStorageService.get('user');
-    });
+    }]);
 })();
