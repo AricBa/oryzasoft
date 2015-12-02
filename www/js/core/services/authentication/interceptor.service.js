@@ -2,7 +2,7 @@
     'use strict';
     angular
         .module('app.core')
-        .factory('AuthenticationInterceptor', function($q, $location, Token) {
+        .factory('AuthenticationInterceptor', ['$q', '$location', 'Token',function($q, $location, Token) {
           return {
               request: function (config) {
                   var token = Token.get();
@@ -22,9 +22,9 @@
                   return $q.reject(rejection);
               }
           };
-      })
-        .config(function ($httpProvider) {
+      }])
+        .config(['$httpProvider',function ($httpProvider) {
             // we have to add the interceptor to the queue as a string because the interceptor depends upon service instances that are not available in the config block.
             $httpProvider.interceptors.push('AuthenticationInterceptor');
-        });
+        }]);
 })();

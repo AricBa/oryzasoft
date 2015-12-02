@@ -2,7 +2,7 @@
     'use strict';
     angular
         .module('app.core')
-        .factory('UserService',function(Restangular) {
+        .factory('UserService',['Restangular',function(Restangular) {
           return {
               get: function(id) {
                   return Restangular
@@ -15,6 +15,6 @@
                     .getList();
               }
           };
-      });
+      }]);
 
 })();

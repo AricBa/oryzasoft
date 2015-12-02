@@ -53,8 +53,8 @@
 
       })
 
-      .config(function($ionicConfigProvider) {
+      .config(['$ionicConfigProvider',function($ionicConfigProvider) {
         $ionicConfigProvider.backButton.previousTitleText(false).text('');
-      });
+      }]);
 
 })();

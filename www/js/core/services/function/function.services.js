@@ -6,7 +6,7 @@
   'use strict';
   angular
     .module('app.core')
-    .factory('customFunct', function($ionicLoading,$timeout) {
+    .factory('customFunct', ['$ionicLoading','$timeout',function($ionicLoading,$timeout) {
         var customFunct;
         customFunct = {
           myNotice : function(msg,timeout){
@@ -18,8 +18,10 @@
           }
       };
       return customFunct;
-    })
-    .factory('versionUpdate',function($http,$rootScope,$ionicPopup,$ionicLoading,
+    }])
+    .factory('versionUpdate',['$http','$rootScope','$ionicPopup','$ionicLoading',
+      '$cordovaFileTransfer','$cordovaFileOpener2','$timeout','customFunct',
+      function($http,$rootScope,$ionicPopup,$ionicLoading,
                                       $cordovaFileTransfer,$cordovaFileOpener2,$timeout,customFunct){
       var versionUpdate;
       versionUpdate = {
@@ -89,5 +91,5 @@
       };
 
       return versionUpdate;
-    })
+    }])
 })();

@@ -3,7 +3,7 @@
     'use strict';
     angular
         .module('app.core')
-        .factory('ErrorInterceptor', function($q, $cordovaDialogs) {
+        .factory('ErrorInterceptor', ['$q', '$cordovaDialogs',function($q, $cordovaDialogs) {
           return {
               responseError: function (rejection) {
                   if(rejection != null && rejection.status === 401) {
@@ -16,9 +16,9 @@
                   return $q.reject(rejection);
               }
           };
-      })
-        .config(function ($httpProvider) {
+      }])
+        .config(['$httpProvider',function ($httpProvider) {
             // we have to add the interceptor to the queue as a string because the interceptor depends upon service instances that are not available in the config block.
             $httpProvider.interceptors.push('ErrorInterceptor');
-        });
+        }]);
 })();

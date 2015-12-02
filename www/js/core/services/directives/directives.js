@@ -4,12 +4,8 @@
 (function () {
   'use strict';
 
-  /**
-   * @ngdoc module
-   * @name app.galleries
-   */
   angular.module('app.directive', [])
-    .factory('restApi',function(Restangular){
+    .factory('restApi',['Restangular',function(Restangular){
       var restApi;
       restApi = {
         getData: function(route,path,params,headers){
@@ -21,8 +17,8 @@
       };
 
       return restApi;
-    })
-    .directive('createTask', function ( ) {
+    }])
+    .directive('createTask', [function ( ) {
       return {
         restrict: "EA",
         scope: {
@@ -211,7 +207,7 @@
         template: '<button ng-click="showConfirm()">{{buttonText}}</button>',
         replace: true
       };
-    });
+    }]);
 
 
 })();
