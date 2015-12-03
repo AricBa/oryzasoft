@@ -21,7 +21,7 @@
 
           $translateProvider.useStaticFilesLoader({
             files: [{
-              prefix: 'resourses/language/locale-',
+              prefix: 'resources/language/locale-',
               suffix: '.json'
             }]
           });
