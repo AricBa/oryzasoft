@@ -81,7 +81,7 @@
     <splash density="port-xhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
     <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
     <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
-    <name>ionic-photo-gallery</name>
+    <name>oryzasoft</name>
     <description>
         A hybrid app with authentication that allows registered users view a gallery of photos they have uploaded via the camera phone.
     </description>

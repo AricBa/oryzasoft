@@ -8,7 +8,7 @@
       $stateProvider
         .state('home', {
           url: '/home',
-          templateUrl: 'js/routes/home/home.html',
+          templateUrl: 'templates/home.html',
           controller: 'homeCtrl',
           data: {
             authenticate: true

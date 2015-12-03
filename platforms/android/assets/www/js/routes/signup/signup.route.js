@@ -6,17 +6,17 @@
           $stateProvider
             .state('signup', {
                 url: '/signup',
-                templateUrl: 'js/routes/signup/signup.html',
-                controller: 'SignupCtrl as vm',
+                templateUrl: 'templates/signup.html',
+                controller: 'SignupCtrl',
                 data: {
                     authenticate: false
                 }
             })
             .state('company', {
               //url: '/signup?email',
-              templateUrl: 'js/routes/signup/companyInfo.html',
+              templateUrl: 'templates/companyInfo.html',
               params:{'email':null , 'password':null},
-              controller: 'companyCtrl as vm',
+              controller: 'companyCtrl',
               data: {
                 authenticate: false
               }

@@ -21,7 +21,7 @@
 
           $translateProvider.useStaticFilesLoader({
             files: [{
-              prefix: 'resources/language/locale-',
+              prefix: 'resourses/language/locale-',
               suffix: '.json'
             }]
           });
@@ -132,7 +132,7 @@
                       $rootScope.note = 'poList get success, please refesh the list';
                       $rootScope.$apply($rootScope.note);
                   }
-                  localStorageService.set('message',alertContent);
+                  //localStorageService.set('message',alertContent);
               }
               catch(exception){
                   console.log("JPushPlugin:receiveNotification-->"+exception);

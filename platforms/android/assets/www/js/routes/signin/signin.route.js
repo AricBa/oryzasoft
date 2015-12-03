@@ -6,24 +6,24 @@
           $stateProvider
             .state('signin', {
                 url: '/signin',
-                templateUrl: 'js/routes/signin/signin.html',
-                controller: 'SigninCtrl as vm',
+                templateUrl: 'templates/signin.html',
+                controller: 'SigninCtrl',
                 data: {
                     authenticate: false
                 }
             })
             .state('forgetPassword', {
               url: '/forgetPassword',
-              templateUrl: 'js/routes/signin/forgetPassword.html',
-              controller: 'forgetPasswordCtrl as vm',
+              templateUrl: 'templates/forgetPassword.html',
+              controller: 'forgetPasswordCtrl',
               data: {
                 authenticate: false
               }
             })
             .state('experience', {
               url: '/experience',
-              templateUrl: 'js/routes/signin/experience.html',
-              controller: 'experienceCtrl as vm',
+              templateUrl: 'templates/experience.html',
+              controller: 'experienceCtrl',
               data: {
                 authenticate: false
               }

@@ -21,16 +21,16 @@
 
           $translateProvider.useStaticFilesLoader({
             files: [{
-              prefix: 'resourses/language/locale-',
+              prefix: 'resources/language/locale-',
               suffix: '.json'
             }]
           });
-            $translateProvider.preferredLanguage('E');
+            $translateProvider.preferredLanguage('1');
       }])
         .run(['$ionicPlatform', '$rootScope', '$location', 'Authentication','localStorageService','$state',
-        '$translate',
+        '$translate','amMoment',
           function($ionicPlatform, $rootScope, $location, Authentication,localStorageService,$state,
-                   $translate) {
+                   $translate,amMoment) {
           $ionicPlatform.ready(function() {
               // save user profile details to $rootScope
               $rootScope.me = Authentication.getCurrentUser();
@@ -77,8 +77,10 @@
                 alert('language: ' + language.value + '\n');
                 if(language.value == 'en-US'){
                   $translate.use('E');
+                  amMoment.changeLocale('en-gb');
                 }else if(language.value == 'zh-CN'){
                   $translate.use('1');
+                  amMoment.changeLocale('zh-cn');
                 }
               },
               function () {
@@ -117,6 +119,7 @@
                   var alertContent;
                   if(device.platform == "Android"){
                       alertContent = window.plugins.jPushPlugin.receiveNotification.alert;
+                      var extras = window.plugins.jPushPlugin.receiveNotification.extras;
                   }else{
                       alertContent   = event.aps.alert;
                   }
@@ -124,13 +127,13 @@
                   if(window.plugins.jPushPlugin.isPlatformIOS()){
                       window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
                   }
-                  //alert("receive" + alertContent);
+                  alert("receive" + extras['cn.jpush.android.MSG_ID']);
                   var notification = alertContent.split(" ");
                   if(notification[0] == "poList"){
                       $rootScope.note = 'poList get success, please refesh the list';
                       $rootScope.$apply($rootScope.note);
                   }
-                  localStorageService.set('message',alertContent);
+                  //localStorageService.set('message',alertContent);
               }
               catch(exception){
                   console.log("JPushPlugin:receiveNotification-->"+exception);

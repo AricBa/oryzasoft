@@ -10,7 +10,7 @@
           url: '/po',
           views:{
             'list':{
-              templateUrl: 'js/routes/po/poList.html',
+              templateUrl: 'templates/poList.html',
               controller: 'poListCtrl'
             }
           },
@@ -43,7 +43,7 @@
         })
         .state('poDetail', {
           url:'poDetail/:poNumber',
-          templateUrl: 'js/routes/po/poDetail.html',
+          templateUrl: 'templates/poDetail.html',
           controller:'poDetailCtrl',
           cache:false,
           resolve:{
@@ -77,7 +77,7 @@
         })
         .state('poItems',{
           url:'poDetail/:poNumber/items',
-          templateUrl: 'js/routes/po/poItems.html',
+          templateUrl: 'templates/poItems.html',
           controller:'POItemsCtrl',
           resolve:{
             POItemList:function($stateParams,POData,$q,$ionicLoading){
@@ -103,7 +103,7 @@
         })
         .state('poItemDetail',{
           url:'poDetail/:poNumber/items/:itemId',
-          templateUrl: 'js/routes/po/poItemDetail.html',
+          templateUrl: 'templates/poItemDetail.html',
           controller:'poItemDetailCtrl',
           resolve:{
             POItemDetail:function($stateParams,POData,$q,$ionicLoading){
@@ -127,7 +127,7 @@
         })
         .state('poApproveDetail',{
           url:'approveDetail/:poNumber',
-          templateUrl:'js/routes/po/poApproveDetail.html',
+          templateUrl:'templates/poApproveDetail.html',
           controller:'poApproveDetailCtrl',
           cache:false,
           resolve:{
