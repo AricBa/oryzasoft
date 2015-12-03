@@ -25,8 +25,8 @@
         $state.go('home');
       }
     }])
-    .controller('addsapCtrl',['Authentication','$scope','$ionicLoading',
-      function(Authentication,$scope,$ionicLoading){
+    .controller('addsapCtrl',['Authentication','$scope','$ionicLoading','$state',
+      function(Authentication,$scope,$ionicLoading,$state){
       $scope.sapaccount = {};
 
       $scope.addSAPAccount = function(account,isValid){
@@ -41,17 +41,29 @@
           $ionicLoading.hide();
           console.log(err);
         })
-      };
-    }])
-    .controller('userDetailCtrl',[function(){
+        };
 
-    }])
-    .controller('aboutCtrl',['$scope','versionUpdate',function($scope,versionUpdate){
-      $scope.update = function(){
-        versionUpdate.checkUpdate();
-      }
-    }])
-    .controller('messageCtrl',['$scope','localStorageService',function($scope,localStorageService){
-      $scope.messages = localStorageService.get('message');
-    }])
-})();
+        $scope.goBack = function(){
+          $state.go('user');
+        }
+      }])
+      .controller('userDetailCtrl',['$scope','$state',function($scope,$state){
+            $scope.goBack = function(){
+              $state.go('user');
+            }
+      }])
+          .controller('aboutCtrl',['$scope','versionUpdate','$state',function($scope,versionUpdate,$state){
+            $scope.update = function(){
+              versionUpdate.checkUpdate();
+            };
+            $scope.goBack = function(){
+              $state.go('user');
+            }
+          }])
+          .controller('messageCtrl',['$scope','localStorageService','$state',function($scope,localStorageService,$state){
+            $scope.messages = localStorageService.get('message');
+            $scope.goBack = function(){
+              $state.go('user');
+            }
+          }])
+      })();
